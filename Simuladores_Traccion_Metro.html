@@ -1020,6 +1020,13 @@ Para agregar un nuevo módulo:
 #t_plano .apn{font-size:13px;fill:var(--text-primary);font-weight:500}
 #t_plano .cab{font-size:13px;fill:var(--text-secondary);font-weight:500}
 #mc_plano .ccab{font-size:14px;fill:var(--text-primary);font-weight:600}
+#lt_plano .lcab{font-size:14px;fill:var(--text-primary);font-weight:600}
+#lt_plano .lvia{font-size:12px;fill:var(--text-secondary)}
+#lt_plano .lbor{font-size:11px;fill:var(--text-secondary)}
+#lt_plano .lnota{font-size:11px;fill:var(--text-secondary)}
+#lt_plano .lampl{fill:#5A1F1F;stroke:#8A3A3A;stroke-width:1.5;transition:fill .3s}
+#lt_plano .lampl.on{fill:#E24B4A;stroke:#F07A79}
+#lt_plano .w.live{stroke:#EF9F27;stroke-width:2.4;stroke-dasharray:7 5;animation:flow 1s linear infinite}
 #mc_plano .cvia{font-size:12px;fill:var(--text-secondary)}
 #mc_plano .cbor{font-size:11px;fill:var(--text-secondary)}
 #mc_plano .cnota{font-size:11px;fill:var(--text-secondary)}
@@ -1250,6 +1257,247 @@ Para agregar un nuevo módulo:
 </fieldset>
 </div>
 <div id="i_status"></div>
+</main>
+</section>
+
+<!-- ================= MÓDULO: MANDO CE / CEFS · LAS TORRES · ZONA C ================= -->
+
+<section id="mod-l4zcm" class="mod">
+<header>
+<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<h1>Condición <span>Zona C</span> · L4</h1>
+<p class="sub">Pupitre · PCC armario tracción · Cable túnel · Armario TT · Local Técnico Estación Las Torres, armario MC</p>
+</header>
+<details class="guia">
+<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+<div class="cont">
+<p><b>Qué estás viendo:</b> la cadena de mando de la Zona C tal como viene en la hoja. Del pupitre sale el giro del TPL.ZC, en el PCC se sellan el K.ZC y el R.ZC, y por el cable túnel baja todo al armario MC de Las Torres.</p>
+<p><b>El CEFS S4:</b> mismo esquema que en Tobalaba. El PCC manda <b>pulsos</b> por el Módulo Interf. TT — CEFSS1 C-S4 para armar y CEFSS1 A-S3 para desarmar — y en el armario MC el biestable <b>K1A / K1B</b> sostiene al R.CEFS.S4 hasta el pulso contrario.</p>
+<p><b>Los controles:</b> suben por la P43 al MUX1 del armario FF con su común Com P4, y el TK.ZC.E16 informa al PCC el estado de la zona.</p>
+<p><b>Lo que se reparte por el túnel:</b> el RR.A.ZC y el R.ZC salen por la P44 y la 2J1 hacia el armario TT del lado C/N.</p>
+</div>
+</details>
+<main>
+<div class="ctrl" style="margin-bottom:6px">
+<button class="btn" id="lt_btnFit">Ajustar a pantalla</button>
+<label>Zoom <input type="range" id="lt_zoom" min="30" max="140" value="100"></label>
+<span id="lt_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+<div class="scrollwrap" id="lt_wrap">
+<svg id="lt_plano" width="1920" height="1210" viewBox="0 0 1920 1210" role="img">
+<defs><marker id="lt_ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#3E77E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<!-- ===================== PUPITRE ===================== -->
+<rect class="zona" x="30" y="60" width="290" height="620" rx="10"/>
+<text x="175" y="84" text-anchor="middle" class="lcab">Pupitre</text>
+<text x="175" y="102" text-anchor="middle" class="lvia">MX607-L4 · 1P1-J1</text>
+
+<text x="60" y="164" text-anchor="end">+48V</text>
+<g id="lt_gP1"><path class="w" d="M 66 160 H 110"/></g>
+<g id="lt_ctTPL" class="sym f-rzc"><circle cx="110" cy="160" r="2.5"/><circle cx="180" cy="160" r="2.5"/><line class="bc" x1="113" y1="160" x2="177" y2="160"/><line class="bo" x1="113" y1="160" x2="174" y2="146"/><text x="145" y="142" text-anchor="middle">TPL-ZC</text></g>
+<g id="lt_gP3"><path class="w" d="M 180 160 H 320"/></g>
+
+<circle id="lt_lamp" class="lampl" cx="100" cy="250" r="13"/>
+<text x="100" y="282" text-anchor="middle" class="lnota">L2</text>
+<g id="lt_gL1"><path class="w" d="M 113 250 H 320"/></g>
+
+<rect x="55" y="420" width="230" height="150" rx="6" fill="none" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="170" y="442" text-anchor="middle" class="lvia">1P1 · DG · MX642</text>
+<g id="lt_ctDG" class="sym f-rzae"><circle cx="100" cy="490" r="2.5"/><circle cx="170" cy="490" r="2.5"/><line class="bc" x1="103" y1="490" x2="167" y2="490"/><line class="bo" x1="103" y1="490" x2="164" y2="476"/><text x="135" y="472" text-anchor="middle">R.DG</text></g>
+<g id="lt_gDG1"><path class="w" d="M 70 490 H 100"/></g>
+<g id="lt_gDG2"><path class="w" d="M 170 490 H 250"/></g>
+<text x="262" y="494" class="lbor">0V</text>
+<text x="170" y="546" text-anchor="middle" class="lbor">2P43 · B4 · E2</text>
+
+<!-- ===================== PCC · ARMARIO TRACCIÓN ===================== -->
+<rect class="zona" x="340" y="60" width="330" height="620" rx="10"/>
+<text x="360" y="84" class="lcab">PCC · armario tracción</text>
+<text x="360" y="102" class="lvia">1P4 · R.ZC · MX642</text>
+
+<g id="lt_gK1"><path class="w" d="M 320 160 H 380"/></g>
+<g id="lt_coKZC" class="coil f-rzc"><text x="420" y="142" text-anchor="middle">K.ZC · K2</text><path class="zz" d="M 380 160 L 400 148 L 420 160 L 440 148 L 460 160"/></g>
+<g id="lt_gK2"><path class="w" d="M 460 160 H 540"/></g>
+<text x="552" y="164" class="lbor">0V</text>
+
+<g id="lt_gSelA"><path class="w" d="M 360 160 V 220 H 400"/></g>
+<g id="lt_ctKZC" class="sym f-rzc"><circle cx="400" cy="220" r="2.5"/><circle cx="460" cy="220" r="2.5"/><line class="bc" x1="403" y1="220" x2="457" y2="220"/><line class="bo" x1="403" y1="220" x2="454" y2="208"/><text x="430" y="206" text-anchor="middle">sello</text></g>
+<g id="lt_gSelB"><path class="w" d="M 460 220 H 500 V 160"/></g>
+<circle cx="360" cy="160" r="3.5" fill="var(--border-strong)"/>
+<circle cx="500" cy="160" r="3.5" fill="var(--border-strong)"/>
+
+<text x="350" y="324" text-anchor="end">+48V</text>
+<g id="lt_gR1"><path class="w" d="M 356 320 H 400"/></g>
+<g id="lt_ctKZC2" class="sym f-rzc"><circle cx="400" cy="320" r="2.5"/><circle cx="460" cy="320" r="2.5"/><line class="bc" x1="403" y1="320" x2="457" y2="320"/><line class="bo" x1="403" y1="320" x2="454" y2="308"/><text x="430" y="306" text-anchor="middle">K.ZC</text></g>
+<g id="lt_gR2"><path class="w" d="M 460 320 H 500"/></g>
+<g id="lt_coRZC" class="coil f-rzae"><text x="540" y="302" text-anchor="middle">R.ZC · K1</text><path class="zz" d="M 500 320 L 520 308 L 540 320 L 560 308 L 580 320"/></g>
+<g id="lt_gR3"><path class="w" d="M 580 320 H 630"/></g>
+<text x="642" y="324" class="lbor">0V</text>
+<text x="360" y="360" class="lbor">2P41 · 2P44 · Z08 · D08 · D14 · D22</text>
+
+<rect x="360" y="420" width="290" height="200" rx="6" fill="none" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="505" y="442" text-anchor="middle" class="lvia">VXMAT · Tarjeta 1 · Módulo 1</text>
+<text x="505" y="458" text-anchor="middle" class="lvia">MUX · Com P2</text>
+<g id="lt_tkTPL" class="ct"><rect x="380" y="486" width="14" height="14" rx="2"/></g>
+<text x="402" y="484" class="lbor">E8 · TK.TPL.ZC.A</text>
+<g id="lt_gTK1"><path class="w" d="M 500 170 V 493 H 394"/></g>
+<path d="M 360 560 H 300" stroke="#3E77E0" stroke-width="1.6" fill="none" marker-end="url(#lt_ar)"/>
+<text x="292" y="564" text-anchor="end" class="lvia">Red RMS</text>
+
+<!-- ===================== CABLE TÚNEL Y ARMARIO TT ===================== -->
+<line class="zona" x1="700" y1="80" x2="700" y2="660"/>
+<line class="zona" x1="740" y1="80" x2="740" y2="660"/>
+<text x="720" y="72" text-anchor="middle" class="lvia">Cable túnel</text>
+<text x="690" y="384" text-anchor="end" class="lbor">2H3</text>
+<text x="750" y="384" class="lbor">2J1</text>
+<rect class="zona" x="770" y="60" width="90" height="620" rx="10"/>
+<text x="815" y="84" text-anchor="middle" class="lcab">Armario</text>
+<text x="815" y="102" text-anchor="middle" class="lcab">TT</text>
+<text x="815" y="384" text-anchor="middle" class="lbor">P44</text>
+<g id="lt_gTun"><path class="w" d="M 630 380 H 900"/></g>
+
+<!-- ===================== LOCAL TÉCNICO LAS TORRES · ARMARIO MC ===================== -->
+<rect class="zona" x="880" y="60" width="740" height="1080" rx="10"/>
+<text x="900" y="84" class="lcab">Local Técnico Estación Las Torres · armario MC</text>
+
+<!-- armario FF de arriba : entradas del VXMAT -->
+<rect class="zona" x="1180" y="110" width="330" height="180" rx="8"/>
+<text x="1200" y="134" class="lcab">Armario FF</text>
+<text x="1200" y="152" class="lvia">VXMAT · Tarjeta 1 · Módulo 1 · MUX · MRM</text>
+<g id="lt_tkZC" class="ct"><rect x="1200" y="180" width="14" height="14" rx="2"/></g>
+<text x="1222" y="178" class="lbor">16 · TK.ZC-E16</text>
+<text x="1222" y="226" class="lbor">MUX-1 · Com P4</text>
+<g id="lt_gCom"><path class="w" d="M 1214 222 H 1440"/></g>
+<path d="M 1180 250 H 1120" stroke="#3E77E0" stroke-width="1.6" fill="none" marker-end="url(#lt_ar)"/>
+<text x="1112" y="254" text-anchor="end" class="lvia">Red RMS</text>
+<line class="zona" x1="1540" y1="150" x2="1540" y2="270"/>
+<text x="1540" y="142" text-anchor="middle" class="lvia">P43</text>
+<text x="1550" y="186" class="lbor">D4</text>
+<text x="1550" y="246" class="lbor">E4</text>
+
+<!-- P1 · CE S4 · MX643-B -->
+<rect x="900" y="330" width="380" height="300" rx="6" fill="none" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="920" y="352" class="lvia">P1 · CE S4 · MX643-B</text>
+<g id="lt_gCE1"><path class="w" d="M 900 380 V 400 H 950"/></g>
+<g id="lt_ctCE" class="sym f-rce"><circle cx="950" cy="400" r="2.5"/><circle cx="1020" cy="400" r="2.5"/><line class="bc" x1="953" y1="400" x2="1017" y2="400"/><line class="bo" x1="953" y1="400" x2="1014" y2="386"/><text x="985" y="384" text-anchor="middle">CE.S4</text></g>
+<g id="lt_gCE2"><path class="w" d="M 1020 400 H 1080"/></g>
+<g id="lt_coRCEFS" class="coil f-sat"><text x="1120" y="382" text-anchor="middle">R.CEFS.S4 · K1</text><path class="zz" d="M 1080 400 L 1100 388 L 1120 400 L 1140 388 L 1160 400"/></g>
+<g id="lt_gCE3"><path class="w" d="M 1160 400 H 1230"/></g>
+<text x="1242" y="404" class="lbor">Z12 · 0V</text>
+
+<g id="lt_coRR" class="coil f-sat"><text x="1000" y="452" text-anchor="middle">RR.CEFS.S4 · K4</text><path class="zz" d="M 960 470 L 980 458 L 1000 470 L 1020 458 L 1040 470"/></g>
+<path class="leader" style="stroke:#2BA6A6" d="M 1120 406 V 440 H 1000 V 456"/>
+<g id="lt_gRR1"><path class="w" d="M 960 470 H 920"/></g>
+<text x="912" y="474" text-anchor="end" class="lbor">Z06</text>
+<g id="lt_gRR2"><path class="w" d="M 1040 470 H 1100"/></g>
+<text x="1112" y="474" class="lbor">Z14 · A1 · A2 · 0V</text>
+
+<!-- biestable del CEFS -->
+<g id="lt_gPul1"><path class="w" d="M 930 560 H 990"/></g>
+<g id="lt_ctK1B" class="sym f-rce"><circle cx="990" cy="560" r="2.5"/><circle cx="1050" cy="560" r="2.5"/><line class="bc" x1="993" y1="560" x2="1047" y2="560"/><line class="bo" x1="993" y1="560" x2="1044" y2="548"/></g>
+<g id="lt_gPul2"><path class="w" d="M 1050 560 H 1110"/></g>
+<g id="lt_gSelC"><path class="w" d="M 930 560 V 530 H 990"/></g>
+<g id="lt_ctSello" class="sym f-sat"><circle cx="990" cy="530" r="2.5"/><circle cx="1050" cy="530" r="2.5"/><line class="bc" x1="993" y1="530" x2="1047" y2="530"/><line class="bo" x1="993" y1="530" x2="1044" y2="518"/><text x="984" y="520" text-anchor="end">D1</text><text x="1056" y="520">D2</text></g>
+<g id="lt_gSelD"><path class="w" d="M 1050 530 H 1110 V 560"/></g>
+<circle cx="930" cy="560" r="3.5" fill="var(--border-strong)"/>
+<circle cx="1110" cy="560" r="3.5" fill="var(--border-strong)"/>
+<text x="922" y="564" text-anchor="end" class="lbor">D14</text>
+<g id="lt_gCut1"><path class="w" d="M 1110 560 H 1160"/></g>
+<g id="lt_ctK1A" class="sym f-sat"><circle cx="1160" cy="560" r="2.5"/><circle cx="1220" cy="560" r="2.5"/><line class="bc" x1="1163" y1="560" x2="1217" y2="560"/><line class="bo" x1="1163" y1="560" x2="1214" y2="548"/></g>
+<g id="lt_gCut2"><path class="w" d="M 1220 560 H 1250"/></g>
+<text x="1262" y="564" class="lbor">D16 · 0V</text>
+
+<g id="lt_coK1A" class="coil f-sat"><text x="1190" y="500" text-anchor="middle">K1A</text><path class="zz" d="M 1162 470 L 1176 458 L 1190 470 L 1204 458 L 1218 470"/><text x="1226" y="474">A</text></g>
+<path class="leader" style="stroke:#2BA6A6" d="M 1190 474 V 550"/>
+<g id="lt_gK1A0"><path class="w" d="M 1162 470 H 1130"/></g>
+<text x="1122" y="474" text-anchor="end">+48V</text>
+<g id="lt_gK1Ain"><path class="w" d="M 1218 470 H 1300 V 690 H 1180"/></g>
+
+<g id="lt_coK1B" class="coil f-rce"><text x="1020" y="628" text-anchor="middle">K1B</text><path class="zz" d="M 992 602 L 1006 590 L 1020 602 L 1034 590 L 1048 602"/><text x="1056" y="606">C</text></g>
+<path class="leader" style="stroke:#E24B4A" d="M 1020 588 V 570"/>
+<g id="lt_gK1B0"><path class="w" d="M 992 602 H 950"/></g>
+<text x="942" y="606" text-anchor="end">+48V</text>
+<g id="lt_gK1Bin"><path class="w" d="M 1048 602 H 1110 V 660 H 1180"/></g>
+
+<!-- armario FF de abajo : Módulo Interf. TT -->
+<rect class="zona" x="900" y="700" width="420" height="240" rx="8"/>
+<text x="920" y="724" class="lcab">Armario FF</text>
+<text x="920" y="742" class="lvia">Módulo Interf. TT · Tarjeta 1 · Módulo 4 · salidas</text>
+<g id="lt_coS4" class="coil f-sat"><text x="990" y="796" text-anchor="middle">CEFSS1 C-S4</text><path class="zz" d="M 950 814 L 970 802 L 990 814 L 1010 802 L 1030 814"/></g>
+<text x="990" y="832" text-anchor="middle" class="lbor">+24V · 4</text>
+<g id="lt_coS3" class="coil f-rce"><text x="1200" y="796" text-anchor="middle">CEFSS1 A-S3</text><path class="zz" d="M 1160 814 L 1180 802 L 1200 814 L 1220 802 L 1240 814"/></g>
+<text x="1200" y="832" text-anchor="middle" class="lbor">+24V · 3</text>
+<text x="1110" y="884" text-anchor="middle" class="lbor">44 · 43 · 34 · 33</text>
+<path d="M 900 900 H 840" stroke="#3E77E0" stroke-width="1.6" fill="none" marker-end="url(#lt_ar)"/>
+<text x="832" y="904" text-anchor="end" class="lvia">Red RMS</text>
+<line class="zona" x1="1360" y1="640" x2="1360" y2="900"/>
+<text x="1360" y="632" text-anchor="middle" class="lvia">P41</text>
+<text x="1370" y="664" class="lbor">A4</text>
+<text x="1370" y="694" class="lbor">A3</text>
+<text x="1370" y="900" class="lbor">–48V</text>
+
+<!-- P2 · RR A ZC · MX642 -->
+<rect x="1360" y="330" width="240" height="180" rx="6" fill="none" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="1380" y="352" class="lvia">P2 · RR A ZC · MX642</text>
+<g id="lt_coRRAZC" class="coil f-rzae"><text x="1480" y="412" text-anchor="middle">RR A ZC · K2</text><path class="zz" d="M 1440 430 L 1460 418 L 1480 430 L 1500 418 L 1520 430"/></g>
+<g id="lt_gAZ1"><path class="w" d="M 1440 430 H 1390"/></g>
+<text x="1382" y="434" text-anchor="end" class="lbor">B22 · D1</text>
+<g id="lt_gAZ2"><path class="w" d="M 1520 430 H 1580"/></g>
+<text x="1380" y="484" class="lbor">D2 · D22 · Z14 · D14</text>
+
+<!-- P2 · R.ZC · MX642 -->
+<rect x="1640" y="110" width="240" height="200" rx="6" fill="none" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="1660" y="134" class="lvia">P2 · R.ZC · MX642</text>
+<g id="lt_coRZC2" class="coil f-rzae"><text x="1760" y="202" text-anchor="middle">R.ZC · K1</text><path class="zz" d="M 1720 220 L 1740 208 L 1760 220 L 1780 208 L 1800 220"/></g>
+<g id="lt_gRZ1"><path class="w" d="M 1720 220 H 1670"/></g>
+<text x="1662" y="224" text-anchor="end" class="lbor">Z08</text>
+<g id="lt_gRZ2"><path class="w" d="M 1800 220 H 1850"/></g>
+<text x="1660" y="272" class="lbor">D08 · A1 · A2 · Z02 · D02 · D04 · Z04</text>
+
+<!-- armarios TT del túnel -->
+<rect class="zona" x="1640" y="400" width="240" height="220" rx="8"/>
+<text x="1760" y="424" text-anchor="middle" class="lcab">Túnel</text>
+<text x="1700" y="452" text-anchor="middle" class="lvia">Armario TT RQU</text>
+<text x="1830" y="452" text-anchor="middle" class="lvia">Armario TT C/N</text>
+<text x="1700" y="486" text-anchor="middle" class="lbor">2J1 · 2J11</text>
+<text x="1830" y="486" text-anchor="middle" class="lbor">2J1 · P44</text>
+<g id="lt_gTT"><path class="w" d="M 1580 430 H 1660 V 500 M 1660 500 H 1860"/></g>
+<text x="1830" y="524" text-anchor="middle" class="lbor">D1 · +48V</text>
+<text x="1830" y="542" text-anchor="middle" class="lbor">D4 · 0V</text>
+<text x="1760" y="588" text-anchor="middle" class="lnota">ver esquema HDD C/N</text>
+<text x="1760" y="604" text-anchor="middle" class="lnota">1202-HDD-04-647-30573</text>
+
+<!-- leyenda -->
+<line x1="40" y1="1180" x2="80" y2="1180" class="w"/><text x="88" y="1184" class="lnota">sin corriente</text>
+<line x1="200" y1="1180" x2="240" y2="1180" class="w live"/><text x="248" y="1184" class="lnota">con corriente</text>
+<line x1="380" y1="1180" x2="420" y2="1180" class="leader" style="stroke:#2BA6A6"/><text x="428" y="1184" class="lnota">enlace mecánico (color del relé)</text>
+
+</svg>
+</div>
+
+<div class="panel">
+<fieldset class="grp">
+<legend>1 · Pupitre</legend>
+<label><input type="checkbox" id="lt_cbDG" checked> R.DG cerrado</label>
+<button class="btn" id="lt_btnGiro">Girar el TPL.ZC</button>
+<span id="lt_estZC" style="font-size:12px"></span>
+</fieldset>
+<fieldset class="grp">
+<legend>2 · Corte de emergencia S4</legend>
+<label><input type="checkbox" id="lt_cbCE"> CE S4 golpeado</label>
+</fieldset>
+<fieldset class="grp">
+<legend>3 · Comandos del PCC · CEFS S4</legend>
+<button class="btn" id="lt_btnCierre">CEFSS1 C-S4 · armar</button>
+<button class="btn" id="lt_btnAbierto">CEFSS1 A-S3 · desarmar</button>
+<span id="lt_estFS" style="font-size:12px"></span>
+</fieldset>
+<fieldset class="grp">
+<legend>Ir al módulo enganchado</legend>
+<button class="btn" onclick="irModulo('mod-l4zc')">Condición de Zona C</button>
+<button class="btn" onclick="irModulo('mod-l4cefs')">Mando CE · CEFS · Tobalaba</button>
+</fieldset>
+</div>
+<div id="lt_status"></div>
 </main>
 </section>
 
@@ -1689,10 +1937,10 @@ Para agregar un nuevo módulo:
 <p><b>Nomenclatura de los aparatos:</b> <b>D</b> = disyuntor, <b>S</b> = seccionador, <b>V</b> = de vía, y el número final dice en qué <b>cabina</b> está el aparato (la cabina es donde están los interruptores). Así, <b>DVC1</b> es el disyuntor de vía de la cabina 1 y <b>SVC1</b> su seccionador; <b>DVC2</b> el de la cabina 2; <b>SV</b> es el seccionador de vía. Todos se accionan a mano en terreno, en el recinto de Cocheras.</p>
 <p><b>Para qué sirve la rama de los aparatos:</b> es la <b>maniobra de respaldo</b>. Cuando el disyuntor no se puede cerrar (o abrir) por comando desde el PCC, hay que ir a terreno y seccionar a mano. Por eso estos seis contactos son los únicos de toda la cadena que se accionan manualmente en el recinto de Cocheras: el resto de la lógica es automática y remota.</p>
 <p><b>Por qué van los dos en serie:</b> el <b>disyuntor</b> es el que maniobra en carga — tiene poder de corte y es el que dispara ante una falla. El <b>seccionador</b> no corta carga: se maniobra sin tensión y su función es garantizar el corte, dejando una separación visible y cierta. Ninguno por sí solo prueba que el recinto está aislado: con solo el disyuntor abierto el recinto queda sin tensión pero todavía conectado. Por eso el bucle exige los dos contactos auxiliares para dar por desconectado el recinto y seguir armado sin su corte de emergencia.</p>
-<p><b>⚠ Léelo antes que nada: acá el criterio es al revés.</b> Este relé se llama <b>R A ZC = relé de apertura de zona C</b>. No da permiso, <b>abre</b>. Y se energiza <b>cuando el circuito se abre</b>, no cuando se cierra.</p>
-<p><b>Cómo funciona:</b> es un montaje de seguridad. Mientras el bucle esté cerrado, la bobina queda <b>cortocircuitada</b> y el relé no ve tensión: está en reposo y la Zona C funciona. Al abrirse el bucle en cualquier punto, se pierde ese cortocircuito, la corriente se va obligada por la bobina, el R A ZC se energiza, y su repetidor RR A ZC en Las Torres <b>abre la Zona C</b>. Por eso basta con <b>un solo</b> corte de emergencia: al ir las tres vías en serie, cualquiera que se abra rompe el puente completo.</p>
-<p><b>Las dos maneras de mantener el puente en cada vía:</b> por abajo el bucle de ruptores del corte de emergencia (con su RR.CEFS de respaldo), o por arriba los contactos de sus aparatos, que cierran cuando el recinto queda desconectado. Por eso al sacar un recinto de servicio su corte de emergencia deja de poder abrir la zona: el puente se mantiene por arriba.</p>
-<p><b>El SVC (3P1):</b> su rama sale del contacto <b>A</b> por el <b>Z20</b>, o sea conduce con el SVC <b>abierto</b>. Es el puente general: con Cocheras fuera de servicio mantiene el cortocircuito y nada de allá adentro puede abrir la Zona C.</p>
+<p><b>⚠ Léelo antes que nada:</b> este relé se llama <b>R A ZC = relé de apertura de zona C</b>. En estado normal está <b>ENERGIZADO</b>: con los CE cerrados la corriente llega a su bobina y su contacto <b>A1·A2 queda cerrado</b>. Abre la Zona C cuando <b>cae</b>, no cuando se energiza.</p>
+<p><b>Cómo funciona:</b> es un montaje de seguridad positiva. Mientras el bucle esté cerrado, la bobina recibe corriente, el R A ZC y su repetidor RR A ZC en Las Torres quedan energizados y la Zona C funciona. Al abrirse el bucle en cualquier punto, la bobina se queda sin corriente, el R A ZC cae, cae detrás el RR A ZC y se <b>abre la Zona C</b>. Por eso basta con <b>un solo</b> corte de emergencia: al ir las tres vías en serie, cualquiera que se abra corta el bucle completo.</p>
+<p><b>Las dos maneras de mantener el bucle cerrado en cada vía:</b> por abajo el bucle de ruptores del corte de emergencia (con su RR.CEFS de respaldo), o por arriba los contactos de sus aparatos, que cierran cuando el recinto queda desconectado. Por eso al sacar un recinto de servicio su corte de emergencia deja de poder abrir la zona: el bucle se mantiene cerrado por arriba.</p>
+<p><b>El SVC (3P1):</b> su rama sale del contacto <b>A</b> por el <b>Z20</b>, o sea conduce con el SVC <b>abierto</b>. Es el puente general: con Cocheras fuera de servicio mantiene energizado el R A ZC y nada de allá adentro puede abrir la Zona C.</p>
 <p><b>Trazado (dictado desde el plano):</b> por la izquierda el <b>D26</b> del DVM es el nodo común de las tres ramas. Por la derecha, la fila de aparatos y la rama de los CE (que sube del <b>D8</b>) se juntan en el <b>D12</b> del DVC2, y el SVC vuelve por su propio <b>Z20</b>. De esa unión sale la bobina.</p>
 <p><b>Lámina hermana:</b> la hoja 5/18 del mismo plano es la <b>Condición RS IAC</b>, que usa los mismos aparatos por otros contactos auxiliares y lleva además el R.ZC y el CE S4. Probablemente sea esa la que desconecta Cocheras de la línea ante un percance, dejando la Zona C en servicio.</p>
 </div>
@@ -1711,7 +1959,7 @@ Para agregar un nuevo módulo:
 <rect class="zona" x="20" y="50" width="800" height="560" rx="10"/>
 <text x="28" y="70" style="font-weight:500;fill:var(--text-primary)">Local Técnico Talleres Cocheras Intermedia · armario MC</text>
 <text x="28" y="86" style="font-size:9px;fill:var(--text-secondary)">Cadena de apertura de la Zona C · 1202-HDD-04-0647-30573 hoja 6/18 (esquema_cadena_CIN)</text>
-<text x="28" y="104" style="font-size:9px;fill:var(--text-secondary)">Criterio invertido: mientras el bucle esté cerrado la bobina queda cortocircuitada y el R A ZC NO se energiza. Al abrirse en cualquier punto, el relé actúa y ABRE la Zona C.</text>
+<text x="28" y="104" style="font-size:9px;fill:var(--text-secondary)">Con el bucle cerrado el R A ZC queda ENERGIZADO (contacto A1·A2 cerrado). Al abrirse en cualquier punto, el relé cae y se ABRE la Zona C.</text>
 
 <line class="zona" x1="832" y1="50" x2="832" y2="610"/>
 <line class="zona" x1="866" y1="50" x2="866" y2="610"/>
@@ -1844,12 +2092,12 @@ Para agregar un nuevo módulo:
 <text x="670" y="174" text-anchor="middle" style="font-size:8px;fill:var(--text-secondary)">1P6 · MX642</text>
 <g id="cin_coRAZC" class="coil f-rrzb"><text x="670" y="186" text-anchor="middle">R A ZC</text><path class="zz" d="M 650 210 L 660 192 L 670 210 L 680 192 L 690 210"/></g>
 <text x="724" y="214">+48V</text>
-<path class="leader" style="stroke:#3E77E0" d="M 670 214 V 586"/>
+<path class="leader" style="stroke:#3E77E0" d="M 670 214 V 292"/>
 
 <text x="500" y="594" text-anchor="end">+48V</text>
-<g id="cin_gFeed"><path class="w" d="M 506 590 H 632.5"/></g>
-<g id="cin_ctRAZC" class="sym f-rrzb"><text x="600" y="578" text-anchor="end">R A ZC · A1·A2</text><circle cx="632.5" cy="590" r="2.5"/><circle cx="687.5" cy="590" r="2.5"/><line class="bo" x1="635" y1="590" x2="679" y2="577"/><line class="bc" x1="635" y1="590" x2="685" y2="590"/></g>
-<g id="cin_gLink"><path class="w" style="stroke-dasharray:5 4" d="M 687.5 590 H 1080"/></g>
+<g id="cin_gFeed"><path class="w" d="M 506 590 V 300 H 632.5"/></g>
+<g id="cin_ctRAZC" class="sym f-rrzb"><text x="660" y="288" text-anchor="middle">R A ZC · A1·A2</text><circle cx="632.5" cy="300" r="2.5"/><circle cx="687.5" cy="300" r="2.5"/><line class="bo" x1="635" y1="300" x2="679" y2="287"/><line class="bc" x1="635" y1="300" x2="685" y2="300"/></g>
+<g id="cin_gLink"><path class="w" style="stroke-dasharray:5 4" d="M 687.5 300 H 760 V 590 H 1080"/></g>
 <text x="845" y="582" text-anchor="middle" style="font-size:8px;fill:var(--text-secondary)">2J1·7C</text>
 <text x="959" y="582" text-anchor="middle" style="font-size:8px;fill:var(--text-secondary)">7C·2J11</text>
 
@@ -4381,6 +4629,9 @@ var MODULOS = [
 { id:"mod-l4cefs", grupo:"General", linea:"LÍNEA 4", titulo:"Mando CE · CEFS · Tobalaba",
   desc:"Cómo suben al PCC los controles del corte de emergencia y cómo bajan los comandos que arman el CEFS. El sello del K1A y el 0V del D16.",
   disponible:true },
+{ id:"mod-l4zcm", grupo:"General", linea:"LÍNEA 4", titulo:"Condición Zona C · L4",
+  desc:"La hoja completa: del pupitre al PCC, por el cable túnel hasta el armario MC de Las Torres, con el CE S4, el CEFS y el reparto a los armarios TT.",
+  disponible:true },
 
   { id:"mod-l4tpa", grupo:"TPA", linea:"Línea 4", titulo:"Taller Puente Alto · Alimentación con corriente de tracción",
     desc:"El árbol completo de 750 Vcc del taller: S/ER, Cabina A y las cabinas C1, C2 y VP. Muestra los socorros de cada nivel y los dos modos del corte de emergencia.",
@@ -5191,20 +5442,21 @@ function solve(){
   var cVM = ceVM || apVM, cVC = ceVC || apVC, cVT = ceVT || apVT;
   var fila = cVM && cVC && cVT;       // las tres vías en serie
   var svc = st.abSVC;                 // esta rama sale del contacto A: conduce con el SVC ABIERTO
-  // MONTAJE DE SEGURIDAD: mientras haya camino cerrado, la bobina queda cortocircuitada
-  // y el relé NO se energiza. Al abrirse el bucle la corriente se va por la bobina y el
-  // R A ZC se activa, abriendo la Zona C. Por eso basta con UN solo corte de emergencia.
-  var puente = svc || fila;           // el camino que mantiene el cortocircuito
-  var razc  = !puente;                // el relé se energiza cuando el circuito se ABRE
+  // El R A ZC se mantiene ENERGIZADO mientras el bucle esté cerrado: con los CE
+  // repuestos y los aparatos en su sitio, la corriente llega a la bobina y su
+  // contacto A1·A2 queda cerrado. Basta que se abra un punto para que el relé caiga
+  // y con él el RR A ZC de Las Torres, lo que abre la Zona C.
+  var puente = svc || fila;           // el camino que alimenta la bobina
+  var razc  = puente;                 // energizado con el bucle cerrado
   var rrazc = razc;
   return {ceVM:ceVM, ceVC:ceVC, ceVT:ceVT, apVM:apVM, apVC:apVC, apVT:apVT,
     cVM:cVM, cVC:cVC, cVT:cVT, fila:fila, svc:svc, puente:puente, razc:razc, rrazc:rrazc};
 }
 
 function statusMsg(r){
-  if(!r.razc) return 'ESTADO NORMAL: el bucle está cerrado, así que la bobina del R A ZC queda cortocircuitada y el relé NO se energiza. Tampoco el RR A ZC de Las Torres. La Zona C sigue en servicio.';
+  if(r.razc) return 'ESTADO NORMAL: el bucle está cerrado, la bobina del R A ZC recibe corriente y el relé queda ENERGIZADO, con su contacto A1·A2 cerrado. Lo mismo el RR A ZC de Las Torres. La Zona C sigue en servicio.';
   var q = !r.cVM?'el CE de Vías Maniobra':(!r.cVC?'el CE de Vías Cocheras':(!r.cVT?'el CE de Vías Talleres':'la fila'));
-  return 'SE ABRIÓ EL BUCLE en '+q+': se pierde el cortocircuito y la corriente se va por la bobina. Se ENERGIZA el R A ZC (relé de apertura de zona) y con él el RR A ZC de Las Torres, que ABRE la Zona C. Basta con un solo punto abierto.';
+  return 'SE ABRIÓ EL BUCLE en '+q+': la bobina se queda sin corriente y CAE el R A ZC, con lo que su contacto A1·A2 se abre. Detrás cae el RR A ZC de Las Torres y se ABRE la Zona C. Basta con un solo punto abierto.';
 }
 
 function setOn(id,on){var e=g(id);if(e)e.classList.toggle('on',on);}
@@ -5229,12 +5481,13 @@ function render(){
         var t=q[0], ce=q[1], fs=q[2], ap=q[3];
         setOn('cin_ctCE'+t, !st['ce'+t]); setOn('cin_ctCEFS'+t, fs);
         setLive('cin_gCE'+t, r.fila&&ce); setLive('cin_gCEFS'+t, r.fila&&fs);
-        setLive('cin_gISO'+t, r.fila&&ap);
+        // por la rama de los aparatos no corre corriente: solo muestran su posición
+        setLive('cin_gISO'+t, false);
       });
-      setConm('cin_ctDVM', st.abDVM, r.fila&&r.apVM); setConm('cin_ctSVM', st.abSVM, r.fila&&r.apVM);
-      setConm('cin_ctDVC1', st.abDVC, r.fila&&r.apVC); setConm('cin_ctSVC1', st.abSVC1, r.fila&&r.apVC);
-      setConm('cin_ctDVC2', st.abDVT, r.fila&&r.apVT);},
-    function(){setConm('cin_ctSVC', st.abSVC, r.svc); setLive('cin_gSVC', r.svc); setLive('cin_gUp', r.fila); setLive('cin_gSrc', true);},
+      setConm('cin_ctDVM', st.abDVM, true); setConm('cin_ctSVM', st.abSVM, true);
+      setConm('cin_ctDVC1', st.abDVC, true); setConm('cin_ctSVC1', st.abSVC1, true);
+      setConm('cin_ctDVC2', st.abDVT, true);},
+    function(){setConm('cin_ctSVC', st.abSVC, true); setLive('cin_gSVC', false); setLive('cin_gUp', r.fila); setLive('cin_gSrc', true);},
     function(){setLive('cin_gChain',r.razc);setOn('cin_coRAZC',r.razc);},
     function(){setOn('cin_ctRAZC',r.razc);setLive('cin_gFeed',r.razc);setLive('cin_gLink',r.razc);},
     function(){setOn('cin_coRRAZC',r.rrazc);setLive('cin_gLink2',r.rrazc);},
@@ -6278,6 +6531,111 @@ function pulsoP(tipo){
 g('mc_btnPrueba').onclick = function(){ pulsoP('prueba'); };
 g('mc_btnReponer').onclick = function(){ pulsoP('reponer'); };
 g('mc_btnAbierto').onclick = function(){ pulso('abierto'); };
+render();
+})();
+
+
+/* ============ MÓDULO: MANDO CE / CEFS · LAS TORRES · ZONA C ============ */
+(function(){
+function g(id){return document.getElementById(id);}
+var BW=1920, BH=1210;
+function setZoom(p){var s=g('lt_plano');if(!s)return;s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('lt_zoom').value=p;g('lt_zoomVal').textContent=Math.round(p)+'%';}
+function fit(){var w=g('lt_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+MODFIT['mod-l4zcm'] = fit;
+g('lt_zoom').oninput=function(){setZoom(parseFloat(this.value));};
+g('lt_btnFit').onclick=fit;
+
+var st = { dg:true, giro:false, ce:false, sello:false, pulso:null };
+
+function setW(id,on){var e=g(id);if(!e)return;e.querySelectorAll('.w').forEach(function(w){w.classList.toggle('live',!!on);});}
+function setOn(id,on){var e=g(id);if(e)e.classList.toggle('on',!!on);}
+
+function solve(){
+  var r={};
+  r.mando = st.dg && st.giro;      // el R.DG cerrado y el TPL girado
+  r.kzc   = r.mando;               // el K.ZC se sella
+  r.rzc   = r.kzc;                 // y arrastra al R.ZC
+  r.ce    = !st.ce;                // el CE S4 sano
+  r.sello = st.sello;              // biestable del CEFS S4
+  r.rcefs = r.sello;
+  r.zona  = r.rzc && (r.ce || r.rcefs);   // la zona queda armada
+  return r;
+}
+
+function render(){
+  var r = solve();
+
+  // pupitre
+  setOn('lt_ctDG', st.dg); setOn('lt_ctTPL', st.giro);
+  setW('lt_gP1', true); setW('lt_gP2', st.dg); setW('lt_gP3', r.mando);
+  g('lt_lamp').classList.toggle('on', r.rzc);
+  setW('lt_gL1', r.rzc);
+
+  // PCC: sello del K.ZC y arrastre del R.ZC
+  setOn('lt_coKZC', r.kzc); setOn('lt_ctKZC', r.kzc); setOn('lt_ctKZC2', r.kzc);
+  setW('lt_gK1', r.mando); setW('lt_gK2', r.kzc);
+  setW('lt_gSelA', r.kzc); setW('lt_gSelB', r.kzc);
+  setW('lt_gR1', true); setW('lt_gR2', r.kzc); setW('lt_gR3', r.rzc);
+  setOn('lt_coRZC', r.rzc);
+  setW('lt_gTun', r.rzc); setW('lt_gTT', r.zona);
+  setOn('lt_tkTPL', r.kzc); setW('lt_gTK1', r.kzc);
+
+  // armario MC: CE S4 y su CEFS
+  setOn('lt_ctCE', r.ce);
+  setW('lt_gCE1', r.rzc); setW('lt_gCE2', r.rzc && r.ce); setW('lt_gCE3', r.rzc && r.ce);
+  setOn('lt_coRCEFS', r.rcefs);
+
+  // biestable: los comandos son pulsos
+  setOn('lt_ctK1B', st.pulso === 'cierre');
+  setOn('lt_ctK1A', st.pulso !== 'abierto');
+  setOn('lt_coK1B', st.pulso === 'cierre');
+  setOn('lt_coK1A', st.pulso === 'abierto');
+  setOn('lt_ctSello', r.sello);
+  setW('lt_gSelC', r.sello); setW('lt_gSelD', r.sello);
+  setW('lt_gPul1', st.pulso === 'cierre'); setW('lt_gPul2', st.pulso === 'cierre');
+  setW('lt_gCut1', r.rcefs); setW('lt_gCut2', r.rcefs);
+  setW('lt_gK1Bin', st.pulso === 'cierre'); setW('lt_gK1B0', st.pulso === 'cierre');
+  setW('lt_gK1Ain', st.pulso === 'abierto'); setW('lt_gK1A0', st.pulso === 'abierto');
+  setW('lt_coS4', st.pulso === 'cierre'); setW('lt_coS3', st.pulso === 'abierto');
+
+  // el RR.CEFS.S4 sigue al R.CEFS.S4
+  setOn('lt_coRR', r.rcefs); setW('lt_gRR1', r.rcefs); setW('lt_gRR2', r.rcefs);
+
+  // reparto por el túnel
+  setOn('lt_coRRAZC', r.zona); setW('lt_gAZ1', r.zona); setW('lt_gAZ2', r.zona);
+  setOn('lt_coRZC2', r.zona); setW('lt_gRZ1', r.zona); setW('lt_gRZ2', r.zona);
+  setOn('lt_tkZC', r.zona); setW('lt_gCom', r.zona);
+
+  g('lt_estZC').textContent = r.rzc ? 'R.ZC energizado · zona mandada' : 'R.ZC caído';
+  g('lt_estZC').style.color = r.rzc ? '#EF9F27' : 'var(--text-secondary)';
+  g('lt_estFS').textContent = r.rcefs ? 'R.CEFS.S4 armado' : 'R.CEFS.S4 desarmado';
+  g('lt_estFS').style.color = r.rcefs ? '#EF9F27' : 'var(--text-secondary)';
+
+  var m;
+  if(!st.dg){
+    m = 'El R.DG está abierto: el pupitre no puede mandar la zona.';
+  } else if(!r.mando){
+    m = 'Gira el TPL.ZC para mandar la Zona C. Al girarlo se energiza el K.ZC, que se sella por su propio contacto y arrastra al R.ZC.';
+  } else if(!r.zona){
+    m = 'ZONA C SIN ARMAR: el CE S4 está golpeado y el R.CEFS.S4 no está armado, así que la cadena se corta en el armario MC de Las Torres.';
+  } else {
+    m = 'ZONA C ARMADA: el R.ZC baja por el cable túnel al armario MC de Las Torres, y de ahí el RR.A.ZC y el R.ZC se reparten por la P44 y la 2J1 hacia el armario TT.';
+  }
+  if(r.rcefs) m += ' El CEFS S4 quedó armado por el pulso CEFSS1 C-S4: el biestable K1A/K1B lo sostiene hasta el pulso contrario.';
+  g('lt_status').textContent = m;
+}
+
+function pulso(tipo){
+  st.pulso = tipo;
+  st.sello = (tipo === 'cierre');
+  render();
+  setTimeout(function(){ st.pulso = null; render(); }, 1400);
+}
+g('lt_cbDG').onchange = function(){ st.dg = this.checked; if(!st.dg) st.giro=false; render(); };
+g('lt_cbCE').onchange = function(){ st.ce = this.checked; render(); };
+g('lt_btnGiro').onclick = function(){ st.giro = !st.giro; render(); };
+g('lt_btnCierre').onclick = function(){ pulso('cierre'); };
+g('lt_btnAbierto').onclick = function(){ pulso('abierto'); };
 render();
 })();
 
