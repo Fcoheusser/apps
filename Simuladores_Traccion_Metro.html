@@ -2755,14 +2755,23 @@ Para agregar un nuevo módulo:
 </main>
 </section>
 <!-- ================= MÓDULO: L4 · ZONA E · SECCIÓN 8 ================= -->
-<section id="mod-l4ze" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4ze" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Condición de <span>Zona E</span> · Sección 8 · Línea 4</h1>
-<p class="sub">Estación Trinidad · Relé condición de zona RR.ZE · Plano 1202-DSM-04-066-30573 Ind. A</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+<p class="sub">Estación Trinidad · relé de condición de zona RR.ZE · plano <span class="v2-mono">1202-DSM-04-066-30573</span> Ind. A</p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="e_guia">Guía</button>
+<button class="btn" id="e_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="e_zoom" min="30" max="140" value="100"></label>
+<span id="e_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="e_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="e_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> la condición de Zona E es <b>la más simple de la línea</b>: una sola sección (S8) y una sola condición — el corte de emergencia. La cadena es +48V → RCE.S8 (o su inhibición RCEFS.S8) → bobina <b>RR.ZE</b> en el armario de Trinidad.</p>
 <p><b>Sin SAT ni ramas de aislamiento:</b> a diferencia de las zonas B, C y D, aquí no hay seccionadores ni enclavamientos. Si el CE de la S8 está golpeado y no se inhibe, la zona simplemente no arma.</p>
@@ -2773,13 +2782,9 @@ Para agregar un nuevo módulo:
 <p><b>Ejercicio 3 — Energizar la vía:</b> con la zona armada, R.RS.S8 cierra el bucle de 5V y los <b>NS1 quedan listos en las dos S/ER</b> (Vicente Valdés y Trinidad). La S8 tiene <b>dos alimentadores</b>: cierra el IAS VV o el IA TRI (basta uno; lo normal es cerrar ambos). Dato de frontera: la S/ER Vicente Valdés también alimenta la S7 de la Zona D por su IA — es el punto donde se tocan las dos zonas.</p>
 <p><b>Ejercicio 4 — Prueba de lámpara:</b> el botón PL enciende la ampolleta roja sin tocar la condición de zona.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="e_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="e_zoom" min="30" max="140" value="100"></label>
-<span id="e_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="e_wrap">
 <svg id="e_plano" width="1300" height="890" viewBox="0 0 1300 890" role="img">
 <title>Condición de Zona E — Sección 8</title>
@@ -2941,43 +2946,63 @@ Para agregar un nuevo módulo:
 </g></svg>
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · Condición de Zona E (mando PCC)</legend>
-<label><input type="checkbox" id="e_cbDG" checked> DG (normal cerrado)</label>
-<label><input type="checkbox" id="e_cbGiro"> TPL ZE girado</label>
-<button class="btn" id="e_btnPuls">Oprimir TPL (pulso)</button>
-<button class="btn" id="e_btnPL">PL · Prueba lámpara</button>
-</fieldset>
-<fieldset class="grp">
-<legend>2 · Corte de emergencia S8 · bucle de ruptores</legend>
-<label><input type="checkbox" id="e_cbRE8a"> Ruptores vía 1 S8</label>
-<label><input type="checkbox" id="e_cbRE8b"> Ruptores vía 2 S8</label>
-<button class="btn" id="e_btnTC8a">TC: Abrir R.PCE.S8</button>
-<button class="btn" id="e_btnTC8c" disabled>TC: Cerrar R.PCE.S8</button>
-<label><input type="checkbox" id="e_cbCEFS8"> Inhib. CEFS S8</label>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Energizar vía (comando del operador, requiere Condición RS S8)</legend>
-<button class="btn" id="e_btnIAS" disabled>Cerrar IAS VV</button>
-<button class="btn" id="e_btnIASa" disabled>Abrir IAS VV</button>
-<button class="btn" id="e_btnIA" disabled>Cerrar IA TRI</button>
-<button class="btn" id="e_btnIAa" disabled>Abrir IA TRI</button>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="e_pasoN"></em></div>
+<ol id="e_pasos">
+<li data-c="#7A70E0"><b>1</b><span><strong>RZE</strong> — con el R.DG cerrado, se gira y oprime el TPL ZE</span></li>
+<li data-c="#3E77E0"><b>2</b><span><strong>RR.ZE</strong> — con R.CE.S8 energizado (o CEFS)</span></li>
+<li data-c="#1D9E75"><b>3</b><span><strong>KZE sella</strong> — se apaga la luz roja, ya se puede soltar el TPL</span></li>
+<li data-c="#D264C4"><b>4</b><span><strong>R.RS.S8</strong> — cierra el bucle RS, NS1 listos en VV y TRI</span></li>
+<li data-c="#EF9F27"><b>5</b><span><strong>IAS / IA cerrado</strong> — <em id="e_paso5">vía a 750 Vcc</em></span></li>
+</ol>
 <div id="e_status">Marca "TPL ZE girado" y aprieta "Oprimir TPL" para armar la Zona E.</div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="e_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="e_chips"></div>
+<fieldset class="grp" style="--gc:#9b93ee">
+<legend>1 · Mando PCC</legend>
+<label><span>R.DG (normal cerrado)</span><input type="checkbox" id="e_cbDG" checked></label>
+<label><span>TPL ZE girado</span><input type="checkbox" id="e_cbGiro"></label>
+<div class="v2-fila"><span>Pulsador TPL</span><button class="btn v2-acc" id="e_btnPuls" style="--bc:#7A70E0">Oprimir (pulso)</button></div>
+<div class="v2-fila"><span>Luz roja del TPL</span><button class="btn v2-acc" id="e_btnPL" style="--bc:#E24B4A">PL · Prueba lámpara</button></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2 · Corte de emergencia S8</legend>
+<label><span>Ruptores vía 1 S8</span><input type="checkbox" class="peligro" id="e_cbRE8a"></label>
+<label><span>Ruptores vía 2 S8</span><input type="checkbox" class="peligro" id="e_cbRE8b"></label>
+<label><span>Inhibición CEFS S8</span><input type="checkbox" id="e_cbCEFS8"></label>
+<div class="v2-fila"><span>Prueba TC</span><span class="v2-par"><button class="btn" id="e_btnTC8a">Abrir R.PCE</button><button class="btn" id="e_btnTC8c" disabled>Cerrar R.PCE</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#ec8a45">
+<legend>3 · Energizar vía (requiere Condición RS S8)</legend>
+<div class="v2-fila"><span><i class="v2-dot" id="e_dotIAS"></i>IAS Vicente Valdés</span><span class="v2-par"><button class="btn" id="e_btnIAS" disabled>Cerrar</button><button class="btn" id="e_btnIASa" disabled>Abrir</button></span></div>
+<div class="v2-fila"><span><i class="v2-dot" id="e_dotIA"></i>IA Trinidad</span><span class="v2-par"><button class="btn" id="e_btnIA" disabled>Cerrar</button><button class="btn" id="e_btnIAa" disabled>Abrir</button></span></div>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
 <!-- ================= MÓDULO: L4 · ZONA F · SECCIÓN 9 ================= -->
-<section id="mod-l4zf" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4zf" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Condición de <span>Zona F</span> · Sección 9 · Línea 4</h1>
-<p class="sub">Estación Hospital Sotero del Río · Relé condición de zona RR.ZF · Plano 1202-DSM-04-066-30573 Ind. A</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+<p class="sub">Estación Hospital Sotero del Río · relé de condición de zona RR.ZF · plano <span class="v2-mono">1202-DSM-04-066-30573</span> Ind. A</p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="f_guia">Guía</button>
+<button class="btn" id="f_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="f_zoom" min="30" max="140" value="100"></label>
+<span id="f_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="f_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="f_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> la condición de Zona F es gemela de la Zona E: <b>una sola sección (S9)</b> y una sola condición — el corte de emergencia. La cadena es +48V → RCE.S9 (o su inhibición RCEFS.S9) → bobina <b>RR.ZF</b> en el armario del Hospital Sotero del Río.</p>
 <p><b>Sin SAT ni ramas de aislamiento:</b> si el CE de la S9 está golpeado y no se inhibe, la zona no arma. Simple y directo.</p>
@@ -2988,13 +3013,9 @@ Para agregar un nuevo módulo:
 <p><b>Ejercicio 3 — Energizar la vía:</b> con la zona armada, R.RS.S9 cierra el bucle de 5V y los <b>NS1 quedan listos en las dos S/ER</b> (Trinidad y Hospital Sotero del Río). Cierra el IAS TRI o el IA HSR (basta uno). Fíjate en el patrón de la cola de la línea: <b>cada S/ER alimenta su sección por el IA y la vecina por el IAS</b> — Trinidad alimenta la S8 (IA) y la S9 (IAS).</p>
 <p><b>Ejercicio 4 — Prueba de lámpara:</b> el botón PL enciende la ampolleta roja sin tocar la condición de zona.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="f_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="f_zoom" min="30" max="140" value="100"></label>
-<span id="f_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="f_wrap">
 <svg id="f_plano" width="1300" height="840" viewBox="0 0 1300 840" role="img">
 <title>Condición de Zona F — Sección 9</title>
@@ -3156,31 +3177,42 @@ Para agregar un nuevo módulo:
 </g></svg>
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · Condición de Zona F (mando PCC)</legend>
-<label><input type="checkbox" id="f_cbDG" checked> DG (normal cerrado)</label>
-<label><input type="checkbox" id="f_cbGiro"> TPL ZF girado</label>
-<button class="btn" id="f_btnPuls">Oprimir TPL (pulso)</button>
-<button class="btn" id="f_btnPL">PL · Prueba lámpara</button>
-</fieldset>
-<fieldset class="grp">
-<legend>2 · Corte de emergencia S9 · bucle de ruptores</legend>
-<label><input type="checkbox" id="f_cbRE9a"> Ruptores vía 1 S9</label>
-<label><input type="checkbox" id="f_cbRE9b"> Ruptores vía 2 S9</label>
-<button class="btn" id="f_btnTC9a">TC: Abrir R.PCE.S9</button>
-<button class="btn" id="f_btnTC9c" disabled>TC: Cerrar R.PCE.S9</button>
-<label><input type="checkbox" id="f_cbCEFS9"> Inhib. CEFS S9</label>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Energizar vía (comando del operador, requiere Condición RS S9)</legend>
-<button class="btn" id="f_btnIAS" disabled>Cerrar IAS TRI</button>
-<button class="btn" id="f_btnIASa" disabled>Abrir IAS TRI</button>
-<button class="btn" id="f_btnIA" disabled>Cerrar IA HSR</button>
-<button class="btn" id="f_btnIAa" disabled>Abrir IA HSR</button>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="f_pasoN"></em></div>
+<ol id="f_pasos">
+<li data-c="#7A70E0"><b>1</b><span><strong>RZF</strong> — con el R.DG cerrado, se gira y oprime el TPL ZF</span></li>
+<li data-c="#3E77E0"><b>2</b><span><strong>RR.ZF</strong> — con R.CE.S9 energizado (o CEFS)</span></li>
+<li data-c="#1D9E75"><b>3</b><span><strong>KZF sella</strong> — se apaga la luz roja, ya se puede soltar el TPL</span></li>
+<li data-c="#D264C4"><b>4</b><span><strong>R.RS.S9</strong> — cierra el bucle RS, NS1 listos en TRI y HSR</span></li>
+<li data-c="#EF9F27"><b>5</b><span><strong>IAS / IA cerrado</strong> — <em id="f_paso5">vía a 750 Vcc</em></span></li>
+</ol>
 <div id="f_status">Marca "TPL ZF girado" y aprieta "Oprimir TPL" para armar la Zona F.</div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="f_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="f_chips"></div>
+<fieldset class="grp" style="--gc:#9b93ee">
+<legend>1 · Mando PCC</legend>
+<label><span>R.DG (normal cerrado)</span><input type="checkbox" id="f_cbDG" checked></label>
+<label><span>TPL ZF girado</span><input type="checkbox" id="f_cbGiro"></label>
+<div class="v2-fila"><span>Pulsador TPL</span><button class="btn v2-acc" id="f_btnPuls" style="--bc:#7A70E0">Oprimir (pulso)</button></div>
+<div class="v2-fila"><span>Luz roja del TPL</span><button class="btn v2-acc" id="f_btnPL" style="--bc:#E24B4A">PL · Prueba lámpara</button></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2 · Corte de emergencia S9</legend>
+<label><span>Ruptores vía 1 S9</span><input type="checkbox" class="peligro" id="f_cbRE9a"></label>
+<label><span>Ruptores vía 2 S9</span><input type="checkbox" class="peligro" id="f_cbRE9b"></label>
+<label><span>Inhibición CEFS S9</span><input type="checkbox" id="f_cbCEFS9"></label>
+<div class="v2-fila"><span>Prueba TC</span><span class="v2-par"><button class="btn" id="f_btnTC9a">Abrir R.PCE</button><button class="btn" id="f_btnTC9c" disabled>Cerrar R.PCE</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#ec8a45">
+<legend>3 · Energizar vía (requiere Condición RS S9)</legend>
+<div class="v2-fila"><span><i class="v2-dot" id="f_dotIAS"></i>IAS Trinidad</span><span class="v2-par"><button class="btn" id="f_btnIAS" disabled>Cerrar</button><button class="btn" id="f_btnIASa" disabled>Abrir</button></span></div>
+<div class="v2-fila"><span><i class="v2-dot" id="f_dotIA"></i>IA Sotero del Río</span><span class="v2-par"><button class="btn" id="f_btnIA" disabled>Cerrar</button><button class="btn" id="f_btnIAa" disabled>Abrir</button></span></div>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
@@ -5958,12 +5990,30 @@ render();
 function g(id){return document.getElementById(id);}
 var BW=1300, BH=890;
 function setZoom(p){var s=g('e_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('e_zoom').value=p;g('e_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('e_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('e_wrap', BW, BH)); }
 MODFIT['mod-l4ze'] = fit;
 g('e_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('e_btnFit').onclick=fit;
 
 var st = {dg:true, giro:false, puls:false, re8a:false, re8b:false, pce8:true, cefs8:false, kze:false, pl:false, iasAb:true, iaAb:true};
+var ST0 = JSON.parse(JSON.stringify(st));
+var PASOS = [
+  {ok:function(r){return r.rze;},  bloq:function(r){return st.puls && !r.rze;}},
+  {ok:function(r){return r.rrze;}, bloq:function(r){return r.rze && !r.rrze;}},
+  {ok:function(r){return r.kze;}},
+  {ok:function(r){return r.rss8;}},
+  {ok:function(r){return r.via8;}}
+];
+function pasos(r, hasta){ V2.pasos('e_', PASOS, r, hasta); }
+function chips(r){
+  V2.chips('e_chips', [
+    !st.dg ? ['no','DG abierto'] : null,
+    r.rce8 ? ['si','Bucle CE S8 íntegro'] : (st.cefs8 ? ['','Bucle CE S8 abierto · CEFS'] : ['no','Bucle CE S8 abierto']),
+    r.kze ? ['si','Zona E armada'] : ['','Zona E sin armar'],
+    r.rss8 ? ['si','RS S8 presente'] : null,
+    r.via8 ? ['si','750 Vcc'] : null
+  ]);
+}
 
 function solve(){
   var kze = st.kze, rze=false, ce8=false, rrze=false;
@@ -6011,11 +6061,11 @@ function render(){
       g('e_lamp').classList.toggle('on',r.lamp);
       setOn('e_ctRE8a',!st.re8a);setOn('e_ctRE8b',!st.re8b);setOn('e_ctPCE8',st.pce8);setOn('e_coPCE8',st.pce8);setLive('e_gPCE8',st.pce8);
       setLive('e_gBucleCE8',r.rce8);setOn('e_coRCE8',r.rce8);setOn('e_ctTKb8',r.rce8);setLive('e_gTKb8',r.rce8);setOn('e_tkb8',r.rce8);
-      g('e_btnTC8a').disabled=!st.pce8;g('e_btnTC8c').disabled=st.pce8;},
+      g('e_btnTC8a').disabled=!st.pce8;g('e_btnTC8c').disabled=st.pce8;pasos(r,0);},
     function(){setOn('e_ctRZE2',r.rze);setLive('e_gChain',r.rrze);},
     function(){setOn('e_ctCE8',r.rce8);setOn('e_ctCEFS8',st.cefs8);setLive('e_gCE8',r.rrze&&r.rce8);setLive('e_gCEFS8',r.rrze&&st.cefs8);},
-    function(){setOn('e_coRRZE',r.rrze);},
-    function(){setOn('e_ctRet',r.rrze);setLive('e_gRet',r.rrze);setOn('e_coKZE',r.kze);},
+    function(){setOn('e_coRRZE',r.rrze);pasos(r,1);},
+    function(){setOn('e_ctRet',r.rrze);setLive('e_gRet',r.rrze);setOn('e_coKZE',r.kze);pasos(r,2);},
     function(){setOn('e_ctRS8',r.rss8);setLive('e_gRSS8',r.rss8);setOn('e_coRSS8',r.rss8);
       setOn('e_ctB8a',r.rss8);setOn('e_ctB8b',r.rss8);setLive('e_gBucle8',r.rss8);
       setOn('e_coNS1tri',r.rss8);setOn('e_coNS1vv',r.rss8);setOn('e_tk8',r.rss8);
@@ -6025,6 +6075,10 @@ function render(){
       g('e_btnIASa').disabled = st.iasAb;
       g('e_btnIA').disabled = !r.rss8 || !st.iaAb;
       g('e_btnIAa').disabled = st.iaAb;
+      setOn('e_dotIAS', r.rss8 && !st.iasAb); setOn('e_dotIA', r.rss8 && !st.iaAb);
+      var cerr=[]; if(!st.iasAb)cerr.push('IAS VV'); if(!st.iaAb)cerr.push('IA TRI');
+      g('e_paso5').textContent = r.via8 ? 'vía a 750 Vcc por ' + cerr.join(' e ') : 'vía a 750 Vcc';
+      pasos(r,4); chips(r);
       g('e_status').textContent=statusMsg(r);}
   ];
   stages.forEach(function(fn,i){timers.push(setTimeout(fn,i*300));});
@@ -6043,6 +6097,7 @@ g('e_btnIAS').onclick=function(){st.iasAb=false;render();};
 g('e_btnIASa').onclick=function(){st.iasAb=true;render();};
 g('e_btnIA').onclick=function(){st.iaAb=false;render();};
 g('e_btnIAa').onclick=function(){st.iaAb=true;render();};
+g('e_btnReset').onclick=function(){ V2.reponer('mod-l4ze', st, ST0, render); };
 render();
 })();
 
@@ -6051,12 +6106,30 @@ render();
 function g(id){return document.getElementById(id);}
 var BW=1300, BH=840;
 function setZoom(p){var s=g('f_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('f_zoom').value=p;g('f_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('f_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('f_wrap', BW, BH)); }
 MODFIT['mod-l4zf'] = fit;
 g('f_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('f_btnFit').onclick=fit;
 
 var st = {dg:true, giro:false, puls:false, re9a:false, re9b:false, pce9:true, cefs9:false, kzf:false, pl:false, iasAb:true, iaAb:true};
+var ST0 = JSON.parse(JSON.stringify(st));
+var PASOS = [
+  {ok:function(r){return r.rzf;},  bloq:function(r){return st.puls && !r.rzf;}},
+  {ok:function(r){return r.rrzf;}, bloq:function(r){return r.rzf && !r.rrzf;}},
+  {ok:function(r){return r.kzf;}},
+  {ok:function(r){return r.rss9;}},
+  {ok:function(r){return r.via9;}}
+];
+function pasos(r, hasta){ V2.pasos('f_', PASOS, r, hasta); }
+function chips(r){
+  V2.chips('f_chips', [
+    !st.dg ? ['no','DG abierto'] : null,
+    r.rce9 ? ['si','Bucle CE S9 íntegro'] : (st.cefs9 ? ['','Bucle CE S9 abierto · CEFS'] : ['no','Bucle CE S9 abierto']),
+    r.kzf ? ['si','Zona F armada'] : ['','Zona F sin armar'],
+    r.rss9 ? ['si','RS S9 presente'] : null,
+    r.via9 ? ['si','750 Vcc'] : null
+  ]);
+}
 
 function solve(){
   var kzf = st.kzf, rzf=false, ce9=false, rrzf=false;
@@ -6104,11 +6177,11 @@ function render(){
       g('f_lamp').classList.toggle('on',r.lamp);
       setOn('f_ctRE9a',!st.re9a);setOn('f_ctRE9b',!st.re9b);setOn('f_ctPCE9',st.pce9);setOn('f_coPCE9',st.pce9);setLive('f_gPCE9',st.pce9);
       setLive('f_gBucleCE9',r.rce9);setOn('f_coRCE9',r.rce9);setOn('f_ctTKb9',r.rce9);setLive('f_gTKb9',r.rce9);setOn('f_tkb9',r.rce9);
-      g('f_btnTC9a').disabled=!st.pce9;g('f_btnTC9c').disabled=st.pce9;},
+      g('f_btnTC9a').disabled=!st.pce9;g('f_btnTC9c').disabled=st.pce9;pasos(r,0);},
     function(){setOn('f_ctRZF2',r.rzf);setLive('f_gChain',r.rrzf);},
     function(){setOn('f_ctCE9',r.rce9);setOn('f_ctCEFS9',st.cefs9);setLive('f_gCE9',r.rrzf&&r.rce9);setLive('f_gCEFS9',r.rrzf&&st.cefs9);},
-    function(){setOn('f_coRRZF',r.rrzf);},
-    function(){setOn('f_ctRet',r.rrzf);setLive('f_gRet',r.rrzf);setOn('f_coKZF',r.kzf);},
+    function(){setOn('f_coRRZF',r.rrzf);pasos(r,1);},
+    function(){setOn('f_ctRet',r.rrzf);setLive('f_gRet',r.rrzf);setOn('f_coKZF',r.kzf);pasos(r,2);},
     function(){setOn('f_ctRS9',r.rss9);setLive('f_gRSS9',r.rss9);setOn('f_coRSS9',r.rss9);
       setOn('f_ctB9a',r.rss9);setOn('f_ctB9b',r.rss9);setLive('f_gBucle9',r.rss9);
       setOn('f_coNS1hsr',r.rss9);setOn('f_coNS1tri',r.rss9);setOn('f_tk9',r.rss9);
@@ -6118,6 +6191,10 @@ function render(){
       g('f_btnIASa').disabled = st.iasAb;
       g('f_btnIA').disabled = !r.rss9 || !st.iaAb;
       g('f_btnIAa').disabled = st.iaAb;
+      setOn('f_dotIAS', r.rss9 && !st.iasAb); setOn('f_dotIA', r.rss9 && !st.iaAb);
+      var cerr=[]; if(!st.iasAb)cerr.push('IAS TRI'); if(!st.iaAb)cerr.push('IA HSR');
+      g('f_paso5').textContent = r.via9 ? 'vía a 750 Vcc por ' + cerr.join(' e ') : 'vía a 750 Vcc';
+      pasos(r,4); chips(r);
       g('f_status').textContent=statusMsg(r);}
   ];
   stages.forEach(function(fn,i){timers.push(setTimeout(fn,i*300));});
@@ -6136,6 +6213,7 @@ g('f_btnIAS').onclick=function(){st.iasAb=false;render();};
 g('f_btnIASa').onclick=function(){st.iasAb=true;render();};
 g('f_btnIA').onclick=function(){st.iaAb=false;render();};
 g('f_btnIAa').onclick=function(){st.iaAb=true;render();};
+g('f_btnReset').onclick=function(){ V2.reponer('mod-l4zf', st, ST0, render); };
 render();
 })();
 
