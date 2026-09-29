@@ -221,6 +221,8 @@ body:has(.mod.v2.activo)>footer{display:none}
 .v2 .v2-panel .v2-esc>.btn.act{border-color:#EF9F27;background:#2b2416;color:#f3c47a}
 .v2 .v2-acc{border-color:var(--bc);background:#25233d;color:#d9d5ff}
 .v2 .v2-par{display:flex;gap:6px}
+.v2 .v2-par>label{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text-secondary);cursor:pointer}
+.v2 .v2-par>label+label{margin-left:8px}
 .v2 .v2-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#4a4a55;margin-right:8px;vertical-align:1px;transition:background .3s}
 .v2 .v2-dot.on{background:#EF9F27;box-shadow:0 0 6px #EF9F27}
 .v2 .v2-drawer{position:absolute;top:0;right:0;bottom:0;width:min(480px,100%);z-index:5;background:#1c1c21;border-left:1px solid var(--border-strong);box-shadow:-12px 0 30px rgba(0,0,0,.45);overflow-y:auto;padding:0 20px 20px}
@@ -3686,14 +3688,23 @@ Para agregar un nuevo módulo:
 </section>
 
 <!-- ================= MÓDULO: L4 · LÍNEA COMPLETA (SINÓPTICO) ================= -->
-<section id="mod-l4full" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4full" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Línea 4 <span>completa</span> · Sinóptico de tracción · 7 zonas · 11 secciones · 2 vías</h1>
-<p class="sub">Tobalaba → Puente Alto · Basado en el Sinóptico de Tracción oficial (lámina 2, 1202-DSM-04-066-30573 Ind. B)</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida (clic para abrir)</summary>
+<p class="sub">Tobalaba → Puente Alto · Sinóptico de Tracción oficial (lámina 2, <span class="v2-mono">1202-DSM-04-066-30573</span> Ind. B)</p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="lc_guia">Guía</button>
+<button class="btn" id="lc_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="lc_zoom" min="30" max="140" value="100"></label>
+<span id="lc_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="lc_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="lc_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> el sinóptico de tracción de toda la Línea 4, fiel a la lámina oficial: <b>dos vías paralelas</b> (Vía 2 arriba, Vía 1 abajo) con sus seccionamientos, las <b>22 estaciones</b>, las 7 zonas con su LED, las S/ER con sus alimentadores y los tres desvíos: <b>IAC·IACS hacia Cocheras Intermedias</b> (S4), <b>CVZ hacia la Vía Z y CAE hacia la L4A</b> (Vicuña Mackenna) y <b>IAT·IATS hacia Talleres Puente Alto</b> (S11). En las cabezas de línea, las travesías CT1/CT2 con sus aparatos SVA·SVB·SI·IFV.</p>
 <p><b>Por qué dos vías:</b> por eso cada bucle CE tiene ruptores "Vía 1" y "Vía 2", y por eso las S/ER de la Sección 1 tienen IA1 e IA2 — un interruptor por vía. En esta vista ambas vías de cada sección se energizan juntas (el detalle por interruptor está en cada módulo de zona).</p>
@@ -3705,13 +3716,14 @@ Para agregar un nuevo módulo:
 <p><b>Ejercicio 3 — Golpe con aislamiento:</b> golpea el CE de la S2. Para rearmar la B no basta con abrir el SAT 2/3: hay que <b>abrir también el IAS de la S/ER LO</b>, que es el que alimenta la S2. Con las dos cosas la zona valida, la S3 vuelve y la S2 queda aislada. Misma regla en S3 (SAT 2/3 + IA de RQU), S5 (SAT 5/6 + IAS de LTO), S7 (SAT 6/7 + IA de VVA) y S10 (SAT 10/11 + IAS de HSR). La S6 se aísla con los dos SAT y la S11 con el SAT 10/11 más la PT. Las secciones <b>S1, S4, S8 y S9 no se pueden aislar</b>: si su CE está golpeado, su zona no valida.</p>
 <p><p><b>Reglas de validación de la condición de zona</b> (las autorizaciones vienen del PCC hilo por hilo). Cada relé de condición de zona vive en el armario de tracción de una estación:</p><ul style="margin:4px 0 8px 16px;padding:0;font-size:13px;line-height:1.55"><li><b>Zona A · armario TOBALABA</b> — condiciones CE de la S1 (CE o CEFS), más la condición de apertura de la zona A sobre ruptores CE.</li><li><b>Zona B · armario ROTONDA GRECIA</b> — CE de la S2 (CE o CEFS) <i>o</i> SAT 2/3 abierto e IAS S/ER LO abierto; <b>y</b> CE de la S3 (CE o CEFS) <i>o</i> SAT 2/3 abierto e IA S/ER RQ abierto.</li><li><b>Zona C · armario LAS TORRES</b> — CE de la S4 (CE o CEFS).</li><li><b>Zona D · armario VICUÑA MACKENNA</b> — CE de la S5 <i>o</i> SAT 5/6 abierto e IAS S/ER LT abierto; <b>y</b> CE de la S6 <i>o</i> SAT 5/6 abierto y SAT 6/7 abierto; <b>y</b> CE de la S7 <i>o</i> SAT 6/7 abierto e IA S/ER VV abierto.</li><li><b>Zona E · armario TRINIDAD</b> — CE de la S8 (CE o CEFS).</li><li><b>Zona F · armario SOTERO DEL RÍO</b> — CE de la S9 (CE o CEFS).</li><li><b>Zona G · armario SOTERO DEL RÍO</b> — CE de la S10 <i>o</i> SAT 10/11 abierto e IAS S/ER HS abierto; <b>y</b> CE de la S11 <i>o</i> SAT 10/11 abierto y PT en S11.</li></ul><p><b>Ejercicio 4 — Los ramales:</b> Cocheras bota la Zona C; Talleres (IATS + ruptor) bota la G, fiel a los enclavamientos R Ai.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="lc_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="lc_zoom" min="30" max="140" value="100"></label>
-<span id="lc_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
+<div class="cont">
+<p><b>Nombres oficiales (lámina Condición DG):</b> la platina es la <b>C.A.T.</b> (Corte de Alimentación de Tracción), con TPL ENTRELEC rotulados DG · ZA…ZG, posiciones <b>C</b> (Cerrado, arriba) y <b>A</b> (Abierto, abajo). El TPL es Girar-Oprimir-Luminoso; el <b>R.DG</b> cierra y energiza el <b>RR.DG</b> (relé repetidor), automantenido por su bucle. El RR.DG distribuye a las zonas <b>por pares</b> (ZA-ZB, ZC-ZD, ZE-ZF, ZG), a reserva y al <b>contacto de Condición RM 20 kV del PCD</b>. El botón <b>PL</b> prueba las lámparas.</p>
+<p><b>¿Qué es la "Condición RM"?</b> (según el plano <i>esquema_cadena</i> 1202-HDD-04-0473-30573): el RM es una <b>cadena de condición en serie</b> que recorre las estaciones de la línea a través de los relés R.RM (R RM1, R RM2…) y llega al <b>PCD</b>. Cuando la cadena está completa y sana, entrega la condición que habilita al PCD para energizar los rectificadores a 20 kV; si se abre en cualquier estación, la condición cae. El DG es el que inicia esa cadena — por eso su contacto sube la "Condición RM 20 kV al PCD".</p>
+<p>El orden real: <b>primero el PCC cierra el DG</b> en la platina (que entrega la Condición RM 20 kV al PCD). Con esa RM, <b>el PCD energiza los rectificadores</b> — click en cada triángulo de las S/ER (pasa de rojo a amarillo — ahí el 20 kV se convierte en 750 Vcc). Después el PCC arma las zonas, y la energización final es <b>directo en el sinóptico</b>: click en el contacto IA/IAS de cada caja (la cuchilla se cierra y la vía toma tensión), como en el SCADA del PCC.</p>
 </div>
+</div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="lc_wrap">
 <svg id="lc_plano" width="2128" height="648" viewBox="0 0 2128 648" role="img">
 <title>Sinóptico de tracción — Línea 4 completa con platina CAT y S/ER</title>
@@ -4167,57 +4179,54 @@ Para agregar un nuevo módulo:
 </svg>
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · PCD · Rectificadores (ITM) — requiere R.DG (Condición RM 20 kV)</legend>
-<span style="font-size:12px;color:var(--text-secondary)">Primero cierra el <b>DG</b> en la platina (arriba); con la RM 20 kV, el PCD energiza <b>cada rectificador</b>: click en el triángulo de la S/ER (rojo → amarillo). Atajos:</span>
-<button class="btn" id="lc_itmOn">PCD: energizar todos</button>
-<button class="btn" id="lc_itmOff">PCD: bajar todos</button>
-</fieldset>
-
-<fieldset class="grp">
-<legend>2 · Mando (platina CAT, arriba en el dibujo)</legend>
-<span style="font-size:12px;color:var(--text-secondary)">Click en cada perilla TPL para girarla 90° y en OPR para oprimir (luz blanca = armada). <p><b>Nombres oficiales (lámina Condición DG):</b> la platina es la <b>C.A.T.</b> (Corte de Alimentación de Tracción), con TPL ENTRELEC rotulados DG · ZA…ZG, posiciones <b>C</b> (Cerrado, arriba) y <b>A</b> (Abierto, abajo). El TPL es Girar-Oprimir-Luminoso; el <b>R.DG</b> cierra y energiza el <b>RR.DG</b> (relé repetidor), automantenido por su bucle. El RR.DG distribuye a las zonas <b>por pares</b> (ZA-ZB, ZC-ZD, ZE-ZF, ZG), a reserva y al <b>contacto de Condición RM 20 kV del PCD</b>. El botón <b>PL</b> prueba las lámparas.</p>
-<p><b>¿Qué es la "Condición RM"?</b> (según el plano <i>esquema_cadena</i> 1202-HDD-04-0473-30573): el RM es una <b>cadena de condición en serie</b> que recorre las estaciones de la línea a través de los relés R.RM (R RM1, R RM2…) y llega al <b>PCD</b>. Cuando la cadena está completa y sana, entrega la condición que habilita al PCD para energizar los rectificadores a 20 kV; si se abre en cualquier estación, la condición cae. El DG es el que inicia esa cadena — por eso su contacto sube la "Condición RM 20 kV al PCD".</p>
-<p>El orden real: <b>primero el PCC cierra el DG</b> en la platina (que entrega la Condición RM 20 kV al PCD). Con esa RM, <b>el PCD energiza los rectificadores</b> — click en cada triángulo de las S/ER (pasa de rojo a amarillo — ahí el 20 kV se convierte en 750 Vcc). Después el PCC arma las zonas, y la energización final es <b>directo en el sinóptico</b>: click en el contacto IA/IAS de cada caja (la cuchilla se cierra y la vía toma tensión), como en el SCADA del PCC.</span>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Cortes de emergencia por sección (golpe · inhibición CEFS)</legend>
-<label><input type="checkbox" id="lc_g1"> CE S1</label>
-<label><input type="checkbox" id="lc_c1"> CEFS S1</label>
-<label><input type="checkbox" id="lc_g2"> CE S2</label>
-<label><input type="checkbox" id="lc_c2"> CEFS S2</label>
-<label><input type="checkbox" id="lc_g3"> CE S3</label>
-<label><input type="checkbox" id="lc_c3"> CEFS S3</label>
-<label><input type="checkbox" id="lc_g4"> CE S4</label>
-<label><input type="checkbox" id="lc_c4"> CEFS S4</label>
-<label><input type="checkbox" id="lc_g5"> CE S5</label>
-<label><input type="checkbox" id="lc_c5"> CEFS S5</label>
-<label><input type="checkbox" id="lc_g6"> CE S6</label>
-<label><input type="checkbox" id="lc_c6"> CEFS S6</label>
-<label><input type="checkbox" id="lc_g7"> CE S7</label>
-<label><input type="checkbox" id="lc_c7"> CEFS S7</label>
-<label><input type="checkbox" id="lc_g8"> CE S8</label>
-<label><input type="checkbox" id="lc_c8"> CEFS S8</label>
-<label><input type="checkbox" id="lc_g9"> CE S9</label>
-<label><input type="checkbox" id="lc_c9"> CEFS S9</label>
-<label><input type="checkbox" id="lc_g10"> CE S10</label>
-<label><input type="checkbox" id="lc_c10"> CEFS S10</label>
-<label><input type="checkbox" id="lc_g11"> CE S11</label>
-<label><input type="checkbox" id="lc_c11"> CEFS S11</label>
-</fieldset>
-<fieldset class="grp">
-<legend>4 · Aparatos y ramales</legend>
-<label><input type="checkbox" id="lc_s23"> SAT 2/3 abierto</label>
-<label><input type="checkbox" id="lc_s56"> SAT 5/6 abierto</label>
-<label><input type="checkbox" id="lc_s67"> SAT 6/7 abierto</label>
-<label><input type="checkbox" id="lc_s1011"> SAT 10/11 abierto</label>
-<label><input type="checkbox" id="lc_pt"> PT/FT S11 en PT</label>
-<label><input type="checkbox" id="lc_coch"> Cocheras abre Zona C (R A ZC)</label>
-<label><input type="checkbox" id="lc_tall"> Talleres abre Zona G (IATS + ruptor)</label>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="lc_pasoN"></em></div>
+<ol id="lc_pasos">
+<li data-c="#3E77E0"><b>1</b><span><strong>R.DG cerrado</strong> — TPL DG girado y OPR: Condición RM 20 kV al PCD</span></li>
+<li data-c="#DC7325"><b>2</b><span><strong>Rectificadores</strong> — <em id="lc_paso2">el PCD energiza los ITM de las S/ER</em></span></li>
+<li data-c="#1D9E75"><b>3</b><span><strong>Zonas</strong> — <em id="lc_paso3">el PCC arma las 7 zonas</em></span></li>
+<li data-c="#EF9F27"><b>4</b><span><strong>Vías</strong> — <em id="lc_paso4">IA/IAS cerrados: 750 Vcc</em></span></li>
+</ol>
 <div id="lc_status">Aprieta "⚡ Energizar línea completa" para ver la ola de Tobalaba a Puente Alto, o arma zona por zona.</div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="lc_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="lc_chips"></div>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>1 · Mando en el dibujo</legend>
+<div class="v2-fila"><span style="font-size:13px;color:var(--text-secondary);line-height:1.45;padding:6px 0">En la platina C.A.T.: click en cada perilla TPL para girarla y en OPR para oprimir (luz blanca = armada). En las S/ER: click en el triángulo (rectificador) y en el contacto IA/IAS.</span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#ec8a45">
+<legend>2 · PCD · Rectificadores (requiere R.DG)</legend>
+<div class="v2-fila"><span>Todas las S/ER</span><span class="v2-par"><button class="btn" id="lc_itmOn">Energizar</button><button class="btn" id="lc_itmOff">Bajar</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>3 · Cortes de emergencia · golpe / inhibición CEFS</legend>
+<div class="v2-fila"><span>S1</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g1"></label><label>CEFS <input type="checkbox" id="lc_c1"></label></span></div>
+<div class="v2-fila"><span>S2</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g2"></label><label>CEFS <input type="checkbox" id="lc_c2"></label></span></div>
+<div class="v2-fila"><span>S3</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g3"></label><label>CEFS <input type="checkbox" id="lc_c3"></label></span></div>
+<div class="v2-fila"><span>S4</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g4"></label><label>CEFS <input type="checkbox" id="lc_c4"></label></span></div>
+<div class="v2-fila"><span>S5</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g5"></label><label>CEFS <input type="checkbox" id="lc_c5"></label></span></div>
+<div class="v2-fila"><span>S6</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g6"></label><label>CEFS <input type="checkbox" id="lc_c6"></label></span></div>
+<div class="v2-fila"><span>S7</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g7"></label><label>CEFS <input type="checkbox" id="lc_c7"></label></span></div>
+<div class="v2-fila"><span>S8</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g8"></label><label>CEFS <input type="checkbox" id="lc_c8"></label></span></div>
+<div class="v2-fila"><span>S9</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g9"></label><label>CEFS <input type="checkbox" id="lc_c9"></label></span></div>
+<div class="v2-fila"><span>S10</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g10"></label><label>CEFS <input type="checkbox" id="lc_c10"></label></span></div>
+<div class="v2-fila"><span>S11</span><span class="v2-par"><label>CE <input type="checkbox" class="peligro" id="lc_g11"></label><label>CEFS <input type="checkbox" id="lc_c11"></label></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#2BA6A6">
+<legend>4 · Aparatos y ramales</legend>
+<label><span>SAT 2/3 abierto</span><input type="checkbox" id="lc_s23"></label>
+<label><span>SAT 5/6 abierto</span><input type="checkbox" id="lc_s56"></label>
+<label><span>SAT 6/7 abierto</span><input type="checkbox" id="lc_s67"></label>
+<label><span>SAT 10/11 abierto</span><input type="checkbox" id="lc_s1011"></label>
+<label><span>PT/FT S11 en PT</span><input type="checkbox" id="lc_pt"></label>
+<label><span>Cocheras abre Zona C (R A ZC)</span><input type="checkbox" class="peligro" id="lc_coch"></label>
+<label><span>Talleres abre Zona G (IATS + ruptor)</span><input type="checkbox" class="peligro" id="lc_tall"></label>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
@@ -4225,14 +4234,23 @@ Para agregar un nuevo módulo:
 
 
 <!-- ================= MÓDULO: INICIO ENERGIZACIÓN (DG→RM→PCD) ================= -->
-<section id="mod-ini" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-ini" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Condición <span>DG</span> → Condición <span>RM</span> · Línea 4</h1>
-<p class="sub">Los tres planos unidos: CONDICIÓN DG L4 + CONDICIÓN RM PCD VVA L4 (Ind. B: 25/26 · Ind. A: 27/28) · 1202-HDD-04-0473-30573</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida (clic para abrir)</summary>
+<p class="sub">Los tres planos unidos: CONDICIÓN DG L4 + CONDICIÓN RM PCD VVA L4 (Ind. B: 25/26 · Ind. A: 27/28) · <span class="v2-mono">1202-HDD-04-0473-30573</span></p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="in_guia">Guía</button>
+<button class="btn" id="in_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="in_zoom" min="30" max="140" value="100"></label>
+<span id="in_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="in_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="in_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>El arranque de toda la energización, en un solo hilo:</b></p>
 <p><b>① Pupitre:</b> el operador <b>gira</b> el TPL-DG y <b>oprime el pulsador</b>. Con esos dos contactos cerrados se alimenta la bobina del <b>R DG (K1)</b> en la tarjeta 1P1 · DG · MX642.</p>
@@ -4248,13 +4266,9 @@ Para agregar un nuevo módulo:
 <p><b>⑤ La redundancia:</b> por eso <b>cada S/ER tiene DOS ITM</b> — uno de cada cadena: TOB con <b>T502</b> (RM1) y <b>T602</b> (RM2), BIL con T504/T604, y así todas. <b>Si falla una cadena, la otra energiza igual.</b></p>
 <p><i>Por confirmar:</i> el telemando de HSR en la cadena RM2 (leo T605 siguiendo el patrón T505→T605, pero el escaneo no es claro).</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="in_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="in_zoom" min="30" max="140" value="100"></label>
-<span id="in_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="in_wrap">
 <svg id="in_plano" width="2380" height="1060" viewBox="0 0 2380 1060" role="img"><title>Condición DG y Condición RM — Línea 4</title>
 <rect x="14" y="14" width="2352" height="1032" fill="none" stroke="var(--border-strong)" stroke-width="1.4"/>
@@ -4860,21 +4874,38 @@ Para agregar un nuevo módulo:
 <circle id="in_ledPCD" cx="2170" cy="996" r="9" class="lampc"/>
 </svg>
 </div>
-<div class="panel">
-<fieldset class="grp">
-<legend>Comando</legend>
-<button class="btn" id="in_btnDG">▶ Cerrar el DG (ver la cascada paso a paso)</button>
-<button class="btn" id="in_btnPL2">Prueba de lámparas (PL)</button>
-<button class="btn" id="in_btnSER" disabled>⚡ PCD: Energizar las S/ER</button>
-<button class="btn" id="in_btnReset">Abrir el DG / reiniciar</button>
-</fieldset>
-<fieldset class="grp">
-<legend>Fallas (probar la redundancia)</legend>
-<label><input type="checkbox" id="in_f1"> Falla cadena RM1 (25/26)</label>
-<label><input type="checkbox" id="in_f2"> Falla cadena RM2 (27/28)</label>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="in_pasoN"></em></div>
+<ol id="in_pasos">
+<li data-c="#3E77E0"><b>1</b><span><strong>R DG</strong> — el TPL cierra el retorno de su bobina</span></li>
+<li data-c="#1D9E75"><b>2</b><span><strong>RR DG1</strong> — por el A1·A2 del R DG (Z08 → Z14)</span></li>
+<li data-c="#7A70E0"><b>3</b><span><strong>RR DG2</strong> — por el C1·C2 del RR DG1 (Z12 → Z24)</span></li>
+<li data-c="#E0A030"><b>4</b><span><strong>RR DG3</strong> — sella el TPL y apaga su luz: Condición DG</span></li>
+<li data-c="#2BA6A6"><b>5</b><span><strong>Condición RM</strong> — <em id="in_paso5">tarjetas RM1 y RM2 presentes</em></span></li>
+<li data-c="#EF9F27"><b>6</b><span><strong>PCD</strong> — energiza las SRI y los ITM de las S/ER</span></li>
+</ol>
 <div id="in_status">Cierra el DG y sigue la cascada. Al final la Condición RM queda presente, pero las S/ER siguen abiertas hasta que el PCD dé la orden con el botón.</div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="in_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="in_chips"></div>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>1 · PCC · Comando DG</legend>
+<div class="v2-fila"><span>TPL-DG</span><button class="btn v2-acc" id="in_btnDG" style="--bc:#3E77E0">▶ Cerrar el DG</button></div>
+<div class="v2-fila"><span>Luz del TPL</span><button class="btn v2-acc" id="in_btnPL2" style="--bc:#E24B4A">PL · Prueba lámparas</button></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#ec8a45">
+<legend>2 · PCD (requiere Condición RM)</legend>
+<div class="v2-fila"><span><i class="v2-dot" id="in_dotSER"></i>S/ER · SRI e ITM</span><button class="btn" id="in_btnSER" disabled>⚡ Energizar</button></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>3 · Fallas (probar la redundancia)</legend>
+<label><span>Falla cadena RM1 (25/26)</span><input type="checkbox" class="peligro" id="in_f1"></label>
+<label><span>Falla cadena RM2 (27/28)</span><input type="checkbox" class="peligro" id="in_f2"></label>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
@@ -6579,7 +6610,7 @@ render();
 function g(id){return document.getElementById(id);}
 var BW=2128, BH=640;
 function setZoom(p){var s=g('lc_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('lc_zoom').value=p;g('lc_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('lc_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('lc_wrap', BW, BH)); }
 MODFIT['mod-l4full'] = fit;
 g('lc_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('lc_btnFit').onclick=fit;
@@ -6597,6 +6628,7 @@ KN.forEach(function(k){st.giro[k]=false; st.puls[k]=false; st.sello[k]=false;});
 BR.forEach(function(k){st.br[k]=false; st.itmS[k]=false;});
 st.cefs={};
 ['1','2','3','4','5','6','7','8','9','10','11'].forEach(function(n){st.g[n]=false; st.cefs[n]=false;});
+var ST0 = JSON.parse(JSON.stringify(st));
 
 function cond(n){
   if(!st.g[n] || st.cefs[n]) return true;   // CE sano o inhibido por CEFS
@@ -6703,6 +6735,38 @@ function render(){
   g('lc_blade67').classList.toggle('ab', st.s67);
   g('lc_blade1011').classList.toggle('ab', st.s1011);
   g('lc_status').textContent = statusMsg(r);
+  pasosYchips(r);
+}
+// "Qué está pasando" y etiquetas de estado
+var ZONAS = ['A','B','C','D','E','F','G'], SECCS = ['1','2','3','4','5','6','7','8','9','10','11'];
+function cuenta(r){
+  return { zonas: ZONAS.filter(function(z){ return r.armed[z]; }).length,
+           vias: SECCS.filter(function(n){ return r.via[n]; }).length,
+           itm: BR.filter(function(k){ return st.itmS[k]; }).length };
+}
+var PASOS = [
+  {ok:function(){ return st.sello.DG; }, bloq:function(){ return st.giro.DG && !st.sello.DG; }},
+  {ok:function(r){ return st.sello.DG && r.anyItm; }},
+  {ok:function(r){ return cuenta(r).zonas === 7; }, bloq:function(r){ return ZONAS.some(function(z){ return st.giro[z] && !r.armed[z]; }); }},
+  {ok:function(r){ return cuenta(r).vias === 11; }}
+];
+function pasosYchips(r){
+  var c = cuenta(r);
+  g('lc_paso2').textContent = c.itm ? c.itm + ' de ' + BR.length + ' ITM energizados por el PCD' : 'el PCD energiza los ITM de las S/ER';
+  g('lc_paso3').textContent = c.zonas ? c.zonas + ' de 7 zonas armadas' : 'el PCC arma las 7 zonas';
+  g('lc_paso4').textContent = c.vias ? c.vias + ' de 11 secciones con 750 Vcc' : 'IA/IAS cerrados: 750 Vcc';
+  V2.pasos('lc_', PASOS, r, 3);
+  var golpes = SECCS.filter(function(n){ return st.g[n]; }).map(function(n){ return 'S'+n + (st.cefs[n] ? ' (CEFS)' : ''); });
+  var sats = [['s23','2/3'],['s56','5/6'],['s67','6/7'],['s1011','10/11']].filter(function(s){ return st[s[0]]; }).map(function(s){ return s[1]; });
+  V2.chips('lc_chips', [
+    st.sello.DG ? ['si','R.DG cerrado'] : ['','R.DG abierto'],
+    c.zonas ? ['si', c.zonas + '/7 zonas armadas'] : null,
+    c.vias ? ['si', c.vias + '/11 secciones con 750 Vcc'] : null,
+    golpes.length ? ['no','CE golpeado: ' + golpes.join(', ')] : null,
+    sats.length ? ['','SAT abierto: ' + sats.join(', ')] : null,
+    st.coch ? ['no','Cocheras abre Zona C'] : null,
+    st.tall ? ['no','Talleres abre Zona G'] : null
+  ]);
 }
 KN.forEach(function(k){
   g('lc_knob'+k).onclick=function(){ st.giro[k]=!st.giro[k]; render(); };
@@ -6740,6 +6804,7 @@ g('lc_itmOff').onclick=function(){ BR.forEach(function(k){st.itmS[k]=false;}); r
 [['lc_s23','s23'],['lc_s56','s56'],['lc_s67','s67'],['lc_s1011','s1011'],['lc_pt','pt'],['lc_coch','coch'],['lc_tall','tall']].forEach(function(p){
   g(p[0]).onchange=function(){st[p[1]]=this.checked;render();};
 });
+g('lc_btnReset').onclick=function(){ V2.reponer('mod-l4full', st, ST0, render); };
 render();
 })();
 
@@ -6751,12 +6816,21 @@ render();
 function g(id){return document.getElementById(id);}
 var BW=2380, BH=1060;
 function setZoom(p){var s=g('in_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('in_zoom').value=p;g('in_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('in_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('in_wrap', BW, BH)); }
 MODFIT['mod-ini'] = fit;
 g('in_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('in_btnFit').onclick=fit;
 var st={dg:false, pl:false, f1:false, f2:false, etapa:0, ser:false};
 var timers=[];
+// "Qué está pasando": r = {E: etapa de la cascada, rm1, rm2}
+var PASOS = [
+  {ok:function(r){return r.E>=1;}},
+  {ok:function(r){return r.E>=3;}},
+  {ok:function(r){return r.E>=5;}},
+  {ok:function(r){return r.E>=7;}},
+  {ok:function(r){return r.E>=8 && (r.rm1||r.rm2);}, bloq:function(r){return r.E>=8 && !r.rm1 && !r.rm2;}},
+  {ok:function(r){return st.ser && (r.rm1||r.rm2);}}
+];
 function setLive(id,on){var e=g(id);if(e)e.classList.toggle('live',on);}
 function setOn(id,on){var e=g(id);if(e)e.classList.toggle('on',on);}
 // etapa: 0 nada · 1 R DG · 2 contactos R DG · 3 RR DG1 · 4 contactos RR DG1
@@ -6878,6 +6952,17 @@ function render(){
   if(st.ser && (rm1||rm2)) m='S/ER energizadas por el PCD. La Condición RM estaba presente y el PCD dio la orden: las SRI y los ITM quedan energizados. Si ahora abres el DG, las S/ER se abren junto con él.';
   if(st.pl) m='Prueba de lámparas: la luz roja del TPL debe encenderse.';
   g('in_status').textContent=m;
+  var r = {E:E, rm1:rm1, rm2:rm2};
+  g('in_paso5').textContent = E<8 ? 'tarjetas RM1 y RM2 presentes' :
+    (rm1 && rm2 ? 'RM1 y RM2 presentes (redundancia)' : (rm1 ? 'solo RM1 presente (cayó RM2)' : (rm2 ? 'solo RM2 presente (cayó RM1)' : 'las dos cadenas RM caídas')));
+  V2.pasos('in_', PASOS, r, 5);
+  setOn('in_dotSER', st.ser && (rm1||rm2));
+  V2.chips('in_chips', [
+    st.dg ? ['si','DG cerrado'] : ['','DG abierto'],
+    E>=8 ? (rm1 ? ['si','RM1 (25/26) presente'] : ['no','RM1 caída']) : null,
+    E>=8 ? (rm2 ? ['si','RM2 (27/28) presente'] : ['no','RM2 caída']) : null,
+    st.ser && (rm1||rm2) ? ['si','S/ER energizadas'] : null
+  ]);
 }
 function secuencia(){
   timers.forEach(clearTimeout); timers=[];
@@ -6888,7 +6973,7 @@ function secuencia(){
 }
 g('in_btnDG').onclick=secuencia;
 g('in_btnSER').onclick=function(){ if(st.etapa>=8 && st.dg){ st.ser=!st.ser; render(); } };
-g('in_btnReset').onclick=function(){timers.forEach(clearTimeout);timers=[];st.dg=false;st.etapa=0;st.f1=false;st.f2=false;st.ser=false;g('in_f1').checked=false;g('in_f2').checked=false;render();};
+g('in_btnReset').onclick=function(){timers.forEach(clearTimeout);timers=[];st.dg=false;st.etapa=0;st.f1=false;st.f2=false;st.ser=false;g('in_f1').checked=false;g('in_f2').checked=false;g('in_btnDG').disabled=false;render();};
 g('in_f1').onchange=function(){st.f1=this.checked;render();};
 g('in_f2').onchange=function(){st.f2=this.checked;render();};
 function pl(){st.pl=true;render();setTimeout(function(){st.pl=false;render();},800);}
