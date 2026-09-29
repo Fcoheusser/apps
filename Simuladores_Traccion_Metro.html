@@ -3217,14 +3217,23 @@ Para agregar un nuevo módulo:
 </section>
 
 <!-- ================= MÓDULO: L4 · ZONA G · SECCIONES 10 y 11 ================= -->
-<section id="mod-l4zg" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4zg" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Condición de <span>Zona G</span> · Secciones 10 y 11 · Línea 4</h1>
-<p class="sub">Estación Hospital Sotero del Río (armario remoto en Las Mercedes) · RR.ZG · SAT 10/11 · Enclavamiento ramal Talleres (R Ai ZG) · Plano 1202-DSM-04-066-30573 Ind. B</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+<p class="sub">Hospital Sotero del Río (armario remoto en Las Mercedes) · RR.ZG · SAT 10/11 · ramal Talleres (R Ai ZG) · plano <span class="v2-mono">1202-DSM-04-066-30573</span> Ind. B</p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="g_guia">Guía</button>
+<button class="btn" id="g_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="g_zoom" min="30" max="140" value="100"></label>
+<span id="g_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="g_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="g_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> la última zona de la Línea 4. Dos secciones en serie validan el <b>RR.ZG</b> en el armario del Hospital Sotero del Río: S10 (entre la S/ER HS y el SAT 10/11) y S11 (de Las Mercedes hacia el final de línea), más el enclavamiento del <b>ramal a Talleres</b>.</p>
 <p><b>Las ramas de aislamiento:</b> S10 = SAT 10/11 + IAS S/ER HS · S11 = SAT 10/11 + <b>PT/FT S11</b>. El PT/FT es el aparato del extremo de la S11 y sus posiciones se llaman PT y FT (no A y C). <b>Confirmado por el manual:</b> "SAT 10/11 abierto y PT en S11" — la posición PT es la que valida el aislamiento.</p>
@@ -3237,13 +3246,9 @@ Para agregar un nuevo módulo:
 <p><b>Ejercicio 4 — Energizar las vías:</b> con la zona armada, las bobinas R.RS.S10 y R.RS.S11 cierran sus bucles de 5V y los NS1 quedan listos: el de la <b>S/ER HS</b> (para el IAS de la S10) y el de la <b>S/ER Las Mercedes</b> (para su <b>IA1</b>, la S11). Cierra cada interruptor en el grupo 4 y mira cada vía tomar sus 750 Vcc, con la cuchilla del SAT 10/11 entre ambas. Si cae la condición, disparan.</p>
 <p><b>Ejercicio 5 — Prueba de lámpara:</b> el botón PL enciende la ampolleta roja sin tocar la condición.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="g_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="g_zoom" min="30" max="140" value="100"></label>
-<span id="g_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="g_wrap">
 <svg id="g_plano" width="1300" height="1230" viewBox="0 0 1300 1230" role="img">
 <title>Condición de Zona G — Secciones 10 y 11</title>
@@ -3537,45 +3542,55 @@ Para agregar un nuevo módulo:
 </g></svg>
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · Condición de Zona G (mando PCC)</legend>
-<label><input type="checkbox" id="g_cbDG" checked> DG (normal cerrado)</label>
-<label><input type="checkbox" id="g_cbGiro"> TPL ZG girado</label>
-<button class="btn" id="g_btnPuls">Oprimir TPL (pulso)</button>
-<button class="btn" id="g_btnPL">PL · Prueba lámpara</button>
-</fieldset>
-<fieldset class="grp">
-<legend>2 · CE S10 · bucle de ruptores</legend>
-<label><input type="checkbox" id="g_cbRE10a"> Ruptores vía 1 S10</label>
-<label><input type="checkbox" id="g_cbRE10b"> Ruptores vía 2 S10</label>
-<button class="btn" id="g_btnTC10a">TC: Abrir R.PCE.S10</button>
-<button class="btn" id="g_btnTC10c" disabled>TC: Cerrar R.PCE.S10</button>
-<label><input type="checkbox" id="g_cbCEFS10"> Inhib. CEFS S10</label>
-</fieldset>
-<fieldset class="grp">
-<legend>2b · CE S11 · bucle de ruptores</legend>
-<label><input type="checkbox" id="g_cbRE11a"> Ruptores vía 1 S11</label>
-<label><input type="checkbox" id="g_cbRE11b"> Ruptores vía 2 S11</label>
-<button class="btn" id="g_btnTC11a">TC: Abrir R.PCE.S11</button>
-<button class="btn" id="g_btnTC11c" disabled>TC: Cerrar R.PCE.S11</button>
-<label><input type="checkbox" id="g_cbCEFS11"> Inhib. CEFS S11</label>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Aparatos e interruptores</legend>
-<label><input type="checkbox" id="g_cbSAT1011"> SAT 10/11 abierto</label>
-<label><input type="checkbox" id="g_cbPTFT"> PT/FT S11 en posición PT</label>
-<label><input type="checkbox" id="g_cbAi"> Talleres abre la zona (IATS cerrado + ruptor)</label>
-</fieldset>
-<fieldset class="grp">
-<legend>4 · Energizar vías (comando del operador, requiere Condición RS)</legend>
-<button class="btn" id="g_btnIAS" disabled>Cerrar IAS HS (S10)</button>
-<button class="btn" id="g_btnIASa" disabled>Abrir IAS HS</button>
-<button class="btn" id="g_btnIA1" disabled>Cerrar IA1 LME (S11)</button>
-<button class="btn" id="g_btnIA1a" disabled>Abrir IA1 LME</button>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="g_pasoN"></em></div>
+<ol id="g_pasos">
+<li data-c="#7A70E0"><b>1</b><span><strong>RZG</strong> — con el R.DG cerrado, se gira y oprime el TPL ZG</span></li>
+<li data-c="#3E77E0"><b>2</b><span><strong>RR.ZG</strong> — S10 y S11 validan y R Ai ZG cerrado</span></li>
+<li data-c="#1D9E75"><b>3</b><span><strong>KZG sella</strong> — se apaga la luz roja, ya se puede soltar el TPL</span></li>
+<li data-c="#D264C4"><b>4</b><span><strong>R.RS</strong> — <em id="g_paso4">condiciones RS S10 y S11</em></span></li>
+<li data-c="#EF9F27"><b>5</b><span><strong>IAS HS / IA1 LME</strong> — <em id="g_paso5">vías a 750 Vcc</em></span></li>
+</ol>
 <div id="g_status">Marca "TPL ZG girado" y aprieta "Oprimir TPL" para armar la Zona G.</div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="g_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="g_chips"></div>
+<fieldset class="grp" style="--gc:#9b93ee">
+<legend>1 · Mando PCC</legend>
+<label><span>R.DG (normal cerrado)</span><input type="checkbox" id="g_cbDG" checked></label>
+<label><span>TPL ZG girado</span><input type="checkbox" id="g_cbGiro"></label>
+<div class="v2-fila"><span>Pulsador TPL</span><button class="btn v2-acc" id="g_btnPuls" style="--bc:#7A70E0">Oprimir (pulso)</button></div>
+<div class="v2-fila"><span>Luz roja del TPL</span><button class="btn v2-acc" id="g_btnPL" style="--bc:#E24B4A">PL · Prueba lámpara</button></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2 · Corte de emergencia S10</legend>
+<label><span>Ruptores vía 1 S10</span><input type="checkbox" class="peligro" id="g_cbRE10a"></label>
+<label><span>Ruptores vía 2 S10</span><input type="checkbox" class="peligro" id="g_cbRE10b"></label>
+<label><span>Inhibición CEFS S10</span><input type="checkbox" id="g_cbCEFS10"></label>
+<div class="v2-fila"><span>Prueba TC</span><span class="v2-par"><button class="btn" id="g_btnTC10a">Abrir R.PCE</button><button class="btn" id="g_btnTC10c" disabled>Cerrar R.PCE</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2b · Corte de emergencia S11</legend>
+<label><span>Ruptores vía 1 S11</span><input type="checkbox" class="peligro" id="g_cbRE11a"></label>
+<label><span>Ruptores vía 2 S11</span><input type="checkbox" class="peligro" id="g_cbRE11b"></label>
+<label><span>Inhibición CEFS S11</span><input type="checkbox" id="g_cbCEFS11"></label>
+<div class="v2-fila"><span>Prueba TC</span><span class="v2-par"><button class="btn" id="g_btnTC11a">Abrir R.PCE</button><button class="btn" id="g_btnTC11c" disabled>Cerrar R.PCE</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#2BA6A6">
+<legend>3 · Aparatos e interruptores</legend>
+<label><span>SAT 10/11 abierto</span><input type="checkbox" id="g_cbSAT1011"></label>
+<label><span>PT/FT S11 en posición PT</span><input type="checkbox" id="g_cbPTFT"></label>
+<label><span>Talleres abre la zona (IATS cerrado + ruptor)</span><input type="checkbox" class="peligro" id="g_cbAi"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#ec8a45">
+<legend>4 · Energizar vías (requiere Condición RS)</legend>
+<div class="v2-fila"><span><i class="v2-dot" id="g_dotS10"></i>IAS Sotero del Río (S10)</span><span class="v2-par"><button class="btn" id="g_btnIAS" disabled>Cerrar</button><button class="btn" id="g_btnIASa" disabled>Abrir</button></span></div>
+<div class="v2-fila"><span><i class="v2-dot" id="g_dotS11"></i>IA1 Las Mercedes (S11)</span><span class="v2-par"><button class="btn" id="g_btnIA1" disabled>Cerrar</button><button class="btn" id="g_btnIA1a" disabled>Abrir</button></span></div>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
@@ -6222,7 +6237,7 @@ render();
 function g(id){return document.getElementById(id);}
 var BW=1300, BH=1230;
 function setZoom(p){var s=g('g_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('g_zoom').value=p;g('g_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('g_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('g_wrap', BW, BH)); }
 MODFIT['mod-l4zg'] = fit;
 g('g_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('g_btnFit').onclick=fit;
@@ -6231,6 +6246,28 @@ var st = {dg:true, giro:false, puls:false, kzg:false, pl:false,
   re10a:false, re10b:false, pce10:true, cefs10:false,
   re11a:false, re11b:false, pce11:true, cefs11:false,
   sat1011Ab:false, ptftPT:false, iashsAb:true, ia1Ab:true, aiAb:false};
+var ST0 = JSON.parse(JSON.stringify(st));
+var PASOS = [
+  {ok:function(r){return r.rzg;},  bloq:function(r){return st.puls && !r.rzg;}},
+  {ok:function(r){return r.rrzg;}, bloq:function(r){return r.rzg && !r.rrzg;}},
+  {ok:function(r){return r.kzg;}},
+  {ok:function(r){return r.rss10 || r.rss11;}, bloq:function(r){return r.rrzg && !r.rss10 && !r.rss11;}},
+  {ok:function(r){return r.via10 || r.via11;}}
+];
+function pasos(r, hasta){ V2.pasos('g_', PASOS, r, hasta); }
+function chips(r){
+  function sec(n, c, ce){ return c ? ['si', 'S'+n+(ce ? ' valida por CE' : ' valida por aislamiento')] : ['no', 'S'+n+' no valida']; }
+  V2.chips('g_chips', [
+    !st.dg ? ['no','DG abierto'] : null,
+    sec(10, r.c10, r.ce10), sec(11, r.c11, r.ce11),
+    st.sat1011Ab ? ['','SAT 10/11 abierto'] : null,
+    st.ptftPT ? ['','PT/FT S11 en PT'] : null,
+    st.aiAb ? ['no','Talleres abre la zona'] : null,
+    r.kzg ? ['si','Zona G armada'] : ['','Zona G sin armar'],
+    r.via10 ? ['si','S10 · 750 Vcc'] : null,
+    r.via11 ? ['si','S11 · 750 Vcc'] : null
+  ]);
+}
 
 function solve(){
   var kzg = st.kzg, rzg=false, rrzg=false, c10=false, c11=false;
@@ -6308,7 +6345,7 @@ function render(){
         setOn('g_ctRE'+n+'a',!rea);setOn('g_ctRE'+n+'b',!reb);setOn('g_ctPCE'+n,pce);setOn('g_coPCE'+n,pce);setLive('g_gPCE'+n,pce);
         setLive('g_gBucleCE'+n,rce);setOn('g_coRCE'+n,rce);setOn('g_ctTKb'+n,rce);setLive('g_gTKb'+n,rce);setOn('g_tkb'+n,rce);
         g('g_btnTC'+n+'a').disabled=!pce;g('g_btnTC'+n+'c').disabled=pce;
-      });},
+      });pasos(r,0);},
     function(){setOn('g_ctRZG2',r.rzg);setLive('g_gChain',r.rrzg);},
     function(){
       setConm('g_ctIAShs', st.iashsAb, r.rrzg&&r.iso10);
@@ -6323,8 +6360,8 @@ function render(){
       setOn('g_ctCE11',r.rce11);setOn('g_ctCEFS11',st.cefs11);
       setLive('g_gS11ce',r.rrzg&&r.rce11);setLive('g_gS11cefs',r.rrzg&&st.cefs11);
       setOn('g_ctAi',!st.aiAb);
-      setOn('g_coRRZG',r.rrzg);},
-    function(){setOn('g_ctRet',r.rrzg);setLive('g_gRet',r.rrzg);setOn('g_coKZG',r.kzg);},
+      setOn('g_coRRZG',r.rrzg);pasos(r,1);},
+    function(){setOn('g_ctRet',r.rrzg);setLive('g_gRet',r.rrzg);setOn('g_coKZG',r.kzg);pasos(r,2);},
     function(){
       setOn('g_ctRS10',r.rrzg);setLive('g_gRSS10',r.rss10);setOn('g_coRSS10',r.rss10);
       setOn('g_ctB10a',r.rss10);setOn('g_ctB10b',r.rss10);setLive('g_gBucle10',r.rss10);
@@ -6339,6 +6376,11 @@ function render(){
       g('g_btnIASa').disabled = st.iashsAb;
       g('g_btnIA1').disabled = !r.rss11 || !st.ia1Ab;
       g('g_btnIA1a').disabled = st.ia1Ab;
+      setOn('g_dotS10', r.via10); setOn('g_dotS11', r.via11);
+      g('g_paso4').textContent = r.rss10 && r.rss11 ? 'condiciones RS S10 y S11 presentes' :
+        (r.rss10 ? 'solo RS S10 presente (S11 sin su CE)' : (r.rss11 ? 'solo RS S11 presente (S10 sin su CE)' : 'condiciones RS S10 y S11'));
+      g('g_paso5').textContent = r.via10 && r.via11 ? 'S10 y S11 a 750 Vcc' : (r.via10 ? 'S10 a 750 Vcc' : (r.via11 ? 'S11 a 750 Vcc' : 'vías a 750 Vcc'));
+      pasos(r,4); chips(r);
       g('g_status').textContent=statusMsg(r);}
   ];
   stages.forEach(function(fn,i){timers.push(setTimeout(fn,i*300));});
@@ -6362,6 +6404,7 @@ g('g_btnIASa').onclick=function(){st.iashsAb=true;render();};
 g('g_btnIA1').onclick=function(){st.ia1Ab=false;render();};
 g('g_btnIA1a').onclick=function(){st.ia1Ab=true;render();};
 g('g_cbAi').onchange=function(){st.aiAb=this.checked;render();};
+g('g_btnReset').onclick=function(){ V2.reponer('mod-l4zg', st, ST0, render); };
 render();
 })();
 
