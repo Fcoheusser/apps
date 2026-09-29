@@ -550,7 +550,7 @@ Para agregar un nuevo módulo:
 <div class="v2-body">
 <div class="v2-left">
 <div class="scrollwrap" id="b_wrap">
-<svg id="b_plano" width="1300" height="1210" viewBox="0 0 1300 1210" role="img">
+<svg id="b_plano" width="2620" height="850" viewBox="0 0 2620 850" role="img">
 <title>Condición de Zona B — Secciones S2 y S3</title>
 <defs><marker id="b_arB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 
@@ -738,7 +738,7 @@ Para agregar un nuevo módulo:
 <!-- RR.ZB al final de la cadena (como RR.ZA en A: bobina y=250) -->
 <g id="b_coRRZB" class="coil f-rrzb"><text x="1120" y="536" text-anchor="middle">RR.ZB</text><path class="zz" d="M 1100 560 L 1110 542 L 1120 560 L 1130 542 L 1140 560"/></g>
 <text x="1140" y="592" text-anchor="middle">0V</text>
-<path class="leader" style="stroke:#3E77E0" d="M1120 562 V975"/>
+<path class="leader" style="stroke:#3E77E0" d="M1120 562 V615 H1500 V420"/>
 
 <!-- contacto de retorno a y=340 (misma altura que la bobina KZB) -> retorno horizontal recto -->
 <g id="b_ctRet" class="sym f-rrzb"><circle cx="1097.5" cy="650" r="2.5"/><circle cx="1142.5" cy="650" r="2.5"/><line class="bo" x1="1100" y1="650" x2="1134" y2="637"/><line class="bc" x1="1100" y1="650" x2="1140" y2="650"/></g>
@@ -748,23 +748,25 @@ Para agregar un nuevo módulo:
 <text x="236" y="654" text-anchor="end">0V</text>
 
 
+<line x1="1300" y1="40" x2="1300" y2="700" stroke="var(--border)" stroke-width="1"/>
+<g id="b_franja2" transform="translate(1320,-385)">
+<g transform="translate(1300,0) scale(-1,1)">
 <!-- ============ CONDICIÓN RS por sección (patrón Zona A: bobina R.RS + contacto Condición RS -> +48V) ============ -->
-<line x1="20" y1="715" x2="1280" y2="715" stroke="var(--border)" stroke-width="1"/>
-<text x="20" y="739" style="font-weight:600;fill:var(--text-primary);font-size:13px">② Condición RS por sección · relé de seguridad R.RS y bucle de 5V al NS1</text>
+<text transform="scale(-1,1)" x="-1280" y="739" style="font-weight:600;fill:var(--text-primary);font-size:13px" text-anchor="start">② Condición RS por sección · relé de seguridad R.RS y bucle de 5V al NS1</text>
 
 <!-- ===== RS S2 · S/ER a la izquierda, estación a la derecha ===== -->
 <rect class="zona" x="20" y="755" width="340" height="150" rx="10"/>
-<text x="30" y="775" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Los Orientales</text>
+<text transform="scale(-1,1)" x="-350" y="775" style="font-weight:500;fill:var(--text-primary);font-size:12px" text-anchor="start">S/ER Los Orientales</text>
 <rect class="zona" x="380" y="755" width="900" height="150" rx="10"/>
-<text x="390" y="775" style="font-weight:500;fill:var(--text-primary);font-size:12px">Estación Los Orientales · Condición RS S2</text>
+<text transform="scale(-1,1)" x="-1270" y="775" style="font-weight:500;fill:var(--text-primary);font-size:12px" text-anchor="start">Estación Los Orientales · Condición RS S2</text>
 
-<text x="780" y="809" text-anchor="end">0V</text>
+<text transform="scale(-1,1)" x="-780" y="809" text-anchor="start">0V</text>
 <g id="b_gRSS2"><path class="w" d="M 786 805 H 820"/><path class="w" d="M 862 805 H 1095"/><path class="w" d="M 1145 805 H 1175"/></g>
-<g id="b_coRSS2" class="coil f-rss"><text x="842" y="781" text-anchor="middle">R.RS.S2</text><path class="zz" d="M 822 805 L 832 787 L 842 805 L 852 787 L 862 805"/></g>
-<g id="b_ctRS2" class="sym f-rrzb"><text x="1120" y="789" text-anchor="middle">Condición RS S2</text><circle cx="1097.5" cy="805" r="2.5"/><circle cx="1142.5" cy="805" r="2.5"/><line class="bo" x1="1100" y1="805" x2="1134" y2="792"/><line class="bc" x1="1100" y1="805" x2="1140" y2="805"/></g>
-<text x="1179" y="809">+48V</text>
+<g id="b_coRSS2" class="coil f-rss"><text transform="scale(-1,1)" x="-842" y="781" text-anchor="middle">R.RS.S2</text><path class="zz" d="M 822 805 L 832 787 L 842 805 L 852 787 L 862 805"/></g>
+<g id="b_ctRS2" class="sym f-rrzb"><text transform="scale(-1,1)" x="-1120" y="789" text-anchor="middle">Condición RS S2</text><circle cx="1097.5" cy="805" r="2.5"/><circle cx="1142.5" cy="805" r="2.5"/><line class="bo" x1="1100" y1="805" x2="1134" y2="792"/><line class="bc" x1="1100" y1="805" x2="1140" y2="805"/></g>
+<text transform="scale(-1,1)" x="-1179" y="809" text-anchor="end">+48V</text>
 <path class="leader" style="stroke:#D264C4" d="M 842 807 V 877"/>
-<text x="910" y="835" text-anchor="middle" style="font-size:11px">P1 · resistencia ajustable</text>
+<text transform="scale(-1,1)" x="-910" y="835" style="font-size:11px" text-anchor="middle">P1 · resistencia ajustable</text>
 <g id="b_gBucle2">
 <path class="w" d="M 870 853 H 890"/><path class="w" d="M 930 853 H 950"/>
 <path class="w" d="M 290 853 H 815"/><path class="w" d="M 240 881 H 815"/><path class="w" d="M 870 881 H 890"/>
@@ -773,31 +775,31 @@ Para agregar un nuevo módulo:
 <path d="M 900 841 L 920 841 L 910 847" fill="var(--border-strong)"/>
 <g id="b_ctB2a" class="sym f-rss"><circle cx="817.5" cy="853" r="2.5"/><circle cx="867.5" cy="853" r="2.5"/><line class="bo" x1="820" y1="853" x2="859" y2="841"/><line class="bc" x1="820" y1="853" x2="865" y2="853"/></g>
 <g id="b_ctB2b" class="sym f-rss"><circle cx="817.5" cy="881" r="2.5"/><circle cx="867.5" cy="881" r="2.5"/><line class="bo" x1="820" y1="881" x2="859" y2="869"/><line class="bc" x1="820" y1="881" x2="865" y2="881"/></g>
-<text x="954" y="857">+48V</text>
-<text x="894" y="885">0V</text>
-<text x="560" y="843" text-anchor="middle" style="font-size:11px">Bucle Condición RS S2 (5V)</text>
-<text x="410" y="897" style="font-size:11px">contactos R.RS.S2</text>
-<g id="b_coNS1lo" class="coil f-ns1"><text x="250" y="815" text-anchor="middle">NS1 · 5V</text><path class="zz" d="M 230 839 L 240 821 L 250 839 L 260 821 L 270 839"/></g>
+<text transform="scale(-1,1)" x="-954" y="857" text-anchor="end">+48V</text>
+<text transform="scale(-1,1)" x="-894" y="885" text-anchor="end">0V</text>
+<text transform="scale(-1,1)" x="-560" y="843" style="font-size:11px" text-anchor="middle">Bucle Condición RS S2 (5V)</text>
+<text transform="scale(-1,1)" x="-410" y="897" style="font-size:11px" text-anchor="end">contactos R.RS.S2</text>
+<g id="b_coNS1lo" class="coil f-ns1"><text transform="scale(-1,1)" x="-250" y="815" text-anchor="middle">NS1 · 5V</text><path class="zz" d="M 230 839 L 240 821 L 250 839 L 260 821 L 270 839"/></g>
 <path class="w" d="M 290 853 H 270 V 839"/><path class="w" d="M 240 881 H 230 V 839"/>
-<text x="88" y="815" text-anchor="middle" style="font-size:11px">IAS S/ER LO</text>
+<text transform="scale(-1,1)" x="-88" y="815" style="font-size:11px" text-anchor="middle">IAS S/ER LO</text>
 <g id="b_iasSym2" class="sym f-sat"><circle cx="60.5" cy="839" r="2.5"/><circle cx="115.5" cy="839" r="2.5"/><line class="bo" x1="63" y1="839" x2="107" y2="826"/><line class="bc" x1="63" y1="839" x2="113" y2="839"/></g>
-<text id="b_via2txt" x="88" y="870" text-anchor="middle" style="font-size:11px">→ 750 Vcc S2</text>
+<text transform="scale(-1,1)" id="b_via2txt" x="-88" y="870" style="font-size:11px" text-anchor="middle">→ 750 Vcc S2</text>
 <circle id="b_tk2" class="tkdot" cx="400" cy="881" r="6"/>
-<text x="414" y="885" style="font-size:11px">VMAT: TK RS.S2 al PCC</text>
+<text transform="scale(-1,1)" x="-414" y="872" style="font-size:11px" text-anchor="end">VMAT: TK RS.S2 al PCC</text>
 
 <!-- ===== RS S3 · S/ER a la izquierda, estación a la derecha ===== -->
 <rect class="zona" x="20" y="925" width="340" height="150" rx="10"/>
-<text x="30" y="945" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Rotonda Quilín</text>
+<text transform="scale(-1,1)" x="-350" y="945" style="font-weight:500;fill:var(--text-primary);font-size:12px" text-anchor="start">S/ER Rotonda Quilín</text>
 <rect class="zona" x="380" y="925" width="900" height="150" rx="10"/>
-<text x="390" y="945" style="font-weight:500;fill:var(--text-primary);font-size:12px">Estación Rotonda Quilín · Condición RS S3</text>
+<text transform="scale(-1,1)" x="-1270" y="945" style="font-weight:500;fill:var(--text-primary);font-size:12px" text-anchor="start">Estación Rotonda Quilín · Condición RS S3</text>
 
-<text x="780" y="979" text-anchor="end">0V</text>
+<text transform="scale(-1,1)" x="-780" y="979" text-anchor="start">0V</text>
 <g id="b_gRSS3"><path class="w" d="M 786 975 H 820"/><path class="w" d="M 862 975 H 1095"/><path class="w" d="M 1145 975 H 1175"/></g>
-<g id="b_coRSS3" class="coil f-rss"><text x="842" y="951" text-anchor="middle">R.RS.S3</text><path class="zz" d="M 822 975 L 832 957 L 842 975 L 852 957 L 862 975"/></g>
-<g id="b_ctRS3" class="sym f-rrzb"><text x="1120" y="959" text-anchor="middle">Condición RS S3</text><circle cx="1097.5" cy="975" r="2.5"/><circle cx="1142.5" cy="975" r="2.5"/><line class="bo" x1="1100" y1="975" x2="1134" y2="962"/><line class="bc" x1="1100" y1="975" x2="1140" y2="975"/></g>
-<text x="1179" y="979">+48V</text>
+<g id="b_coRSS3" class="coil f-rss"><text transform="scale(-1,1)" x="-842" y="951" text-anchor="middle">R.RS.S3</text><path class="zz" d="M 822 975 L 832 957 L 842 975 L 852 957 L 862 975"/></g>
+<g id="b_ctRS3" class="sym f-rrzb"><text transform="scale(-1,1)" x="-1120" y="959" text-anchor="middle">Condición RS S3</text><circle cx="1097.5" cy="975" r="2.5"/><circle cx="1142.5" cy="975" r="2.5"/><line class="bo" x1="1100" y1="975" x2="1134" y2="962"/><line class="bc" x1="1100" y1="975" x2="1140" y2="975"/></g>
+<text transform="scale(-1,1)" x="-1179" y="979" text-anchor="end">+48V</text>
 <path class="leader" style="stroke:#D264C4" d="M 842 977 V 1047"/>
-<text x="910" y="1005" text-anchor="middle" style="font-size:11px">P1 · resistencia ajustable</text>
+<text transform="scale(-1,1)" x="-910" y="1005" style="font-size:11px" text-anchor="middle">P1 · resistencia ajustable</text>
 <g id="b_gBucle3">
 <path class="w" d="M 870 1023 H 890"/><path class="w" d="M 930 1023 H 950"/>
 <path class="w" d="M 290 1023 H 815"/><path class="w" d="M 240 1051 H 815"/><path class="w" d="M 870 1051 H 890"/>
@@ -806,38 +808,40 @@ Para agregar un nuevo módulo:
 <path d="M 900 1011 L 920 1011 L 910 1017" fill="var(--border-strong)"/>
 <g id="b_ctB3a" class="sym f-rss"><circle cx="817.5" cy="1023" r="2.5"/><circle cx="867.5" cy="1023" r="2.5"/><line class="bo" x1="820" y1="1023" x2="859" y2="1011"/><line class="bc" x1="820" y1="1023" x2="865" y2="1023"/></g>
 <g id="b_ctB3b" class="sym f-rss"><circle cx="817.5" cy="1051" r="2.5"/><circle cx="867.5" cy="1051" r="2.5"/><line class="bo" x1="820" y1="1051" x2="859" y2="1039"/><line class="bc" x1="820" y1="1051" x2="865" y2="1051"/></g>
-<text x="954" y="1027">+48V</text>
-<text x="894" y="1055">0V</text>
-<text x="560" y="1013" text-anchor="middle" style="font-size:11px">Bucle Condición RS S3 (5V)</text>
-<text x="410" y="1067" style="font-size:11px">contactos R.RS.S3</text>
-<g id="b_coNS1rq" class="coil f-ns1"><text x="250" y="985" text-anchor="middle">NS1 · 5V</text><path class="zz" d="M 230 1009 L 240 991 L 250 1009 L 260 991 L 270 1009"/></g>
+<text transform="scale(-1,1)" x="-954" y="1027" text-anchor="end">+48V</text>
+<text transform="scale(-1,1)" x="-894" y="1055" text-anchor="end">0V</text>
+<text transform="scale(-1,1)" x="-560" y="1013" style="font-size:11px" text-anchor="middle">Bucle Condición RS S3 (5V)</text>
+<text transform="scale(-1,1)" x="-410" y="1067" style="font-size:11px" text-anchor="end">contactos R.RS.S3</text>
+<g id="b_coNS1rq" class="coil f-ns1"><text transform="scale(-1,1)" x="-250" y="985" text-anchor="middle">NS1 · 5V</text><path class="zz" d="M 230 1009 L 240 991 L 250 1009 L 260 991 L 270 1009"/></g>
 <path class="w" d="M 290 1023 H 270 V 1009"/><path class="w" d="M 240 1051 H 230 V 1009"/>
-<text x="88" y="985" text-anchor="middle" style="font-size:11px">IA S/ER RQ</text>
+<text transform="scale(-1,1)" x="-88" y="985" style="font-size:11px" text-anchor="middle">IA S/ER RQ</text>
 <g id="b_iaSym3" class="sym f-sat"><circle cx="60.5" cy="1009" r="2.5"/><circle cx="115.5" cy="1009" r="2.5"/><line class="bo" x1="63" y1="1009" x2="107" y2="996"/><line class="bc" x1="63" y1="1009" x2="113" y2="1009"/></g>
-<text id="b_via3txt" x="88" y="1040" text-anchor="middle" style="font-size:11px">→ 750 Vcc S3</text>
+<text transform="scale(-1,1)" id="b_via3txt" x="-88" y="1040" style="font-size:11px" text-anchor="middle">→ 750 Vcc S3</text>
 <circle id="b_tk3" class="tkdot" cx="400" cy="1051" r="6"/>
-<text x="414" y="1055" style="font-size:11px">VMAT: TK RS.S3 al PCC</text>
+<text transform="scale(-1,1)" x="-414" y="1042" style="font-size:11px" text-anchor="end">VMAT: TK RS.S3 al PCC</text>
+</g>
+</g>
 
 
 <!-- Vías de tracción (como Zona A) -->
-<rect id="b_via2" class="viabar" x="20" y="1099" width="590" height="30" rx="4"/>
-<text id="b_via2t" class="viabartxt" x="315" y="1114" text-anchor="middle" dominant-baseline="central">Vía S2 · Los Orientales · 750 Vcc</text>
-<text x="650" y="1089" text-anchor="middle" style="font-size:10px;fill:#2BA6A6">SAT 2/3</text>
-<circle cx="616" cy="1114" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
-<circle cx="684" cy="1114" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
-<line id="b_satBlade" class="satblade" x1="620" y1="1114" x2="680" y2="1114"/>
-<rect id="b_via3" class="viabar" x="690" y="1099" width="590" height="30" rx="4"/>
-<text id="b_via3t" class="viabartxt" x="985" y="1114" text-anchor="middle" dominant-baseline="central">Vía S3 · Rotonda Quilín · 750 Vcc</text>
+<rect id="b_via2" class="viabar" x="20" y="739" width="590" height="30" rx="4"/>
+<text id="b_via2t" class="viabartxt" x="315" y="754" text-anchor="middle" dominant-baseline="central">Vía S2 · Los Orientales · 750 Vcc</text>
+<text x="650" y="729" text-anchor="middle" style="font-size:10px;fill:#2BA6A6">SAT 2/3</text>
+<circle cx="616" cy="754" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
+<circle cx="684" cy="754" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
+<line id="b_satBlade" class="satblade" style="transform-origin:620px 754px;transform-box:view-box" x1="620" y1="754" x2="680" y2="754"/>
+<rect id="b_via3" class="viabar" x="690" y="739" width="590" height="30" rx="4"/>
+<text id="b_via3t" class="viabartxt" x="985" y="754" text-anchor="middle" dominant-baseline="central">Vía S3 · Rotonda Quilín · 750 Vcc</text>
 
-<g class="sym"><circle cx="30" cy="1181" r="2.5"/><circle cx="58" cy="1181" r="2.5"/><line x1="33" y1="1181" x2="53" y2="1170"/></g>
-<text x="66" y="1185" style="font-size:11px">abierto</text>
-<g class="sym"><circle cx="140" cy="1181" r="2.5"/><circle cx="168" cy="1181" r="2.5"/><line x1="143" y1="1181" x2="165" y2="1181"/></g>
-<text x="176" y="1185" style="font-size:11px">cerrado</text>
-<line x1="240" y1="1181" x2="280" y2="1181" stroke="#EF9F27" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="288" y="1185" style="font-size:11px">energizado</text>
-<rect x="410" y="1174" width="11" height="11" rx="2" fill="none" stroke="#E24B4A" stroke-width="1.5"/><text x="427" y="1184" style="font-size:11px">RCE</text>
-<rect x="480" y="1174" width="11" height="11" rx="2" fill="none" stroke="#2BA6A6" stroke-width="1.5"/><text x="497" y="1184" style="font-size:11px">SAT / IAS-IA</text>
-<rect x="600" y="1174" width="11" height="11" rx="2" fill="none" stroke="#3E77E0" stroke-width="1.5"/><text x="617" y="1184" style="font-size:11px">RR.ZB</text>
+<g class="sym"><circle cx="30" cy="821" r="2.5"/><circle cx="58" cy="821" r="2.5"/><line x1="33" y1="821" x2="53" y2="810"/></g>
+<text x="66" y="825" style="font-size:11px">abierto</text>
+<g class="sym"><circle cx="140" cy="821" r="2.5"/><circle cx="168" cy="821" r="2.5"/><line x1="143" y1="821" x2="165" y2="821"/></g>
+<text x="176" y="825" style="font-size:11px">cerrado</text>
+<line x1="240" y1="821" x2="280" y2="821" stroke="#EF9F27" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="288" y="825" style="font-size:11px">energizado</text>
+<rect x="410" y="814" width="11" height="11" rx="2" fill="none" stroke="#E24B4A" stroke-width="1.5"/><text x="427" y="824" style="font-size:11px">RCE</text>
+<rect x="480" y="814" width="11" height="11" rx="2" fill="none" stroke="#2BA6A6" stroke-width="1.5"/><text x="497" y="824" style="font-size:11px">SAT / IAS-IA</text>
+<rect x="600" y="814" width="11" height="11" rx="2" fill="none" stroke="#3E77E0" stroke-width="1.5"/><text x="617" y="824" style="font-size:11px">RR.ZB</text>
 </svg>
 </div>
 <section class="v2-pasos" aria-label="Qué está pasando">
@@ -5193,7 +5197,7 @@ var st = {dg:true, giro:false, puls:false, re2a:false, re2b:false, pce2:true, ce
   re3a:false, re3b:false, pce3:true, cefs3:false, satAb:false, iasloAb:true, iarqAb:true, kzb:false};
 var ST0 = JSON.parse(JSON.stringify(st));
 var timers=[];
-var BW=1300, BH=1210;
+var BW=2620, BH=850;
 function g(id){ return document.getElementById(id); }
 function setZoom(p){var s=g('b_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('b_zoom').value=p;g('b_zoomVal').textContent=Math.round(p)+'%';}
 function fit(){ setZoom(V2.fit('b_wrap', BW, BH)); }
