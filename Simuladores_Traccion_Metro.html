@@ -1167,14 +1167,23 @@ Para agregar un nuevo módulo:
 
 
 <!-- ================= MÓDULO: CONDICIÓN RS IAT · TALLER PUENTE ALTO ================= -->
-<section id="mod-l4iat" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4iat" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Condición <span>RS IAT</span> · Taller Puente Alto · Línea 4</h1>
-<p class="sub">Local Técnico Talleres Puente Alto · Las Mercedes · S/ER TPA · Plano 1202-HDD-04-0474-30573 hoja 6/7 Ind. D</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+<p class="sub">Local Técnico Talleres Puente Alto · Las Mercedes · S/ER TPA · plano <span class="v2-mono">1202-HDD-04-0474-30573</span> hoja 6/7 Ind. D</p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="i_guia">Guía</button>
+<button class="btn" id="i_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="i_zoom" min="30" max="140" value="100"></label>
+<span id="i_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="i_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="i_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> la lógica de 48 V del Taller Puente Alto, la que decide si el IAT puede cerrarse. Es la hermana del módulo de alimentación: aquel muestra por dónde circula el 750 V, este muestra el permiso.</p>
 <p><b>El recorrido:</b> 0V → los cuatro recintos en serie → el <b>SVT</b> → el contacto <b>RR CE S11</b> → bobina <b>RS IAT</b> → +48V. La señal sale por cable túnel al Local S/ER TPA, donde el RS IAT habilita el cierre del IAT.</p>
@@ -1190,13 +1199,9 @@ Para agregar un nuevo módulo:
 <p><b>Prueba esto:</b> parte con todo caído. Arma primero la zona G y fíjate que el RR CE S11 se energiza. Después verás que el RS IAT se forma y el botón de cierre del IAT se habilita. Ahora golpea un CE del taller: cae el RS IAT y el IAT se abre solo.</p>
 <p><b>Fuente:</b> plano 1202-HDD-04-0474-30573 hoja 6/7 Ind. D (esquema_cadena_TPA_1). La estructura de la cadena está dictada: aparatos en serie, SGTS en paralelo, cada CE con su CEFS en paralelo.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="i_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="i_zoom" min="30" max="140" value="100"></label>
-<span id="i_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="i_wrap">
 <svg id="i_plano" width="2460" height="1020" viewBox="-330 0 2460 1020" role="img">
 <title>Condición RS IAT — Taller Puente Alto</title>
@@ -1340,49 +1345,59 @@ Para agregar un nuevo módulo:
 
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · Condición de zona G · Las Mercedes</legend>
-<label><input type="checkbox" id="i_cbZG" checked> Contacto RR.ZG cerrado <span style="color:var(--text-secondary)">(zona G armada)</span></label>
-<label><input type="checkbox" id="i_cbCES11"> CE S11 golpeado</label>
-<label><input type="checkbox" id="i_cbFSS11"> Inhib. R.CEFS.S11</label>
-</fieldset>
-<fieldset class="grp">
-<legend>2 · Aparatos · por recinto, en paralelo con su CE</legend>
-<label><input type="checkbox" id="i_cbDVM"> DVM abierto</label>
-<label><input type="checkbox" id="i_cbSVMS"> SVMS abierto <span style="color:var(--text-secondary)">(recinto VM)</span></label>
-<label><input type="checkbox" id="i_cbSVC1S"> SVC1S abierto</label>
-<label><input type="checkbox" id="i_cbDVC1"> DVC1 abierto</label>
-<label><input type="checkbox" id="i_cbDVC2"> DVC2 abierto</label>
-<label><input type="checkbox" id="i_cbDVP"> DVP abierto</label>
-<label><input type="checkbox" id="i_cbSVT"> SVT abierto <span style="color:var(--text-secondary)">(socorro, en paralelo con el contacto RR CE S11)</span></label>
-<label><input type="checkbox" id="i_cbSGTS"> SGTS cerrado <span style="color:#2BA6A6">(socorro del DGT · normalmente abierto)</span></label>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Cortes de emergencia del taller</legend>
-<label><input type="checkbox" id="i_cbCEVM"> CE VM golpeado</label>
-<label><input type="checkbox" id="i_cbFSVM"> Inhib. R.CEFS.VM</label>
-<label><input type="checkbox" id="i_cbCEVC"> CE VC golpeado</label>
-<label><input type="checkbox" id="i_cbFSVC"> Inhib. R.CEFS.VC</label>
-<label><input type="checkbox" id="i_cbCEVT"> CE VT golpeado</label>
-<label><input type="checkbox" id="i_cbFSVT"> Inhib. R.CEFS.VT</label>
-<label><input type="checkbox" id="i_cbCEVP"> CE VP golpeado</label>
-<label><input type="checkbox" id="i_cbFSVP"> Inhib. R.CEFS.VP</label>
-</fieldset>
-<fieldset class="grp">
-<legend>4 · Mando del PMT</legend>
-<button class="btn" id="i_btnCerrar">Cerrar IAT</button>
-<button class="btn" id="i_btnAbrir">Abrir IAT</button>
-
-<span id="i_estIAT" style="font-size:12px;color:var(--text-secondary)"></span>
-</fieldset>
-<fieldset class="grp">
-<legend>Ir al módulo enganchado</legend>
-<button class="btn" onclick="irModulo('mod-l4tpa')">Alimentación del Taller</button>
-<button class="btn" onclick="irModulo('mod-l4zg')">Condición de Zona G</button>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="i_pasoN"></em></div>
+<ol id="i_pasos">
+<li data-c="#3E77E0"><b>1</b><span><strong>RR.ZG</strong> — la condición de zona G está armada</span></li>
+<li data-c="#E24B4A"><b>2</b><span><strong>RR CE S11</strong> — en Las Mercedes, con el CE S11 sano (o su CEFS)</span></li>
+<li data-c="#D264C4"><b>3</b><span><strong>RS IAT</strong> — los CE del taller (VM, VC, VT, VP) dan paso</span></li>
+<li data-c="#EF9F27"><b>4</b><span><strong>IAT cerrado</strong> — por orden del PMT: 750 Vcc a Talleres</span></li>
+</ol>
 <div id="i_status"></div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="i_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="i_chips"></div>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>1 · Zona G · Las Mercedes</legend>
+<label><span>Contacto RR.ZG cerrado (zona G armada)</span><input type="checkbox" id="i_cbZG" checked></label>
+<label><span>CE S11 golpeado</span><input type="checkbox" class="peligro" id="i_cbCES11"></label>
+<label><span>Inhibición R.CEFS.S11</span><input type="checkbox" id="i_cbFSS11"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2 · Cortes de emergencia del taller</legend>
+<label><span>CE VM golpeado</span><input type="checkbox" class="peligro" id="i_cbCEVM"></label>
+<label><span>Inhibición R.CEFS.VM</span><input type="checkbox" id="i_cbFSVM"></label>
+<label><span>CE VC golpeado</span><input type="checkbox" class="peligro" id="i_cbCEVC"></label>
+<label><span>Inhibición R.CEFS.VC</span><input type="checkbox" id="i_cbFSVC"></label>
+<label><span>CE VT golpeado</span><input type="checkbox" class="peligro" id="i_cbCEVT"></label>
+<label><span>Inhibición R.CEFS.VT</span><input type="checkbox" id="i_cbFSVT"></label>
+<label><span>CE VP golpeado</span><input type="checkbox" class="peligro" id="i_cbCEVP"></label>
+<label><span>Inhibición R.CEFS.VP</span><input type="checkbox" id="i_cbFSVP"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#2BA6A6">
+<legend>3 · Aparatos (solo indican posición)</legend>
+<label><span>DVM abierto</span><input type="checkbox" id="i_cbDVM"></label>
+<label><span>SVMS abierto</span><input type="checkbox" id="i_cbSVMS"></label>
+<label><span>SVC1S abierto</span><input type="checkbox" id="i_cbSVC1S"></label>
+<label><span>DVC1 abierto</span><input type="checkbox" id="i_cbDVC1"></label>
+<label><span>DVC2 abierto</span><input type="checkbox" id="i_cbDVC2"></label>
+<label><span>DVP abierto</span><input type="checkbox" id="i_cbDVP"></label>
+<label><span>SVT abierto (socorro)</span><input type="checkbox" id="i_cbSVT"></label>
+<label><span>SGTS cerrado (socorro del DGT)</span><input type="checkbox" id="i_cbSGTS"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#ec8a45">
+<legend>4 · Mando del PMT</legend>
+<div class="v2-fila"><span><i class="v2-dot" id="i_dotIAT"></i><span id="i_estIAT">IAT abierto</span></span><span class="v2-par"><button class="btn" id="i_btnCerrar">Cerrar</button><button class="btn" id="i_btnAbrir">Abrir</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>5 · Módulos enganchados</legend>
+<div class="v2-fila"><span>Taller</span><button class="btn" type="button" onclick="irModulo('mod-l4tpa')">Alimentación del Taller</button></div>
+<div class="v2-fila"><span>Zona G</span><button class="btn" type="button" onclick="irModulo('mod-l4zg')">Condición de Zona G</button></div>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
@@ -5402,7 +5417,7 @@ render();
 function g(id){return document.getElementById(id);}
 var BW=2120, BH=1020;
 function setZoom(p){var s=g('i_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('i_zoom').value=p;g('i_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('i_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('i_wrap', BW, BH)); }
 MODFIT['mod-l4iat'] = fit;
 g('i_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('i_btnFit').onclick=fit;
@@ -5411,6 +5426,25 @@ var st = {zg:true, ceS11:false, fsS11:false, sgts:false, iatAb:true,
   DVM:false, SVMS:false, SVC1S:false, DVC1:false, DVC2:false, DVP:false, SVT:false,
   ceVM:false, ceVC:false, ceVT:false, ceVP:false,
   fsVM:false, fsVC:false, fsVT:false, fsVP:false};
+var ST0 = JSON.parse(JSON.stringify(st));
+var PASOS = [
+  {ok:function(){return st.zg;}, bloq:function(){return !st.zg;}},
+  {ok:function(r){return r.rrces11;}, bloq:function(r){return st.zg && !r.rrces11;}},
+  {ok:function(r){return r.rsiat;}, bloq:function(r){return r.rrces11 && !r.rsiat;}},
+  {ok:function(r){return r.rsiat && !st.iatAb;}}
+];
+function pasos(r, hasta){ V2.pasos('i_', PASOS, r, hasta); }
+function chips(r){
+  var golpeados = ['VM','VC','VT','VP'].filter(function(t){ return !r['ce'+t]; });
+  V2.chips('i_chips', [
+    st.zg ? ['si','Zona G armada'] : ['no','Zona G sin armar'],
+    !st.ceS11 ? ['si','CE S11 sano'] : (st.fsS11 ? ['','CE S11 inhibido (CEFS)'] : ['no','CE S11 golpeado']),
+    golpeados.length ? ['no','CE ' + golpeados.join(', ') + ' golpeado'] : null,
+    st.sgts ? ['','SGTS cerrado (socorro)'] : null,
+    r.rsiat ? ['si','RS IAT formada'] : null,
+    r.rsiat && !st.iatAb ? ['si','IAT cerrado · 750 Vcc'] : null
+  ]);
+}
 
 function solve(){
   // PASO 1 — condición de zona G, en Las Mercedes:
@@ -5496,6 +5530,7 @@ function render(){
       setW('i_gS11out', r.rrces11);
       setOn('i_coRRCES11', r.rrces11); setW('i_gBob', r.rrces11);
       setW('i_gBob48', r.rrces11);
+      pasos(r,1);
     },
     function(){
       setW('i_gCEout', r.rsiat);
@@ -5530,6 +5565,7 @@ function render(){
       setConm('i_ctSVT', st.SVT, !st.SVT); setW('i_gSVT2', false);
       setW('i_gIn', r.rrces11);
       setOn('i_coRSIAT', r.rsiat); setW('i_gCoil', r.rsiat);
+      pasos(r,2);
     },
     function(){
       // bucle: los dos contactos del R.RS.IAT llevan +48V (por P1) y 0V al IAT
@@ -5544,6 +5580,8 @@ function render(){
       g('i_btnCerrar').disabled = !r.rsiat || !st.iatAb;
       g('i_btnAbrir').disabled = st.iatAb;
       g('i_estIAT').textContent = st.iatAb ? 'IAT abierto' : 'IAT cerrado';
+      setOn('i_dotIAT', cerrado);
+      pasos(r,3); chips(r);
       g('i_status').textContent = statusMsg(r);
     }
   ];
@@ -5560,6 +5598,7 @@ function render(){
 });
 g('i_btnCerrar').onclick=function(){ if(solve().rsiat){ st.iatAb=false; render(); } };
 g('i_btnAbrir').onclick=function(){ st.iatAb=true; render(); };
+g('i_btnReset').onclick=function(){ V2.reponer('mod-l4iat', st, ST0, render); };
 render();
 })();
 
