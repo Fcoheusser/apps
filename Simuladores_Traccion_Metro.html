@@ -216,6 +216,9 @@ body:has(.mod.v2.activo)>footer{display:none}
 .v2 .v2-panel .grp input.peligro:checked::after{background:#fff}
 .v2 .v2-panel .grp input[type=checkbox]:focus-visible,.v2 .btn:focus-visible{outline:2px solid var(--text-accent);outline-offset:2px}
 .v2 .v2-fila .btn{height:34px;padding:0 10px;white-space:nowrap}
+.v2 .v2-panel .v2-esc{gap:6px;padding-bottom:10px}
+.v2 .v2-panel .v2-esc>.btn{margin:0;min-height:36px;text-align:left;border-top:1px solid var(--border-strong)}
+.v2 .v2-panel .v2-esc>.btn.act{border-color:#EF9F27;background:#2b2416;color:#f3c47a}
 .v2 .v2-acc{border-color:var(--bc);background:#25233d;color:#d9d5ff}
 .v2 .v2-par{display:flex;gap:6px}
 .v2 .v2-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#4a4a55;margin-right:8px;vertical-align:1px;transition:background .3s}
@@ -1161,8 +1164,6 @@ Para agregar un nuevo módulo:
 #t_plano .soc{font-size:11px;fill:#2BA6A6}
 #t_plano .dst{font-size:11px;fill:var(--text-secondary)}
 #t_plano .dst.on{fill:#EF9F27}
-#t_esc .btn{margin:0 6px 6px 0}
-#t_esc .btn.act{border-color:#2BA6A6;color:#2BA6A6}
 </style>
 
 
@@ -1890,14 +1891,23 @@ Para agregar un nuevo módulo:
 </section>
 
 <!-- ================= MÓDULO: TALLER PUENTE ALTO · ALIMENTACIÓN 750 V ================= -->
-<section id="mod-l4tpa" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4tpa" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Taller <span>Puente Alto</span> · Alimentación con corriente de tracción · Línea 4</h1>
-<p class="sub">S/ER Talleres · Cabina A · Cabinas C1, C2 y VP · Árbol de 750 Vcc con sus socorros</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+<p class="sub">S/ER Talleres · Cabina A · Cabinas C1, C2 y VP · árbol de 750 Vcc con sus socorros</p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="t_guia">Guía</button>
+<button class="btn" id="t_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="t_zoom" min="30" max="140" value="100"></label>
+<span id="t_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="t_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="t_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> todo el árbol de 750 V del Taller Puente Alto, desde la S/ER hasta cada cochera y cada haz de vías. A diferencia de los otros módulos, acá no hay lógica de 48 V: es <b>potencia</b>. La pregunta que responde es simple — <i>¿hasta dónde llega la corriente con estos aparatos así?</i></p>
 <p><b>Cómo se alimenta normalmente:</b> por el <b>IAT</b>, telecomandado desde el PCC. Entra a la Cabina A por el <b>SIAT</b>, pasa por el <b>DGT</b> y de la barra salen las cinco derivaciones: DVM (vías de maniobras, con su CTP para el tramo de protección), SCVP (cabina VP), SVC1 (cabina C1) y SVC2 (cabina C2).</p>
@@ -1908,7 +1918,7 @@ Para agregar un nuevo módulo:
 <li><b>Falla el DVM</b> → lo puentea el <b>SVMS</b> y las vías de maniobras siguen con tensión.</li>
 <li><b>Falla el DVC1</b> → lo puentea el <b>SVC1S</b> y la Cabina C1 sigue alimentando las cocheras.</li>
 </ul>
-<p><b>Prueba esto:</b> aprieta los botones de escenario de arriba. Cada uno arma la situación completa y verás el camino de la corriente moverse: por dónde entra ahora y qué quedó sin alimentación. Después abre y cierra aparatos a mano para ver qué se apaga.</p>
+<p><b>Prueba esto:</b> aprieta los botones de escenario del panel de controles. Cada uno arma la situación completa y verás el camino de la corriente moverse: por dónde entra ahora y qué quedó sin alimentación. Después abre y cierra aparatos a mano para ver qué se apaga.</p>
 <p><b>Las cocheras se alimentan por dos lados:</b> el haz de ingreso (SVH1 para las cocheras 1 a 9, SVH2 para las 10 a 16) y el grupo de la vía (SGC1 a SGC4, de a cuatro cocheras). Por eso cerrando distinto puedes dejar una cochera con tensión de un extremo y no del otro.</p>
 <p><b>La vía de pruebas:</b> el <b>SA</b> y el <b>SAE</b> arman el circuito de las resistencias C1 y C2. Con los dos cerrados el tren puede frenar con <b>recuperación</b>: la energía que devuelve al frenar sube por su diodo y se disipa en esas resistencias. Con ellos abiertos la vía tiene tensión pero sin frenado de recuperación. Fíjate en los diodos de las dos bajadas: obligan el sentido, tracción baja por una y recuperación vuelve por la otra.</p>
 <p><b>Los cortes de tramo:</b> fíjate en las marcas verticales sobre la vía. La energía de las vías principales llega hasta la <b>vía de enlace</b> y ahí se detiene — el tramo de protección y la vía de maniobras están separados de ella. Esos dos se alimentan <b>solo desde la cabina A</b>, por el DVM y su CTP. Así el taller y la línea nunca quedan unidos por la vía.</p>
@@ -1918,25 +1928,9 @@ Para agregar un nuevo módulo:
 <p><b>La conexión con el resto del simulador:</b> la vía de enlace que ves abajo a la izquierda es la que une el taller con las vías principales. Es el mismo enlace que aparece en el módulo de Zona G, en el rótulo "Apertura de la Zona si IATS cerrado y ruptor accionado".</p>
 <p><b>Fuente:</b> figuras 6, 7, 8 y 9 de la descripción de alimentación del Taller Puente Alto. Los aparatos, sus nombres y qué alimenta cada uno salen de ahí. El trazado se dibujó siguiendo esas figuras.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="t_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="t_zoom" min="30" max="140" value="100"></label>
-<span id="t_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
-
-<div class="panel" style="margin-bottom:8px">
-<fieldset class="grp" id="t_esc" style="flex:1 1 100%">
-<legend>Escenarios · aprieta uno y se arma solo</legend>
-<button class="btn" id="t_e0">Normal · por el IAT</button>
-<button class="btn" id="t_e1">Falla el IAT · socorro desde la S/ER</button>
-<button class="btn" id="t_e2">Falla la S/ER · socorro desde vías principales</button>
-<button class="btn" id="t_e3">Falla el DGT · puentear con SGTS</button>
-<button class="btn" id="t_e4">Falla el DVM · puentear con SVMS</button>
-<button class="btn" id="t_e5">Falla el DVC1 · puentear con SVC1S</button>
-</fieldset>
-</div>
+<div class="v2-body">
+<div class="v2-left">
 
 <div class="scrollwrap" id="t_wrap">
 <svg id="t_plano" width="2090" height="1300" viewBox="-370 -120 2090 1300" role="img">
@@ -1996,63 +1990,83 @@ Para agregar un nuevo módulo:
 <circle cx="1400" cy="900" r="9" fill="none" stroke="var(--text-secondary)"/><text x="1400" y="904" text-anchor="middle" style="font-size:9px;fill:var(--text-secondary)">M</text><path d="M 1376 900 H 1390" stroke="var(--text-secondary)" stroke-width="1" stroke-dasharray="2 2"/><g id="t_SVCL_out"><path class="w" d="M 1360 930 V 1000"/></g><text x="1360" y="1018" text-anchor="middle" class="dst">Nave de lavado</text><text x="1360" y="1032" text-anchor="middle" class="dst">y secado de trenes</text><g id="t_SVM2_out"><path class="w" d="M 1490 820 V 940"/></g><path d="M 1240 1052 H 1620" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="4 3" fill="none"/><path d="M 1240 1052 V 1044"/><path d="M 1620 1052 V 1044"/><text x="1430" y="1072" text-anchor="middle" class="via">Bucle Talleres y Lavado</text><text x="1490" y="958" text-anchor="middle" class="dst">Torno en Foso y</text><text x="1490" y="972" text-anchor="middle" class="dst">T. Revisión · M5-M6-M7</text><g id="t_SVM1_out"><path class="w" d="M 1620 820 V 940"/></g><text x="1620" y="958" text-anchor="middle" class="dst">Talleres de</text><text x="1620" y="972" text-anchor="middle" class="dst">mantención · M1-M4</text></svg>
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>Origen de la tensión</legend>
-<label><input type="checkbox" id="t_cbSER"> S/ER Talleres fuera de servicio</label>
-<label><input type="checkbox" id="t_cbZG"> Zona G sin tensión <span style="color:var(--text-secondary)">(deja la vía de enlace muerta)</span></label>
-<button class="btn" id="t_btnRep">Reponer todo a normal</button>
-</fieldset>
-<fieldset class="grp">
-<legend>S/ER Talleres y entrada</legend>
-<label><input type="checkbox" id="t_cbITM1" checked> ITM 1 cerrado</label><label><input type="checkbox" id="t_cbIA" checked> IA1 cerrado</label>
-
-<label><input type="checkbox" id="t_cbIAT" checked> IAT cerrado</label>
-<label><input type="checkbox" id="t_cbIATS"> IATS cerrado</label>
-<label><input type="checkbox" id="t_cbSVT"> SVT cerrado</label>
-<label><input type="checkbox" id="t_cbSIAT" checked> SIAT cerrado</label>
-</fieldset>
-<fieldset class="grp">
-<legend>Cabina A</legend>
-<label><input type="checkbox" id="t_cbDGT" checked> DGT cerrado</label>
-<label><input type="checkbox" id="t_cbSGTS"> SGTS cerrado <span style="color:#2BA6A6">(socorro)</span></label>
-<label><input type="checkbox" id="t_cbDVM" checked> DVM cerrado</label>
-<label><input type="checkbox" id="t_cbSVMS"> SVMS cerrado <span style="color:#2BA6A6">(socorro)</span></label>
-<label><input type="checkbox" id="t_cbCTP" checked> CTP cerrado</label>
-<label><input type="checkbox" id="t_cbSCVP" checked> SCVP cerrado</label>
-<label><input type="checkbox" id="t_cbSVC1" checked> SVC1 cerrado</label>
-<label><input type="checkbox" id="t_cbSVC2" checked> SVC2 cerrado</label>
-</fieldset>
-<fieldset class="grp">
-<legend>Cabina C1 · Cocheras de Operación</legend>
-<label><input type="checkbox" id="t_cbDVC1" checked> DVC1 cerrado</label>
-<label><input type="checkbox" id="t_cbSVC1S"> SVC1S cerrado <span style="color:#2BA6A6">(socorro)</span></label>
-<label><input type="checkbox" id="t_cbSVH1" checked> SVH1 · haz cocheras 1-9</label>
-<label><input type="checkbox" id="t_cbSVH2" checked> SVH2 · haz cocheras 10-16</label>
-<label><input type="checkbox" id="t_cbSGC1" checked> SGC1 · G1-G4</label>
-<label><input type="checkbox" id="t_cbSGC2" checked> SGC2 · G5-G8</label>
-<label><input type="checkbox" id="t_cbSGC3" checked> SGC3 · G9-G12</label>
-<label><input type="checkbox" id="t_cbSGC4" checked> SGC4 · G13-G16</label>
-</fieldset>
-<fieldset class="grp">
-<legend>Cabina C2 · Material Rodante</legend>
-<label><input type="checkbox" id="t_cbDVC2" checked> DVC2 cerrado</label>
-<label><input type="checkbox" id="t_cbSVTM" checked> SVTM · armario de troles</label>
-<label><input type="checkbox" id="t_cbSVL" checked> SVL · cabina de lavado</label>
-<label><input type="checkbox" id="t_cbSVCL" checked> SVCL · nave de lavado (motorizado)</label>
-<label><input type="checkbox" id="t_cbSVM2" checked> SVM2 · Torno en Foso</label>
-<label><input type="checkbox" id="t_cbSVM1" checked> SVM1 · mantención</label>
-</fieldset>
-<fieldset class="grp">
-<legend>Cabina VP · vía de pruebas</legend>
-<label><input type="checkbox" id="t_cbDVP" checked> DVP cerrado</label>
-<label><input type="checkbox" id="t_cbSA" checked> SA cerrado</label>
-<label><input type="checkbox" id="t_cbSAE" checked> SAE cerrado</label>
-<label><input type="checkbox" id="t_cbC1" checked> C1 · resistencia 1</label>
-<label><input type="checkbox" id="t_cbC2" checked> C2 · resistencia 2</label>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="t_pasoN"></em></div>
+<ol id="t_pasos">
+<li data-c="#DC7325"><b>1</b><span><strong>Entrada al taller</strong> — <em id="t_paso1">por el IAT o por un socorro</em></span></li>
+<li data-c="#3E77E0"><b>2</b><span><strong>Barra Cabina A</strong> — SIAT y DGT (o su socorro SGTS) cerrados</span></li>
+<li data-c="#EF9F27"><b>3</b><span><strong>Derivaciones</strong> — <em id="t_paso3">maniobras, pruebas, cocheras y material rodante</em></span></li>
+</ol>
 <div id="t_status">Alimentación normal por el IAT.</div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="t_btnRep">Reponer todo</button></div>
+<div class="v2-chips" id="t_chips"></div>
+<fieldset class="grp v2-esc" id="t_esc" style="--gc:#e8b45a">
+<legend>Escenarios · aprieta uno y se arma solo</legend>
+<button class="btn" id="t_e0">Normal · por el IAT</button>
+<button class="btn" id="t_e1">Falla el IAT · socorro desde la S/ER</button>
+<button class="btn" id="t_e2">Falla la S/ER · socorro desde vías principales</button>
+<button class="btn" id="t_e3">Falla el DGT · puentear con SGTS</button>
+<button class="btn" id="t_e4">Falla el DVM · puentear con SVMS</button>
+<button class="btn" id="t_e5">Falla el DVC1 · puentear con SVC1S</button>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>Origen de la tensión</legend>
+<label><span>S/ER Talleres fuera de servicio</span><input type="checkbox" class="peligro" id="t_cbSER"></label>
+<label><span>Zona G sin tensión (vía de enlace muerta)</span><input type="checkbox" class="peligro" id="t_cbZG"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#ec8a45">
+<legend>S/ER Talleres y entrada</legend>
+<label><span>ITM 1 cerrado</span><input type="checkbox" id="t_cbITM1" checked></label>
+<label><span>IA1 cerrado</span><input type="checkbox" id="t_cbIA" checked></label>
+<label><span>IAT cerrado</span><input type="checkbox" id="t_cbIAT" checked></label>
+<label><span>IATS cerrado (socorro)</span><input type="checkbox" id="t_cbIATS"></label>
+<label><span>SVT cerrado (socorro)</span><input type="checkbox" id="t_cbSVT"></label>
+<label><span>SIAT cerrado</span><input type="checkbox" id="t_cbSIAT" checked></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>Cabina A</legend>
+<label><span>DGT cerrado</span><input type="checkbox" id="t_cbDGT" checked></label>
+<label><span>SGTS cerrado (socorro)</span><input type="checkbox" id="t_cbSGTS"></label>
+<label><span>DVM cerrado</span><input type="checkbox" id="t_cbDVM" checked></label>
+<label><span>SVMS cerrado (socorro)</span><input type="checkbox" id="t_cbSVMS"></label>
+<label><span>CTP cerrado</span><input type="checkbox" id="t_cbCTP" checked></label>
+<label><span>SCVP cerrado</span><input type="checkbox" id="t_cbSCVP" checked></label>
+<label><span>SVC1 cerrado</span><input type="checkbox" id="t_cbSVC1" checked></label>
+<label><span>SVC2 cerrado</span><input type="checkbox" id="t_cbSVC2" checked></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#2BA6A6">
+<legend>Cabina C1 · Cocheras de Operación</legend>
+<label><span>DVC1 cerrado</span><input type="checkbox" id="t_cbDVC1" checked></label>
+<label><span>SVC1S cerrado (socorro)</span><input type="checkbox" id="t_cbSVC1S"></label>
+<label><span>SVH1 · haz cocheras 1-9</span><input type="checkbox" id="t_cbSVH1" checked></label>
+<label><span>SVH2 · haz cocheras 10-16</span><input type="checkbox" id="t_cbSVH2" checked></label>
+<label><span>SGC1 · G1-G4</span><input type="checkbox" id="t_cbSGC1" checked></label>
+<label><span>SGC2 · G5-G8</span><input type="checkbox" id="t_cbSGC2" checked></label>
+<label><span>SGC3 · G9-G12</span><input type="checkbox" id="t_cbSGC3" checked></label>
+<label><span>SGC4 · G13-G16</span><input type="checkbox" id="t_cbSGC4" checked></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#2BA6A6">
+<legend>Cabina C2 · Material Rodante</legend>
+<label><span>DVC2 cerrado</span><input type="checkbox" id="t_cbDVC2" checked></label>
+<label><span>SVTM · armario de troles</span><input type="checkbox" id="t_cbSVTM" checked></label>
+<label><span>SVL · cabina de lavado</span><input type="checkbox" id="t_cbSVL" checked></label>
+<label><span>SVCL · nave de lavado (motorizado)</span><input type="checkbox" id="t_cbSVCL" checked></label>
+<label><span>SVM2 · Torno en Foso</span><input type="checkbox" id="t_cbSVM2" checked></label>
+<label><span>SVM1 · mantención</span><input type="checkbox" id="t_cbSVM1" checked></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#2BA6A6">
+<legend>Cabina VP · vía de pruebas</legend>
+<label><span>DVP cerrado</span><input type="checkbox" id="t_cbDVP" checked></label>
+<label><span>SA cerrado</span><input type="checkbox" id="t_cbSA" checked></label>
+<label><span>SAE cerrado</span><input type="checkbox" id="t_cbSAE" checked></label>
+<label><span>C1 · resistencia 1</span><input type="checkbox" id="t_cbC1" checked></label>
+<label><span>C2 · resistencia 2</span><input type="checkbox" id="t_cbC2" checked></label>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
@@ -5607,7 +5621,7 @@ render();
 function g(id){return document.getElementById(id);}
 var BW=1720, BH=1180;
 function setZoom(p){var s=g('t_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('t_zoom').value=p;g('t_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('t_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('t_wrap', BW, BH)); }
 MODFIT['mod-l4tpa'] = fit;
 g('t_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('t_btnFit').onclick=fit;
@@ -5682,6 +5696,33 @@ function statusMsg(r){
 }
 
 function setAp(k,on,live){var e=g('t_'+k);if(!e)return;e.classList.toggle('on',on);e.classList.toggle('live',!!live&&on);}
+function sinTension(r){
+  var sin=[];
+  if(!r.vm) sin.push('maniobras');
+  if(!r.vpBar) sin.push('vía de pruebas');
+  if(!r.barC1) sin.push('cocheras');
+  if(!r.barC2) sin.push('material rodante');
+  return sin;
+}
+var PASOS = [
+  {ok:function(r){return r.entrada;}, bloq:function(r){return !r.entrada;}},
+  {ok:function(r){return r.barA;}, bloq:function(r){return r.entrada && !r.barA;}},
+  {ok:function(r){return r.barA && !sinTension(r).length;}, bloq:function(r){return r.barA && sinTension(r).length;}}
+];
+function pasos(r, hasta){ V2.pasos('t_', PASOS, r, hasta); }
+function chips(r){
+  var sin = sinTension(r);
+  V2.chips('t_chips', [
+    st.ser ? ['no','S/ER Talleres fuera de servicio'] : null,
+    st.zg ? ['no','Zona G sin tensión'] : null,
+    r.entrada ? [r.origen === 'IAT' ? 'si' : '', 'Entrada: ' + (r.origen === 'IAT' ? 'IAT' : 'socorro desde ' + r.origen)] : ['no','Sin entrada'],
+    st.SGTS ? ['','SGTS puentea el DGT'] : null,
+    st.SVMS && !st.DVM ? ['','SVMS puentea el DVM'] : null,
+    st.SVC1S && !st.DVC1 ? ['','SVC1S puentea el DVC1'] : null,
+    r.barA && !sin.length ? ['si','Todo el taller con tensión'] : null,
+    r.barA && sin.length ? ['no','Sin tensión: ' + sin.join(', ')] : null
+  ]);
+}
 function setW(id,on){var e=g(id);if(e)e.querySelectorAll('.w').forEach(function(w){w.classList.toggle('live',!!on);});}
 
 var timers=[];
@@ -5708,6 +5749,9 @@ function render(){
       setW('t_gSVTbot', (r.porSER||r.porVias) && st.SVT);
       setAp('IATS', st.IATS, r.porSER || r.porVias);
       setW('t_gIATSbot', (r.porSER||r.porVias) && st.IATS);
+      g('t_paso1').textContent = r.origen === 'IAT' ? 'por el IAT (camino normal)' :
+        (r.origen ? 'socorro desde ' + (r.origen === 'S/ER' ? 'la S/ER por SVT + IATS' : 'las vías principales por SVT + IATS') : 'sin camino: ni IAT ni socorro');
+      pasos(r,0);
     },
     function(){
       setW('t_gEntA', r.entrada); setAp('SIAT', st.SIAT, r.entrada);
@@ -5716,6 +5760,7 @@ function render(){
       setW('t_gDGTout', r.entA && st.DGT);
       setAp('SGTS', st.SGTS, r.entA); setW('t_gSGTS', r.entA && st.SGTS);
       setW('t_gBarA', r.barA);
+      pasos(r,1);
     },
     function(){
       setW('t_gDVMin', r.barA); setAp('DVM', st.DVM, r.barA); setW('t_gDVMout', r.barA && st.DVM);
@@ -5752,6 +5797,10 @@ function render(){
       setW('t_SVTM_out', r.SVTM); setW('t_SVL_out', r.SVL);
       setAp('SVCL', st.SVCL, r.SVL); setW('t_SVCL_out', r.lavado);
       setW('t_SVM2_out', r.SVM2); setW('t_SVM1_out', r.SVM1);
+      var sin = sinTension(r);
+      g('t_paso3').textContent = !r.barA ? 'maniobras, pruebas, cocheras y material rodante' :
+        (sin.length ? 'sin tensión: ' + sin.join(', ') : 'todo el taller con tensión');
+      pasos(r,2); chips(r);
       g('t_status').textContent = statusMsg(r);
     }
   ];
