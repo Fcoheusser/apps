@@ -2283,14 +2283,23 @@ Para agregar un nuevo módulo:
 </section>
 
 <!-- ================= MÓDULO: L4 · ZONA D · SECCIONES 5, 6 y 7 ================= -->
-<section id="mod-l4zd" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4zd" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Condición de <span>Zona D</span> · Secciones 5, 6 y 7 · Línea 4</h1>
-<p class="sub">Estación Vicuña Mackenna (armario remoto en Vicente Valdés) · RR.ZD + repetidor RR1.ZD · SAT 5/6 y SAT 6/7 · Plano 1202-DSM-04-066-30573 Ind. A</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+<p class="sub">Vicuña Mackenna (armario remoto en Vicente Valdés) · RR.ZD + repetidor RR1.ZD · SAT 5/6 y 6/7 · plano <span class="v2-mono">1202-DSM-04-066-30573</span> Ind. A</p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="d_guia">Guía</button>
+<button class="btn" id="d_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="d_zoom" min="30" max="140" value="100"></label>
+<span id="d_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="d_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="d_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> la condición de Zona D valida <b>tres secciones en serie</b> para activar el <b>RR.ZD</b> en el armario de Vicuña Mackenna. Cada sección valida por su rama CE (RCE cerrado o RCEFS) <b>o</b> por su rama de aislamiento (los dos aparatos de sus extremos abiertos).</p>
 <p><b>Las ramas de aislamiento:</b> S5 = SAT 5/6 + IAS S/ER Las Torres · S6 = SAT 5/6 + SAT 6/7 · S7 = SAT 6/7 + IA S/ER Vicente Valdés. Fíjate que <b>la S6 no tiene S/ER propia</b>: es el tramo entre los dos seccionadores, y para aislarla hay que abrir <b>ambos SAT</b>.</p>
@@ -2302,13 +2311,9 @@ Para agregar un nuevo módulo:
 <p><b>Ejercicio 4 — Energizar las tres vías:</b> con la zona armada, cierra el <b>IAS LT</b> (se energiza la vía S5) y el <b>IA VV</b> (vía S7). ¿Y la S6? No tiene alimentador propio: <b>toma los 750 Vcc a través de los SAT cerrados</b> desde sus vecinas — con el SAT 5/6 cerrado se alimenta desde la S5, o con el 6/7 desde la S7. Abre ambos SAT con las vías energizadas y verás la S6 quedar muerta al medio mientras S5 y S7 siguen vivas (y las cuchillas rojas levantadas). Si cae la condición, los interruptores disparan.</p>
 <p><b>Ejercicio 5 — Prueba de lámpara:</b> el botón PL enciende la ampolleta roja sin tocar la condición de zona.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="d_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="d_zoom" min="30" max="140" value="100"></label>
-<span id="d_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="d_wrap">
 <svg id="d_plano" width="2640" height="1060" viewBox="0 0 2640 1060" role="img">
 <title>Condición de Zona D — Secciones 5, 6 y 7</title>
@@ -2692,52 +2697,61 @@ Para agregar un nuevo módulo:
 <g id="d_legendD" transform="translate(1480,632)" style="fill:var(--text-secondary)"><g class="sym"><circle cx="0" cy="0" r="2.5"/><circle cx="28" cy="0" r="2.5"/><line x1="3" y1="0" x2="23" y2="-11"/></g><text x="38" y="4" style="font-size:11px;fill:var(--text-secondary)">abierto</text><g class="sym" transform="translate(108,0)"><circle cx="0" cy="0" r="2.5"/><circle cx="28" cy="0" r="2.5"/><line x1="3" y1="0" x2="25" y2="0"/></g><text x="154" y="4" style="font-size:11px;fill:var(--text-secondary)">cerrado</text><line x1="218" y1="0" x2="258" y2="0" stroke="#EF9F27" stroke-width="2" stroke-dasharray="6 4"/><text x="266" y="4" style="font-size:11px;fill:var(--text-secondary)">energizado</text><rect x="344" y="-6" width="11" height="11" rx="2" fill="none" stroke="#E24B4A" stroke-width="1.5"/><text x="362" y="4" style="font-size:11px;fill:var(--text-secondary)">RCE</text><rect x="404" y="-6" width="11" height="11" rx="2" fill="none" stroke="#2BA6A6" stroke-width="1.5"/><text x="422" y="4" style="font-size:11px;fill:var(--text-secondary)">SAT / IAS-IA</text><rect x="520" y="-6" width="11" height="11" rx="2" fill="none" stroke="#3E77E0" stroke-width="1.5"/><text x="538" y="4" style="font-size:11px;fill:var(--text-secondary)">RR.ZD / RR1.ZD</text></g></svg>
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · Condición de Zona D (mando PCC)</legend>
-<label><input type="checkbox" id="d_cbDG" checked> DG (normal cerrado)</label>
-<label><input type="checkbox" id="d_cbGiro"> TPL ZD girado</label>
-<button class="btn" id="d_btnPuls">Oprimir TPL (pulso)</button>
-<button class="btn" id="d_btnPL">PL · Prueba lámpara</button>
-</fieldset>
-<fieldset class="grp">
-<legend>2 · CE S5 · bucle de ruptores</legend>
-<label><input type="checkbox" id="d_cbRE5a"> Ruptores vía 1 S5</label>
-<label><input type="checkbox" id="d_cbRE5b"> Ruptores vía 2 S5</label>
-<button class="btn" id="d_btnTC5a">TC: Abrir R.PCE.S5</button>
-<button class="btn" id="d_btnTC5c" disabled>TC: Cerrar R.PCE.S5</button>
-<label><input type="checkbox" id="d_cbCEFS5"> Inhib. CEFS S5</label>
-</fieldset>
-<fieldset class="grp">
-<legend>2b · CE S6 · bucle de ruptores</legend>
-<label><input type="checkbox" id="d_cbRE6a"> Ruptores vía 1 S6</label>
-<label><input type="checkbox" id="d_cbRE6b"> Ruptores vía 2 S6</label>
-<button class="btn" id="d_btnTC6a">TC: Abrir R.PCE.S6</button>
-<button class="btn" id="d_btnTC6c" disabled>TC: Cerrar R.PCE.S6</button>
-<label><input type="checkbox" id="d_cbCEFS6"> Inhib. CEFS S6</label>
-</fieldset>
-<fieldset class="grp">
-<legend>2c · CE S7 · bucle de ruptores</legend>
-<label><input type="checkbox" id="d_cbRE7a"> Ruptores vía 1 S7</label>
-<label><input type="checkbox" id="d_cbRE7b"> Ruptores vía 2 S7</label>
-<button class="btn" id="d_btnTC7a">TC: Abrir R.PCE.S7</button>
-<button class="btn" id="d_btnTC7c" disabled>TC: Cerrar R.PCE.S7</button>
-<label><input type="checkbox" id="d_cbCEFS7"> Inhib. CEFS S7</label>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Seccionadores telemandados</legend>
-<label><input type="checkbox" id="d_cbSAT56"> SAT 5/6 abierto</label>
-<label><input type="checkbox" id="d_cbSAT67"> SAT 6/7 abierto</label>
-</fieldset>
-<fieldset class="grp">
-<legend>4 · Energizar vías (comando del operador, requiere Condición RS)</legend>
-<button class="btn" id="d_btnIAS" disabled>Cerrar IAS LT (S5)</button>
-<button class="btn" id="d_btnIASa" disabled>Abrir IAS LT</button>
-<button class="btn" id="d_btnIA" disabled>Cerrar IA VV (S7)</button>
-<button class="btn" id="d_btnIAa" disabled>Abrir IA VV</button>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="d_pasoN"></em></div>
+<ol id="d_pasos">
+<li data-c="#7A70E0"><b>1</b><span><strong>RZD</strong> — con el R.DG cerrado, se gira y oprime el TPL ZD</span></li>
+<li data-c="#3E77E0"><b>2</b><span><strong>RR.ZD</strong> — S5, S6 y S7 validan, por su CE o por aislamiento</span></li>
+<li data-c="#1D9E75"><b>3</b><span><strong>KZD sella</strong> — y el RR.ZD arma el repetidor RR1.ZD</span></li>
+<li data-c="#D264C4"><b>4</b><span><strong>R.RS</strong> — <em id="d_paso4">condiciones RS S5 y S7</em></span></li>
+<li data-c="#EF9F27"><b>5</b><span><strong>IAS LT / IA VV</strong> — <em id="d_paso5">vías a 750 Vcc</em></span></li>
+</ol>
 <div id="d_status">Marca "TPL ZD girado" y aprieta "Oprimir TPL" para armar la Zona D.</div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="d_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="d_chips"></div>
+<fieldset class="grp" style="--gc:#9b93ee">
+<legend>1 · Mando PCC</legend>
+<label><span>R.DG (normal cerrado)</span><input type="checkbox" id="d_cbDG" checked></label>
+<label><span>TPL ZD girado</span><input type="checkbox" id="d_cbGiro"></label>
+<div class="v2-fila"><span>Pulsador TPL</span><button class="btn v2-acc" id="d_btnPuls" style="--bc:#7A70E0">Oprimir (pulso)</button></div>
+<div class="v2-fila"><span>Luz roja del TPL</span><button class="btn v2-acc" id="d_btnPL" style="--bc:#E24B4A">PL · Prueba lámpara</button></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2 · Corte de emergencia S5</legend>
+<label><span>Ruptores vía 1 S5</span><input type="checkbox" class="peligro" id="d_cbRE5a"></label>
+<label><span>Ruptores vía 2 S5</span><input type="checkbox" class="peligro" id="d_cbRE5b"></label>
+<label><span>Inhibición CEFS S5</span><input type="checkbox" id="d_cbCEFS5"></label>
+<div class="v2-fila"><span>Prueba TC</span><span class="v2-par"><button class="btn" id="d_btnTC5a">Abrir R.PCE</button><button class="btn" id="d_btnTC5c" disabled>Cerrar R.PCE</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2b · Corte de emergencia S6</legend>
+<label><span>Ruptores vía 1 S6</span><input type="checkbox" class="peligro" id="d_cbRE6a"></label>
+<label><span>Ruptores vía 2 S6</span><input type="checkbox" class="peligro" id="d_cbRE6b"></label>
+<label><span>Inhibición CEFS S6</span><input type="checkbox" id="d_cbCEFS6"></label>
+<div class="v2-fila"><span>Prueba TC</span><span class="v2-par"><button class="btn" id="d_btnTC6a">Abrir R.PCE</button><button class="btn" id="d_btnTC6c" disabled>Cerrar R.PCE</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2c · Corte de emergencia S7</legend>
+<label><span>Ruptores vía 1 S7</span><input type="checkbox" class="peligro" id="d_cbRE7a"></label>
+<label><span>Ruptores vía 2 S7</span><input type="checkbox" class="peligro" id="d_cbRE7b"></label>
+<label><span>Inhibición CEFS S7</span><input type="checkbox" id="d_cbCEFS7"></label>
+<div class="v2-fila"><span>Prueba TC</span><span class="v2-par"><button class="btn" id="d_btnTC7a">Abrir R.PCE</button><button class="btn" id="d_btnTC7c" disabled>Cerrar R.PCE</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#2BA6A6">
+<legend>3 · Seccionadores telemandados</legend>
+<label><span>SAT 5/6 abierto</span><input type="checkbox" id="d_cbSAT56"></label>
+<label><span>SAT 6/7 abierto</span><input type="checkbox" id="d_cbSAT67"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#ec8a45">
+<legend>4 · Energizar vías (requiere Condición RS)</legend>
+<div class="v2-fila"><span><i class="v2-dot" id="d_dotS5"></i>IAS Las Torres (S5)</span><span class="v2-par"><button class="btn" id="d_btnIAS" disabled>Cerrar</button><button class="btn" id="d_btnIASa" disabled>Abrir</button></span></div>
+<div class="v2-fila"><span><i class="v2-dot" id="d_dotS7"></i>IA Vicente Valdés (S7)</span><span class="v2-par"><button class="btn" id="d_btnIA" disabled>Cerrar</button><button class="btn" id="d_btnIAa" disabled>Abrir</button></span></div>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 <!-- ================= MÓDULO: L4 · ZONA E · SECCIÓN 8 ================= -->
@@ -5754,7 +5768,7 @@ render();
 function g(id){return document.getElementById(id);}
 var BW=2640, BH=1060;
 function setZoom(p){var s=g('d_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('d_zoom').value=p;g('d_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('d_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('d_wrap', BW, BH)); }
 MODFIT['mod-l4zd'] = fit;
 g('d_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('d_btnFit').onclick=fit;
@@ -5764,6 +5778,27 @@ var st = {dg:true, giro:false, puls:false, kzd:false, pl:false,
   re6a:false, re6b:false, pce6:true, cefs6:false,
   re7a:false, re7b:false, pce7:true, cefs7:false,
   sat56Ab:false, sat67Ab:false, iasltAb:true, iavvAb:true};
+var ST0 = JSON.parse(JSON.stringify(st));
+var PASOS = [
+  {ok:function(r){return r.rzd;},  bloq:function(r){return st.puls && !r.rzd;}},
+  {ok:function(r){return r.rrzd;}, bloq:function(r){return r.rzd && !r.rrzd;}},
+  {ok:function(r){return r.kzd;}},
+  {ok:function(r){return r.rss5 || r.rss7;}, bloq:function(r){return r.rrzd && !r.rss5 && !r.rss7;}},
+  {ok:function(r){return r.via5 || r.via6 || r.via7;}}
+];
+function pasos(r, hasta){ V2.pasos('d_', PASOS, r, hasta); }
+function chips(r){
+  function sec(n, c, ce){ return c ? ['si', 'S'+n+(ce ? ' valida por CE' : ' valida por aislamiento')] : ['no', 'S'+n+' no valida']; }
+  var vias = []; if(r.via5)vias.push('S5'); if(r.via6)vias.push('S6'); if(r.via7)vias.push('S7');
+  V2.chips('d_chips', [
+    !st.dg ? ['no','DG abierto'] : null,
+    sec(5, r.c5, r.ce5), sec(6, r.c6, r.ce6), sec(7, r.c7, r.ce7),
+    st.sat56Ab ? ['','SAT 5/6 abierto'] : null,
+    st.sat67Ab ? ['','SAT 6/7 abierto'] : null,
+    r.kzd ? ['si','Zona D armada'] : ['','Zona D sin armar'],
+    vias.length ? ['si', vias.join(' · ') + ' · 750 Vcc'] : null
+  ]);
+}
 
 function solve(){
   var kzd = st.kzd, rzd=false, rrzd=false, c5=false, c6=false, c7=false;
@@ -5846,7 +5881,7 @@ function render(){
         setOn('d_ctRE'+n+'a',!rea);setOn('d_ctRE'+n+'b',!reb);setOn('d_ctPCE'+n,pce);setOn('d_coPCE'+n,pce);setLive('d_gPCE'+n,pce);
         setLive('d_gBucleCE'+n,rce);setOn('d_coRCE'+n,rce);setOn('d_ctTKb'+n,rce);setLive('d_gTKb'+n,rce);setOn('d_tkb'+n,rce);
         g('d_btnTC'+n+'a').disabled=!pce;g('d_btnTC'+n+'c').disabled=pce;
-      });},
+      });pasos(r,0);},
     function(){setOn('d_ctRZD2',r.rzd);setLive('d_gChain',r.rrzd);},
     function(){
       setConm('d_ctIASlt', st.iasltAb, r.rrzd&&r.iso5);
@@ -5866,7 +5901,7 @@ function render(){
       setLive('d_gS7iso',r.rrzd&&r.iso7);
       setOn('d_ctCE7',r.rce7);setOn('d_ctCEFS7',st.cefs7);
       setLive('d_gS7ce',r.rrzd&&r.rce7);setLive('d_gS7cefs',r.rrzd&&st.cefs7);
-      setOn('d_coRRZD',r.rrzd);},
+      setOn('d_coRRZD',r.rrzd);pasos(r,1);},
     function(){setOn('d_ctRet',r.rrzd);setLive('d_gRet',r.rrzd);setOn('d_coKZD',r.kzd);
       setLive('d_gRSS5',r.rss5);setOn('d_ctRS5b',r.rrzd);setLive('d_wRRZDrs5',r.rss5);setLive('d_mkRRZD',r.rrzd);setOn('d_coRSS5',r.rss5);
       setOn('d_ctB5a',r.rss5);setOn('d_ctB5b',r.rss5);setLive('d_gBucle5',r.rss5);
@@ -5886,6 +5921,12 @@ function render(){
       g('d_btnIASa').disabled = st.iasltAb;
       g('d_btnIA').disabled = !r.rss7 || !st.iavvAb;
       g('d_btnIAa').disabled = st.iavvAb;
+      setOn('d_dotS5', r.via5); setOn('d_dotS7', r.via7);
+      g('d_paso4').textContent = r.rss5 && r.rss7 ? 'condiciones RS S5 y S7 presentes (la S6 no tiene)' :
+        (r.rss5 ? 'solo RS S5 presente (S7 sin su CE)' : (r.rss7 ? 'solo RS S7 presente (S5 sin su CE)' : 'condiciones RS S5 y S7'));
+      var vias=[]; if(r.via5)vias.push('S5'); if(r.via6)vias.push('S6'); if(r.via7)vias.push('S7');
+      g('d_paso5').textContent = vias.length ? vias.join(', ') + ' a 750 Vcc' + (r.via6 ? ' (S6 por SAT)' : '') : 'vías a 750 Vcc';
+      pasos(r,4); chips(r);
       g('d_status').textContent=statusMsg(r);}
   ];
   stages.forEach(function(fn,i){timers.push(setTimeout(fn,i*300));});
@@ -5908,6 +5949,7 @@ g('d_btnIAS').onclick=function(){st.iasltAb=false;render();};
 g('d_btnIASa').onclick=function(){st.iasltAb=true;render();};
 g('d_btnIA').onclick=function(){st.iavvAb=false;render();};
 g('d_btnIAa').onclick=function(){st.iavvAb=true;render();};
+g('d_btnReset').onclick=function(){ V2.reponer('mod-l4zd', st, ST0, render); };
 render();
 })();
 
