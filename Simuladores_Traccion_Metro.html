@@ -930,7 +930,7 @@ Para agregar un nuevo módulo:
 <div class="v2-body">
 <div class="v2-left">
 <div class="scrollwrap" id="c_wrap">
-<svg id="c_plano" width="1300" height="840" viewBox="0 0 1300 840" role="img">
+<svg id="c_plano" width="1300" height="890" viewBox="0 0 1300 890" role="img">
 <title>Condición de Zona C — Sección 4</title>
 <defs><marker id="c_arC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 
@@ -1043,11 +1043,11 @@ Para agregar un nuevo módulo:
 <g transform="translate(0,-110)"><line x1="20" y1="630" x2="1280" y2="630" stroke="var(--border)" stroke-width="1"/>
 <text x="20" y="654" style="font-weight:600;fill:var(--text-primary);font-size:13px">② Condición RS S4 · relé de seguridad R.RS.S4 y bucle de 5V a los NS1 de las dos S/ER</text>
 
-<rect class="zona" x="20" y="670" width="225" height="150" rx="10"/>
+<rect class="zona" x="20" y="670" width="225" height="200" rx="10"/>
 <text x="30" y="690" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Rotonda Quilín</text>
-<rect class="zona" x="260" y="670" width="225" height="150" rx="10"/>
+<rect class="zona" x="260" y="670" width="225" height="200" rx="10"/>
 <text x="270" y="690" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Las Torres</text>
-<rect class="zona" x="500" y="670" width="780" height="150" rx="10"/>
+<rect class="zona" x="500" y="670" width="780" height="200" rx="10"/>
 <text x="510" y="690" style="font-weight:500;fill:var(--text-primary);font-size:12px">Estación Las Torres · Condición RS S4</text>
 
 <text x="780" y="724" text-anchor="end">0V</text>
@@ -1071,32 +1071,32 @@ Para agregar un nuevo módulo:
 <text x="620" y="758" text-anchor="middle" style="font-size:11px">Bucle Condición RS S4 (5V)</text>
 <text x="740" y="812" style="font-size:11px">contactos R.RS.S4</text>
 
-<g id="c_coNS1lt" class="coil f-ns1"><text x="410" y="748" text-anchor="middle">NS1 · 5V</text><path class="zz" d="M 390 768 L 400 750 L 410 768 L 420 750 L 430 768"/></g>
-<text x="330" y="718" text-anchor="middle" style="font-size:11px">IA S/ER LT</text>
-<g id="c_iaSym" class="sym f-sat"><circle cx="302.5" cy="730" r="2.5"/><circle cx="357.5" cy="730" r="2.5"/><line class="bo" x1="305" y1="730" x2="349" y2="717"/><line class="bc" x1="305" y1="730" x2="355" y2="730"/></g>
-<text x="330" y="810" text-anchor="middle" style="font-size:11px">→ 750 Vcc S4</text>
+<g id="c_coNS1lt" class="coil f-ns1"><text x="410" y="748" text-anchor="middle">IA · NS1</text><path class="zz" d="M 390 768 L 400 750 L 410 768 L 420 750 L 430 768"/></g>
+<line x1="410" y1="772" x2="410" y2="818" stroke="var(--t)" stroke-width="0.7" stroke-dasharray="3 3"/>
+<g id="c_iaSym" class="ct"><rect x="380" y="818" width="60" height="26" rx="4"/><text x="410" y="831" text-anchor="middle" dominant-baseline="central">IA</text></g>
+<g id="c_gFeedIA"><path class="w" d="M410 844 V894"/></g>
 
-<g id="c_coNS1rq" class="coil f-ns1"><text x="170" y="748" text-anchor="middle">NS1 · 5V</text><path class="zz" d="M 150 768 L 160 750 L 170 768 L 180 750 L 190 768"/></g>
-<text x="90" y="718" text-anchor="middle" style="font-size:11px">IAS S/ER RQ</text>
-<g id="c_iasSym" class="sym f-sat"><circle cx="62.5" cy="730" r="2.5"/><circle cx="117.5" cy="730" r="2.5"/><line class="bo" x1="65" y1="730" x2="109" y2="717"/><line class="bc" x1="65" y1="730" x2="115" y2="730"/></g>
-<text x="90" y="810" text-anchor="middle" style="font-size:11px">→ 750 Vcc S4</text>
+<g id="c_coNS1rq" class="coil f-ns1"><text x="170" y="748" text-anchor="middle">IAS · NS1</text><path class="zz" d="M 150 768 L 160 750 L 170 768 L 180 750 L 190 768"/></g>
+<line x1="170" y1="772" x2="170" y2="818" stroke="var(--t)" stroke-width="0.7" stroke-dasharray="3 3"/>
+<g id="c_iasSym" class="ct"><rect x="140" y="818" width="60" height="26" rx="4"/><text x="170" y="831" text-anchor="middle" dominant-baseline="central">IAS</text></g>
+<g id="c_gFeedIAS"><path class="w" d="M170 844 V894"/></g>
 
 <circle id="c_tk4" class="tkdot" cx="520" cy="796" r="6"/>
 <text x="534" y="812" style="font-size:11px">VMAT: TK RS.S4 al PCC</text>
 
 <!-- Vía S4 (dos alimentadores) -->
-<rect id="c_via4" class="viabar" x="20" y="844" width="1260" height="30" rx="4"/>
-<text id="c_via4t" class="viabartxt" x="650" y="859" text-anchor="middle" dominant-baseline="central">Vía S4 · Las Torres · 750 Vcc (alimentada desde S/ER RQ y S/ER LT)</text>
+<rect id="c_via4" class="viabar" x="20" y="894" width="1260" height="30" rx="4"/>
+<text id="c_via4t" class="viabartxt" x="650" y="909" text-anchor="middle" dominant-baseline="central">Vía S4 · Las Torres · 750 Vcc (alimentada desde S/ER RQ y S/ER LT)</text>
 
-<g class="sym"><circle cx="30" cy="910" r="2.5"/><circle cx="58" cy="910" r="2.5"/><line x1="33" y1="910" x2="53" y2="899"/></g>
-<text x="66" y="914" style="font-size:11px">abierto</text>
-<g class="sym"><circle cx="140" cy="910" r="2.5"/><circle cx="168" cy="910" r="2.5"/><line x1="143" y1="910" x2="165" y2="910"/></g>
-<text x="176" y="914" style="font-size:11px">cerrado</text>
-<line x1="240" y1="910" x2="280" y2="910" stroke="#EF9F27" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="288" y="914" style="font-size:11px">energizado</text>
-<rect x="410" y="903" width="11" height="11" rx="2" fill="none" stroke="#E24B4A" stroke-width="1.5"/><text x="427" y="913" style="font-size:11px">RCE</text>
-<rect x="480" y="903" width="11" height="11" rx="2" fill="none" stroke="#2BA6A6" stroke-width="1.5"/><text x="497" y="913" style="font-size:11px">R A ZC</text>
-<rect x="580" y="903" width="11" height="11" rx="2" fill="none" stroke="#3E77E0" stroke-width="1.5"/><text x="597" y="913" style="font-size:11px">RR.ZC</text>
+<g class="sym"><circle cx="30" cy="960" r="2.5"/><circle cx="58" cy="960" r="2.5"/><line x1="33" y1="960" x2="53" y2="949"/></g>
+<text x="66" y="964" style="font-size:11px">abierto</text>
+<g class="sym"><circle cx="140" cy="960" r="2.5"/><circle cx="168" cy="960" r="2.5"/><line x1="143" y1="960" x2="165" y2="960"/></g>
+<text x="176" y="964" style="font-size:11px">cerrado</text>
+<line x1="240" y1="960" x2="280" y2="960" stroke="#EF9F27" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="288" y="964" style="font-size:11px">energizado</text>
+<rect x="410" y="953" width="11" height="11" rx="2" fill="none" stroke="#E24B4A" stroke-width="1.5"/><text x="427" y="963" style="font-size:11px">RCE</text>
+<rect x="480" y="953" width="11" height="11" rx="2" fill="none" stroke="#2BA6A6" stroke-width="1.5"/><text x="497" y="963" style="font-size:11px">R A ZC</text>
+<rect x="580" y="953" width="11" height="11" rx="2" fill="none" stroke="#3E77E0" stroke-width="1.5"/><text x="597" y="963" style="font-size:11px">RR.ZC</text>
 </g></svg>
 </div>
 
@@ -5378,7 +5378,7 @@ render();
 /* ================= MÓDULO C: L4 · ZONA C · SECCIÓN 4 ================= */
 (function(){
 function g(id){return document.getElementById(id);}
-var BW=1300, BH=840;
+var BW=1300, BH=890;
 function setZoom(p){var s=g('c_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('c_zoom').value=p;g('c_zoomVal').textContent=Math.round(p)+'%';}
 function fit(){ setZoom(V2.fit('c_wrap', BW, BH)); }
 MODFIT['mod-l4zc'] = fit;
@@ -5468,6 +5468,7 @@ function render(){
       setOn('c_ctB4a',r.rss4);setOn('c_ctB4b',r.rss4);setLive('c_gBucle4',r.rss4);
       setOn('c_coNS1lt',r.rss4);setOn('c_coNS1rq',r.rss4);setOn('c_tk4',r.rss4);
       setOn('c_iasSym',!st.iasAb);setOn('c_iaSym',!st.iaAb);
+      setLive('c_gFeedIAS',r.rss4&&!st.iasAb);setLive('c_gFeedIA',r.rss4&&!st.iaAb);
       setOn('c_via4',r.via4);g('c_via4t').classList.toggle('on',r.via4);
       g('c_btnIAS').disabled = !r.rss4 || !st.iasAb;
       g('c_btnIASa').disabled = st.iasAb;
