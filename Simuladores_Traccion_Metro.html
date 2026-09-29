@@ -157,6 +157,85 @@ footer{max-width:1180px;margin:26px auto 0;font-size:12px;color:var(--t);border-
 main:fullscreen, main:-webkit-full-screen{background:var(--bg);padding:10px 12px;overflow:auto;display:flex;flex-direction:column}
 main:fullscreen .scrollwrap, main:-webkit-full-screen .scrollwrap{flex:1;height:auto;max-height:none}
 main:fullscreen .ctrl, main:-webkit-full-screen .ctrl{flex:0 0 auto}
+
+/* ================= DISEÑO v2 (módulos con class="mod v2") =================
+   Barra superior + plano a la izquierda + panel de controles fijo a la derecha
+   + franja "Qué está pasando" bajo el plano. Maqueta aprobada 28-09-2026. */
+body:has(.mod.v2.activo){padding:0}
+body:has(.mod.v2.activo)>footer{display:none}
+.v2 .v2-app{max-width:none;margin:0;height:100vh;display:flex;flex-direction:column;position:relative;background:var(--bg)}
+.v2 .v2-top{flex:0 0 auto;display:flex;align-items:center;gap:16px;padding:10px 20px;border-bottom:1px solid #2a2a31;background:#18181c}
+.v2 .v2-back{height:38px;flex-shrink:0}
+.v2 .v2-tit{flex:1;min-width:0}
+.v2 .v2-tit h1{margin:0;font-size:18px;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v2 .v2-tit h1 span{color:#E24B4A}
+.v2 .v2-tit .sub{margin:2px 0 0;font-size:12.5px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v2-mono{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace}
+.v2-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.v2 .v2-tools{flex-shrink:0;gap:8px}
+.v2 .v2-tools .btn{height:38px}
+.v2 .v2-tools input[type=range]{width:110px}
+.v2 .v2-body{flex:1;min-height:0;display:flex}
+.v2 .v2-left{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px;padding:14px 16px 14px 20px}
+.v2 .scrollwrap{flex:1;min-height:0;overflow:auto;display:flex;border-radius:12px;background:#17171b;border:1px solid #2a2a31}
+.v2 .scrollwrap>svg{margin:auto;flex-shrink:0}
+.v2 .v2-pasos{flex:0 0 auto;border:1px solid #2a2a31;border-radius:12px;background:#1b1b20;padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+.v2 .v2-pasos-head{display:flex;align-items:center;gap:10px}
+.v2 .v2-pasos-head span{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-accent)}
+.v2 .v2-pasos-head i{flex:1;height:1px;background:#2a2a31}
+.v2 .v2-pasos-head em{font-style:normal;font-size:12.5px;color:var(--text-secondary)}
+.v2 .v2-pasos ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.v2 .v2-pasos li{display:flex;gap:9px;align-items:flex-start;padding:7px 9px;border-radius:8px;border:1px solid transparent;opacity:.45;transition:opacity .3s,background .3s,border-color .3s}
+.v2 .v2-pasos li>b{width:24px;height:24px;flex-shrink:0;border-radius:50%;background:#33333c;color:var(--text-secondary);font-size:12.5px;display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
+.v2 .v2-pasos li>span{font-size:13px;line-height:1.4;color:#c9c9d1}
+.v2 .v2-pasos li strong{color:var(--text-primary);font-weight:600}
+.v2 .v2-pasos li em{font-style:normal}
+.v2 .v2-pasos li.ok{opacity:1}
+.v2 .v2-pasos li.ok>b{background:var(--pc);color:#fff}
+.v2 .v2-pasos li.actual{background:#2b2416;border-color:#6b5220}
+.v2 .v2-pasos li.bloq{opacity:1;border-color:#7a2a2a;background:#2a1718}
+.v2 .v2-pasos li.bloq>b{background:#E24B4A;color:#fff}
+.v2 #a_status{margin:0;font-size:14px;line-height:1.5;color:var(--text-primary);min-height:2.9em}
+.v2 .v2-panel{flex:0 0 360px;margin:0;display:flex;flex-direction:column;flex-wrap:nowrap;gap:12px;padding:14px 18px;border-left:1px solid #2a2a31;background:#18181c;overflow-y:auto}
+.v2 .v2-panel-head{display:flex;align-items:center;justify-content:space-between}
+.v2 .v2-panel-head h2{margin:0;font-size:15px;font-weight:600}
+.v2 .v2-chips{display:flex;flex-wrap:wrap;gap:6px;min-height:24px}
+.v2 .v2-chips span{font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid #33333c;color:var(--text-secondary)}
+.v2 .v2-chips span.si{background:#2b2416;color:#f3c47a;border-color:#6b5220}
+.v2 .v2-chips span.no{background:#2a1718;color:#f08a89;border-color:#7a2a2a}
+.v2 .v2-panel .grp{display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:0;padding:8px 14px 6px;border-color:#2a2a31;background:#1c1c21;border-radius:12px}
+.v2 .v2-panel .grp legend{color:var(--gc,var(--text-secondary));text-transform:uppercase;letter-spacing:.06em}
+.v2 .v2-panel .grp>label,.v2 .v2-fila{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;font-size:14px;color:var(--text-primary)}
+.v2 .v2-panel .grp>legend+*~*{border-top:1px solid #26262c}
+.v2 .v2-panel .grp input[type=checkbox]{appearance:none;-webkit-appearance:none;margin:0;flex-shrink:0;width:40px;height:22px;border-radius:11px;background:#33333c;position:relative;cursor:pointer;transition:background .2s}
+.v2 .v2-panel .grp input[type=checkbox]::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#8b8b98;transition:left .2s,background .2s}
+.v2 .v2-panel .grp input[type=checkbox]:checked{background:#EF9F27}
+.v2 .v2-panel .grp input[type=checkbox]:checked::after{left:21px;background:#412402}
+.v2 .v2-panel .grp input.peligro:checked{background:#E24B4A}
+.v2 .v2-panel .grp input.peligro:checked::after{background:#fff}
+.v2 .v2-panel .grp input[type=checkbox]:focus-visible,.v2 .btn:focus-visible{outline:2px solid var(--text-accent);outline-offset:2px}
+.v2 .v2-fila .btn{height:34px;padding:0 10px;white-space:nowrap}
+.v2 .v2-acc{border-color:var(--bc);background:#25233d;color:#d9d5ff}
+.v2 .v2-par{display:flex;gap:6px}
+.v2 .v2-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#4a4a55;margin-right:8px;vertical-align:1px;transition:background .3s}
+.v2 .v2-dot.on{background:#EF9F27;box-shadow:0 0 6px #EF9F27}
+.v2 .v2-drawer{position:absolute;top:0;right:0;bottom:0;width:min(480px,100%);z-index:5;background:#1c1c21;border-left:1px solid var(--border-strong);box-shadow:-12px 0 30px rgba(0,0,0,.45);overflow-y:auto;padding:0 20px 20px}
+.v2 .v2-drawer[hidden]{display:none}
+.v2 .v2-drawer-head{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:14px 0 10px;background:#1c1c21;color:var(--text-accent);font-size:15px}
+.v2 .v2-drawer .cont{font-size:14px;color:var(--text-secondary);line-height:1.6}
+.v2 .v2-drawer .cont b{color:var(--text-primary)}
+/* pantallas angostas: el panel pasa abajo y la página hace scroll */
+@media (max-width: 1000px){
+  .v2 .v2-app{height:auto;min-height:100vh}
+  .v2 .v2-body{flex-direction:column}
+  .v2 .scrollwrap{flex:0 0 auto;display:block}
+  .v2 .v2-pasos ol{grid-template-columns:1fr}
+  .v2 .v2-panel{flex:0 0 auto;border-left:0;border-top:1px solid #2a2a31}
+  .v2 .v2-top{flex-wrap:wrap}
+  .v2 .v2-tools{flex-wrap:wrap;width:100%}
+  .v2 .v2-tools input[type=range]{width:90px}
+  .v2 .v2-tit h1,.v2 .v2-tit .sub{white-space:normal}
+}
 </style>
 </head>
 <body>
@@ -179,14 +258,23 @@ Para agregar un nuevo módulo:
  3) Prefijar los id internos del SVG/controles para no chocar (ej. "a_", "b_", ...).
  4) Envolver su <script> en (function(){ ... MODFIT['mod-XXX']=fit; })();
 ==================================================================== -->
-<section id="mod-l4za" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4za" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Condición de <span>Zona A</span> · Sección 1 · Línea 4</h1>
-<p class="sub">Tobalaba – Bilbao – Los Orientales · Basado en el manual de energización de zonas y el plano Metro S.A. 1202-DSM-04-066-30573</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+<p class="sub">Tobalaba – Bilbao – Los Orientales · plano Metro S.A. <span class="v2-mono">1202-DSM-04-066-30573</span></p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="a_guia">Guía</button>
+<button class="btn" id="a_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="a_zoom" min="30" max="140" value="100"></label>
+<span id="a_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="a_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="a_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> el circuito de mando (48 Vcc) que arma la Zona A de tracción y termina energizando la vía a 750 Vcc. Cada relé tiene su color: su <b>bobina</b> (zigzag) mueve sus <b>contactos</b> a través de la línea punteada del mismo color. Barra inclinada = contacto abierto; barra horizontal = cerrado. Cuando un tramo lleva corriente se pinta <b>ámbar animado</b>.</p>
 <p><b>Ejercicio 1 — Energizar la zona:</b> en el grupo 1 marca "TPL girado" y aprieta "Oprimir TPL (pulso)". Sigue la ola: RZA (morado) → túnel → contacto R.CE.S1 (rojo) → RR.ZA (azul) → retorno a KZA (verde, se apaga la luz roja y queda el sello) → R.RS.S1 (rosado) → bucle RS por las 3 subestaciones (NS1 naranjo). Luego en el grupo 3 aprieta "Cerrar IA/IAS": la vía se energiza.</p>
@@ -194,13 +282,9 @@ Para agregar un nuevo módulo:
 <p><b>Ejercicio 3 — Prueba TC:</b> arma la zona y aprieta "TC: Abrir R.PCE". El relé de prueba emula un ruptor y bota toda la cadena; "TC: Cerrar R.PCE" repone el lazo. Así se verifica periódicamente el circuito real de emergencia, desde el PCC.</p>
 <p><b>Idea clave:</b> energizar es difícil (solo el operador del PCC, girar + oprimir); desenergizar es fácil (cualquier golpe de puño en terreno, cualquier falla del bucle). Esa asimetría es la filosofía de seguridad del sistema.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:8px">
-<button class="btn" id="a_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="a_zoom" min="30" max="140" value="100"></label>
-<span id="a_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="a_wrap">
 <svg id="a_plano" width="1150" height="800" viewBox="0 0 1150 800" role="img">
 <title>Zona A — Sección 1 — Línea 4</title>
@@ -387,32 +471,42 @@ Para agregar un nuevo módulo:
 <text x="577" y="787" style="font-size:11px">R.CE.S1 (corte de emergencia)</text>
 </svg>
 </div>
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · Condición de Zona A (mando PCC)</legend>
-<label><input type="checkbox" id="a_cbDG" checked> DG (normal cerrado)</label>
-<label><input type="checkbox" id="a_cbGiro"> TPL girado</label>
-<button class="btn" id="a_btnPuls">Oprimir TPL (pulso)</button>
-<label><input type="checkbox" id="a_cbCEFS"> Inhibición CEFS</label>
-</fieldset>
-<fieldset class="grp">
-<legend>2 · Corte de emergencia · bucle de ruptores</legend>
-<label><input type="checkbox" id="a_cbRE1"> Ruptores vía 1</label>
-<label><input type="checkbox" id="a_cbRE2"> Ruptores vía 2</label>
-<button class="btn" id="a_btnTCa">TC: Abrir R.PCE</button>
-<button class="btn" id="a_btnTCc" disabled>TC: Cerrar R.PCE</button>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Energizar vías (SCADA, cierre individual por S/ER)</legend>
-<button class="btn" id="a_btnTobC">Cerrar IA Tobalaba</button>
-<button class="btn" id="a_btnTobA" disabled>Abrir IA Tobalaba</button>
-<button class="btn" id="a_btnBilC">Cerrar IA Bilbao</button>
-<button class="btn" id="a_btnBilA" disabled>Abrir IA Bilbao</button>
-<button class="btn" id="a_btnLosC">Cerrar IA Los Orientales</button>
-<button class="btn" id="a_btnLosA" disabled>Abrir IA Los Orientales</button>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="a_pasoN"></em></div>
+<ol id="a_pasos">
+<li data-c="#7A70E0"><b>1</b><span><strong>RZA</strong> — con el R.DG cerrado, se gira y oprime el TPL ZA</span></li>
+<li data-c="#3E77E0"><b>2</b><span><strong>RR.ZA</strong> — en la estación, con el bucle CE íntegro (o CEFS)</span></li>
+<li data-c="#1D9E75"><b>3</b><span><strong>KZA sella</strong> — se apaga la luz roja, ya se puede soltar el TPL</span></li>
+<li data-c="#D264C4"><b>4</b><span><strong>R.RS.S1</strong> — cierra el bucle RS por las 3 S/ER</span></li>
+<li data-c="#EF9F27"><b>5</b><span><strong>IA cerrado</strong> — <em id="a_paso5">vía a 750 Vcc</em></span></li>
+</ol>
 <div id="a_status">Luz TPL roja: zona desenergizada. Secuencia: 1) armar la Zona A desde el PCC (girar + oprimir TPL) con el bucle CE íntegro; 2) accionar ruptores o la prueba TC para ver la seguridad; 3) con RS presente, cerrar los IA para energizar las vías.</div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="a_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="a_chips"></div>
+<fieldset class="grp" style="--gc:#9b93ee">
+<legend>1 · Mando PCC</legend>
+<label><span>R.DG (normal cerrado)</span><input type="checkbox" id="a_cbDG" checked></label>
+<label><span>TPL ZA girado</span><input type="checkbox" id="a_cbGiro"></label>
+<div class="v2-fila"><span>Pulsador TPL</span><button class="btn v2-acc" id="a_btnPuls" style="--bc:#7A70E0">Oprimir (pulso)</button></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2 · Corte de emergencia</legend>
+<label><span>Ruptores vía 1</span><input type="checkbox" class="peligro" id="a_cbRE1"></label>
+<label><span>Ruptores vía 2</span><input type="checkbox" class="peligro" id="a_cbRE2"></label>
+<label><span>Inhibición CEFS</span><input type="checkbox" id="a_cbCEFS"></label>
+<div class="v2-fila"><span>Prueba TC</span><span class="v2-par"><button class="btn" id="a_btnTCa">Abrir R.PCE</button><button class="btn" id="a_btnTCc" disabled>Cerrar R.PCE</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#ec8a45">
+<legend>3 · Energizar vías (IA por S/ER)</legend>
+<div class="v2-fila"><span><i class="v2-dot" id="a_dotTob"></i>Tobalaba</span><span class="v2-par"><button class="btn" id="a_btnTobC">Cerrar</button><button class="btn" id="a_btnTobA" disabled>Abrir</button></span></div>
+<div class="v2-fila"><span><i class="v2-dot" id="a_dotBil"></i>Bilbao</span><span class="v2-par"><button class="btn" id="a_btnBilC">Cerrar</button><button class="btn" id="a_btnBilA" disabled>Abrir</button></span></div>
+<div class="v2-fila"><span><i class="v2-dot" id="a_dotLos"></i>Los Orientales</span><span class="v2-par"><button class="btn" id="a_btnLosC">Cerrar</button><button class="btn" id="a_btnLosA" disabled>Abrir</button></span></div>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
@@ -4721,9 +4815,12 @@ function setZoom(pct){
   document.getElementById('a_zoomVal').textContent = Math.round(pct) + '%';
 }
 function fit(){
-  var w = document.getElementById('a_wrap').clientWidth - 12;
-  var pct = Math.max(30, Math.min(140, (w / BASE_W) * 100));
-  setZoom(pct);
+  var wrap = document.getElementById('a_wrap');
+  var pct = (wrap.clientWidth - 12) / BASE_W * 100;
+  // diseño v2 en pantalla ancha: el plano cabe también en alto, sin scroll
+  if(!window.matchMedia('(max-width: 1000px)').matches)
+    pct = Math.min(pct, (wrap.clientHeight - 12) / BASE_H * 100);
+  setZoom(Math.max(30, Math.min(140, pct)));
 }
 document.getElementById('a_zoom').oninput = function(){ setZoom(parseFloat(this.value)); };
 document.getElementById('a_btnFit').onclick = fit;
@@ -4760,17 +4857,49 @@ function statusMsg(r){
   if(st.puls && !st.giro) return 'Pulsador oprimido pero el TPL no está girado: el mando no se establece.';
   return 'Zona desenergizada, luz TPL roja. Sin rearme automático: se requiere girar y oprimir el TPL nuevamente.';
 }
+// "Qué está pasando": un paso por relé de la cadena, se ilumina junto con su etapa de la animación
+var PASO_OK   = [function(r){return r.rza;}, function(r){return r.rrza;}, function(r){return r.kza;},
+                 function(r){return r.rss1;}, function(r){return r.via;}];
+var PASO_BLOQ = [function(r){return st.puls && !r.rza;}, function(r){return r.rza && !r.rrza;},
+                 function(){return false;}, function(r){return r.rrza && !r.rss1;}, function(){return false;}];
+function pasos(r, hasta){
+  var lis = document.querySelectorAll('#a_pasos li'), ult = -1;
+  Array.prototype.forEach.call(lis, function(li, i){
+    li.style.setProperty('--pc', li.getAttribute('data-c'));
+    if(i <= hasta){
+      var ok = PASO_OK[i](r);
+      li.classList.toggle('ok', ok);
+      li.classList.toggle('bloq', !ok && PASO_BLOQ[i](r));
+    }
+    if(li.classList.contains('ok')) ult = i;
+  });
+  Array.prototype.forEach.call(lis, function(li, i){ li.classList.toggle('actual', i === ult); });
+  document.getElementById('a_pasoN').textContent = ult < 0 ? 'zona sin armar' : 'paso ' + (ult+1) + ' de 5';
+}
+function chips(r){
+  var c = [];
+  if(!st.dg) c.push(['no','DG abierto']);
+  c.push(r.rce ? ['si','Bucle CE íntegro'] : (st.cefs ? ['','Bucle CE abierto · CEFS'] : ['no','Bucle CE abierto']));
+  c.push(r.kza ? ['si','Zona A armada'] : ['','Zona A sin armar']);
+  if(r.rss1) c.push(['si','RS S1 presente']);
+  if(r.via) c.push(['si','750 Vcc']);
+  document.getElementById('a_chips').innerHTML = c.map(function(x){ return '<span class="'+x[0]+'">'+x[1]+'</span>'; }).join('');
+}
 function render(){
   timers.forEach(clearTimeout); timers=[];
   var r = solve(); st.kza = r.kza;
   var stages = [
     function(){ setOn('ctRE1',!st.re1); setOn('ctRE2',!st.re2); setOn('ctPCE',st.pce); setOn('coPCE',st.pce); setLive('gBucle',r.rce); setLive('gPCE',st.pce); setOn('coRCE',r.rce); setOn('ctTKb',r.rce); setLive('gInd',r.rce); setOn('tkB',r.rce); setOn('ctCE',r.rce); },
-    function(){ setOn('ctDG',st.dg); setOn('ctGiro',st.giro); setOn('ctPuls',st.puls); setLive('gMando',r.rza); setOn('coRZA',r.rza); },
-    function(){ setOn('ctRZA2',r.rza); setOn('ctCEFS',st.cefs); setLive('gTunel',r.rrza); setLive('gCEFS',r.rrza&&st.cefs); setOn('coRZAe',r.rrza); },
-    function(){ setOn('ctKret',r.rrza); setLive('gKret',r.kza); setOn('coKZA',r.kza); setOn('ctSello',r.kza); document.getElementById('a_lamp').classList.toggle('red',!r.kza); },
-    function(){ setOn('ctRSfeed',r.rrza); setLive('gRSout',r.rss1); setOn('coRSS1',r.rss1); setOn('tkDot',r.rss1); },
+    function(){ setOn('ctDG',st.dg); setOn('ctGiro',st.giro); setOn('ctPuls',st.puls); setLive('gMando',r.rza); setOn('coRZA',r.rza); pasos(r,0); },
+    function(){ setOn('ctRZA2',r.rza); setOn('ctCEFS',st.cefs); setLive('gTunel',r.rrza); setLive('gCEFS',r.rrza&&st.cefs); setOn('coRZAe',r.rrza); pasos(r,1); },
+    function(){ setOn('ctKret',r.rrza); setLive('gKret',r.kza); setOn('coKZA',r.kza); setOn('ctSello',r.kza); document.getElementById('a_lamp').classList.toggle('red',!r.kza); pasos(r,2); },
+    function(){ setOn('ctRSfeed',r.rrza); setLive('gRSout',r.rss1); setOn('coRSS1',r.rss1); setOn('tkDot',r.rss1); pasos(r,3); },
     function(){ setOn('ctRSa',r.rss1); setOn('ctRSb',r.rss1); setLive('gLoop',r.rss1); setOn('rlTob',r.rss1); setOn('rlBil',r.rss1); setOn('rlLos',r.rss1); },
     function(){ setOn('brTob',r.iaTob); setOn('brBil',r.iaBil); setOn('brLos',r.iaLos);
+      setOn('dotTob',r.iaTob); setOn('dotBil',r.iaBil); setOn('dotLos',r.iaLos);
+      var cerr=[]; if(r.iaTob)cerr.push('Tobalaba'); if(r.iaBil)cerr.push('Bilbao'); if(r.iaLos)cerr.push('Los Orientales');
+      document.getElementById('a_paso5').textContent = r.via ? 'vía a 750 Vcc por ' + cerr.join(', ') : 'vía a 750 Vcc';
+      pasos(r,4); chips(r);
       setLive('gFeedTob',r.iaTob); setLive('gFeedBil',r.iaBil); setLive('gFeedLos',r.iaLos);
       setOn('via',r.via); document.getElementById('a_viaTxt').classList.toggle('on',r.via);
       document.getElementById('a_btnTobC').disabled = !r.rss1 || !st.tobAb;
@@ -4803,6 +4932,14 @@ document.getElementById('a_btnBilC').onclick = function(){ st.bilAb=false; rende
 document.getElementById('a_btnBilA').onclick = function(){ st.bilAb=true; render(); };
 document.getElementById('a_btnLosC').onclick = function(){ st.losAb=false; render(); };
 document.getElementById('a_btnLosA').onclick = function(){ st.losAb=true; render(); };
+document.getElementById('a_btnReset').onclick = function(){
+  var ini = {dg:true, giro:false, puls:false, re1:false, re2:false, pce:true, cefs:false, kza:false, tobAb:true, bilAb:true, losAb:true};
+  for(var k in ini) st[k] = ini[k];
+  ['a_cbGiro','a_cbCEFS','a_cbRE1','a_cbRE2'].forEach(function(id){ document.getElementById(id).checked = false; });
+  document.getElementById('a_cbDG').checked = true;
+  document.getElementById('a_btnPuls').disabled = false;
+  render();
+};
 
 fit();
 render();
@@ -6370,6 +6507,17 @@ render();
     ctrl.appendChild(b);
   });
 })();
+
+/* ============ DISEÑO v2: abrir / cerrar paneles (guía) ============ */
+document.addEventListener('click', function(e){
+  var a = e.target.closest('[data-v2-abrir]'), c = e.target.closest('[data-v2-cerrar]');
+  if(a){ var d = document.getElementById(a.getAttribute('data-v2-abrir')); if(d) d.hidden = !d.hidden; }
+  if(c){ var d2 = document.getElementById(c.getAttribute('data-v2-cerrar')); if(d2) d2.hidden = true; }
+});
+document.addEventListener('keydown', function(e){
+  if(e.key !== 'Escape') return;
+  Array.prototype.forEach.call(document.querySelectorAll('.v2-drawer'), function(d){ d.hidden = true; });
+});
 
 /* ============ MÓDULO: MANDO CE / CEFS · TOBALABA ============ */
 (function(){
