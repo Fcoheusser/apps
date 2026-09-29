@@ -184,7 +184,7 @@ body:has(.mod.v2.activo)>footer{display:none}
 .v2 .v2-pasos-head span{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-accent)}
 .v2 .v2-pasos-head i{flex:1;height:1px;background:#2a2a31}
 .v2 .v2-pasos-head em{font-style:normal;font-size:12.5px;color:var(--text-secondary)}
-.v2 .v2-pasos ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.v2 .v2-pasos ol{margin:0;padding:0;list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:10px}
 .v2 .v2-pasos li{display:flex;gap:9px;align-items:flex-start;padding:7px 9px;border-radius:8px;border:1px solid transparent;opacity:.45;transition:opacity .3s,background .3s,border-color .3s}
 .v2 .v2-pasos li>b{width:24px;height:24px;flex-shrink:0;border-radius:50%;background:#33333c;color:var(--text-secondary);font-size:12.5px;display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
 .v2 .v2-pasos li>span{font-size:13px;line-height:1.4;color:#c9c9d1}
@@ -230,7 +230,7 @@ body:has(.mod.v2.activo)>footer{display:none}
   .v2 .v2-app{height:auto;min-height:100vh}
   .v2 .v2-body{flex-direction:column}
   .v2 .scrollwrap{flex:0 0 auto;display:block}
-  .v2 .v2-pasos ol{grid-template-columns:1fr}
+  .v2 .v2-pasos ol{grid-auto-flow:row;grid-template-columns:1fr}
   .v2 .v2-panel{flex:0 0 auto;border-left:0;border-top:1px solid #2a2a31}
   .v2 .v2-top{flex-wrap:wrap}
   .v2 .v2-tools{flex-wrap:wrap;width:100%}
@@ -2042,14 +2042,23 @@ Para agregar un nuevo módulo:
 </section>
 
 <!-- ================= MÓDULO: CONDICIÓN COCHERAS · APERTURA ZONA C ================= -->
-<section id="mod-l4cin" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4cin" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Condición <span>Cocheras</span> · Apertura de la Zona C · Línea 4</h1>
-<p class="sub">Local Técnico Talleres Cocheras Intermedia · R A ZC y su repetidor RR A ZC en Las Torres · Plano 1202-HDD-04-0647-30573 hoja 6/18 Ind. B1</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+<p class="sub">Local Técnico Talleres Cocheras Intermedia · R A ZC y su repetidor RR A ZC en Las Torres · plano <span class="v2-mono">1202-HDD-04-0647-30573</span> hoja 6/18 Ind. B1</p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="cin_guia">Guía</button>
+<button class="btn" id="cin_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="cin_zoom" min="30" max="140" value="100"></label>
+<span id="cin_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="cin_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="cin_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> la cadena que vive en el <b>Local Técnico Talleres Cocheras Intermedia</b> y que decide si el ramal de Cocheras deja trabajar a la Zona C. Es el plano que en el módulo de Zona C aparece solo como una flecha ("ver Condición Cocheras").</p>
 <p><b>El recorrido:</b> 0V → las condiciones de las tres vías del recinto (VM, VC y VT) en serie → bobina <b>R A ZC</b> (1P6) → +48V. Con el R A ZC energizado, su contacto A1·A2 manda +48V por el <b>cable túnel</b>, pasa por el <b>armario RQU</b> (Rotonda Quilín) y llega a <b>Las Torres</b>, donde energiza el repetidor <b>RR A ZC</b> (P2). El contacto del RR A ZC es el que entra a la cadena de Condición de Zona C.</p>
@@ -2070,13 +2079,9 @@ Para agregar un nuevo módulo:
 <p><b>Trazado (dictado desde el plano):</b> por la izquierda el <b>D26</b> del DVM es el nodo común de las tres ramas. Por la derecha, la fila de aparatos y la rama de los CE (que sube del <b>D8</b>) se juntan en el <b>D12</b> del DVC2, y el SVC vuelve por su propio <b>Z20</b>. De esa unión sale la bobina.</p>
 <p><b>Lámina hermana:</b> la hoja 5/18 del mismo plano es la <b>Condición RS IAC</b>, que usa los mismos aparatos por otros contactos auxiliares y lleva además el R.ZC y el CE S4. Probablemente sea esa la que desconecta Cocheras de la línea ante un percance, dejando la Zona C en servicio.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="cin_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="cin_zoom" min="30" max="140" value="100"></label>
-<span id="cin_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="cin_wrap">
 <svg id="cin_plano" width="1300" height="700" viewBox="0 0 1300 700" role="img">
 <title>Condición Cocheras — Apertura de la Zona C</title>
@@ -2254,31 +2259,49 @@ Para agregar un nuevo módulo:
 
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · Cortes de emergencia del recinto (golpe · inhibición CEFS)</legend>
-<label><input type="checkbox" id="cin_cbCEVM"> CE VM golpeado</label>
-<label><input type="checkbox" id="cin_cbFSVM"> Inhib. RR.CEFS.VM</label>
-<label><input type="checkbox" id="cin_cbCEVC"> CE VC golpeado</label>
-<label><input type="checkbox" id="cin_cbFSVC"> Inhib. RR.CEFS.VC</label>
-<label><input type="checkbox" id="cin_cbCEVT"> CE VT golpeado</label>
-<label><input type="checkbox" id="cin_cbFSVT"> Inhib. RR.CEFS.VT</label>
-</fieldset>
-<fieldset class="grp">
-<legend>2 · Aparatos · D = disyuntor · S = seccionador · conducen cerrados</legend>
-<label><input type="checkbox" id="cin_cbDVM"> DVM abierto</label>
-<label><input type="checkbox" id="cin_cbSVM"> SVM abierto</label>
-<label><input type="checkbox" id="cin_cbDVC"> DVC1 abierto</label>
-<label><input type="checkbox" id="cin_cbSVC1"> SVC1 abierto</label>
-<label><input type="checkbox" id="cin_cbDVT"> DVC2 abierto</label>
-<label><input type="checkbox" id="cin_cbSVC"> SVC abierto (3P1 · en serie)</label>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Ir al módulo enganchado</legend>
-<button class="btn" onclick="irModulo('mod-l4zc')">Abrir Condición de Zona C</button>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="cin_pasoN"></em></div>
+<ol id="cin_pasos">
+<li data-c="#E24B4A"><b>1</b><span><strong>Bucle del recinto</strong> — VM, VC y VT dan paso: por su CE o con la vía desconectada</span></li>
+<li data-c="#3E77E0"><b>2</b><span><strong>R A ZC</strong> — energizado, su contacto A1·A2 cerrado</span></li>
+<li data-c="#1D9E75"><b>3</b><span><strong>RR A ZC</strong> — en Las Torres: la Zona C sigue en servicio</span></li>
+</ol>
 <div id="cin_status">Cadena sana: R A ZC energizado y RR A ZC cerrado en Las Torres. Golpea un CE del recinto para abrir la Zona C.</div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="cin_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="cin_chips"></div>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>1 · VM · Vías Maniobra</legend>
+<label><span>CE VM golpeado</span><input type="checkbox" class="peligro" id="cin_cbCEVM"></label>
+<label><span>Inhibición RR.CEFS.VM</span><input type="checkbox" id="cin_cbFSVM"></label>
+<label><span>DVM abierto</span><input type="checkbox" id="cin_cbDVM"></label>
+<label><span>SVM abierto</span><input type="checkbox" id="cin_cbSVM"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2 · VC · Vías Cocheras</legend>
+<label><span>CE VC golpeado</span><input type="checkbox" class="peligro" id="cin_cbCEVC"></label>
+<label><span>Inhibición RR.CEFS.VC</span><input type="checkbox" id="cin_cbFSVC"></label>
+<label><span>DVC1 abierto</span><input type="checkbox" id="cin_cbDVC"></label>
+<label><span>SVC1 abierto</span><input type="checkbox" id="cin_cbSVC1"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>3 · VT · Vías Talleres</legend>
+<label><span>CE VT golpeado</span><input type="checkbox" class="peligro" id="cin_cbCEVT"></label>
+<label><span>Inhibición RR.CEFS.VT</span><input type="checkbox" id="cin_cbFSVT"></label>
+<label><span>DVC2 abierto</span><input type="checkbox" id="cin_cbDVT"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#2BA6A6">
+<legend>4 · SVC (3P1 · en serie)</legend>
+<label><span>SVC abierto</span><input type="checkbox" id="cin_cbSVC"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>5 · Módulo enganchado</legend>
+<div class="v2-fila"><span>Las Torres</span><button class="btn" type="button" onclick="irModulo('mod-l4zc')">Abrir Condición de Zona C</button></div>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
@@ -5728,13 +5751,28 @@ escenario(0);
 function g(id){return document.getElementById(id);}
 var BW=1300, BH=700;
 function setZoom(p){var s=g('cin_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('cin_zoom').value=p;g('cin_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('cin_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('cin_wrap', BW, BH)); }
 MODFIT['mod-l4cin'] = fit;
 g('cin_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('cin_btnFit').onclick=fit;
 
 var st = {ceVM:false, ceVC:false, ceVT:false, fsVM:false, fsVC:false, fsVT:false,
   abDVM:false, abSVM:false, abDVC:false, abSVC1:false, abDVT:false, abSVC:false};
+var ST0 = JSON.parse(JSON.stringify(st));
+var PASOS = [
+  {ok:function(r){return r.puente;}, bloq:function(r){return !r.puente;}},
+  {ok:function(r){return r.razc;}},
+  {ok:function(r){return r.rrazc;}}
+];
+function pasos(r, hasta){ V2.pasos('cin_', PASOS, r, hasta); }
+function chips(r){
+  function via(t, c, ce, ap){ return !c ? ['no', t+' abre el bucle'] : (ce ? ['si', t+' por CE'] : ['', t+' desconectada']); }
+  V2.chips('cin_chips', [
+    via('VM', r.cVM, r.ceVM, r.apVM), via('VC', r.cVC, r.ceVC, r.apVC), via('VT', r.cVT, r.ceVT, r.apVT),
+    r.svc ? ['','SVC abierto · puente general'] : null,
+    r.rrazc ? ['si','Zona C en servicio'] : ['no','Zona C abierta']
+  ]);
+}
 
 function solve(){
   // Por vía: los aparatos EN SERIE entre ellos y esa rama EN PARALELO con el CE + CEFS.
@@ -5790,12 +5828,12 @@ function render(){
       });
       setConm('cin_ctDVM', st.abDVM, true); setConm('cin_ctSVM', st.abSVM, true);
       setConm('cin_ctDVC1', st.abDVC, true); setConm('cin_ctSVC1', st.abSVC1, true);
-      setConm('cin_ctDVC2', st.abDVT, true);},
+      setConm('cin_ctDVC2', st.abDVT, true);pasos(r,0);},
     function(){setConm('cin_ctSVC', st.abSVC, true); setLive('cin_gSVC', false); setLive('cin_gUp', r.fila); setLive('cin_gSrc', true);},
-    function(){setLive('cin_gChain',r.razc);setOn('cin_coRAZC',r.razc);},
+    function(){setLive('cin_gChain',r.razc);setOn('cin_coRAZC',r.razc);pasos(r,1);},
     function(){setOn('cin_ctRAZC',r.razc);setLive('cin_gFeed',r.razc);setLive('cin_gLink',r.razc);},
-    function(){setOn('cin_coRRAZC',r.rrazc);setLive('cin_gLink2',r.rrazc);},
-    function(){setOn('cin_ctRRAZC',r.rrazc);setLive('cin_gOut',r.rrazc);
+    function(){setOn('cin_coRRAZC',r.rrazc);setLive('cin_gLink2',r.rrazc);pasos(r,2);},
+    function(){setOn('cin_ctRRAZC',r.rrazc);setLive('cin_gOut',r.rrazc);chips(r);
       g('cin_status').textContent=statusMsg(r);}
   ];
   stages.forEach(function(fn,i){timers.push(setTimeout(fn,i*300));});
@@ -5807,6 +5845,7 @@ function render(){
  ['cin_cbSVC1','abSVC1'],['cin_cbDVT','abDVT'],['cin_cbSVC','abSVC']].forEach(function(pr){
   g(pr[0]).onchange=function(){st[pr[1]]=this.checked;render();};
 });
+g('cin_btnReset').onclick=function(){ V2.reponer('mod-l4cin', st, ST0, render); };
 render();
 })();
 
