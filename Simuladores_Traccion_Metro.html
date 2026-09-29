@@ -2404,17 +2404,17 @@ Para agregar un nuevo módulo:
 <div class="v2-body">
 <div class="v2-left">
 <div class="scrollwrap" id="d_wrap">
-<svg id="d_plano" width="2640" height="1220" viewBox="0 0 2640 1220" role="img">
+<svg id="d_plano" width="1300" height="1310" viewBox="0 0 1300 1310" role="img">
 <title>Condición de Zona D — Secciones 5, 6 y 7</title>
 <defs><marker id="d_arD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 
-<rect class="zona" x="20" y="50" width="445" height="712" rx="10"/>
+<rect class="zona" x="20" y="50" width="445" height="815" rx="10"/>
 <text x="28" y="70" style="font-weight:500;fill:var(--text-primary)">PCC · Pupitre Platina CAT y Armario Tracción</text>
-<line class="zona" x1="480" y1="50" x2="480" y2="762"/>
-<line class="zona" x1="520" y1="50" x2="520" y2="762"/>
+<line class="zona" x1="480" y1="50" x2="480" y2="865"/>
+<line class="zona" x1="520" y1="50" x2="520" y2="865"/>
 <text x="500" y="68" text-anchor="middle" style="font-size:10px">Túnel</text>
 <text x="500" y="82" text-anchor="middle" style="font-size:9px;fill:var(--text-secondary)">Cable ppal.</text>
-<rect class="zona" x="535" y="50" width="745" height="712" rx="10"/>
+<rect class="zona" x="535" y="50" width="745" height="815" rx="10"/>
 <text x="588" y="70" style="font-weight:500;fill:var(--text-primary)">Estación Vicuña Mackenna · armario de tracción</text>
 
 <text x="892" y="122" style="font-size:9px;fill:var(--text-secondary)">Bucle ruptores S5 · Est. Vicuña Mackenna</text>
@@ -2664,7 +2664,7 @@ Para agregar un nuevo módulo:
 
 <g id="d_coRRZD" class="coil f-rrzb"><text x="1120" y="598" text-anchor="middle">RR.ZD</text><path class="zz" d="M 1100 622 L 1110 604 L 1120 622 L 1130 604 L 1140 622"/></g>
 <text x="1140" y="654" text-anchor="middle">0V</text>
-<text x="1386" y="654" text-anchor="start" style="font-size:9px;fill:#3E77E0">RR.ZD · contacto 2 → RS S5</text>
+
 
 <g id="d_ctRet" class="sym f-rrzb"><circle cx="1097.5" cy="712" r="2.5"/><circle cx="1142.5" cy="712" r="2.5"/><line class="bo" x1="1100" y1="712" x2="1134" y2="699"/><line class="bc" x1="1100" y1="712" x2="1140" y2="712"/></g>
 <g id="d_gRet"><path class="w" d="M 1145 712 H 1175"/><path class="w" d="M 1095 712 H 300"/><path class="w" d="M 260 712 H 240"/></g>
@@ -2680,110 +2680,93 @@ Para agregar un nuevo módulo:
 <text x="1150" y="806">+48V</text>
 <g id="d_coRR1" class="coil f-rrzb"><text x="1025" y="780" text-anchor="middle">RR1.ZD</text><path class="zz" d="M 1005 802 L 1015 784 L 1025 802 L 1035 784 L 1045 802"/></g>
 <text x="981" y="806" text-anchor="end">0V</text>
-<text x="1446" y="824" text-anchor="start" style="font-size:9px;fill:#3E77E0">RR1.ZD · contacto → RS S7</text>
+
 
 <!-- Condición RS S7: ver franja ② abajo -->
 
-<line x1="1305" y1="40" x2="1305" y2="600" stroke="var(--border)" stroke-width="1"/>
-<g id="d_franja2" transform="translate(1330,-980)">
-<g transform="translate(1300,0) scale(-1,1)">
 
-<line x1="20" y1="1002" x2="1280" y2="1002" stroke="var(--border)" stroke-width="1" opacity="0"/>
-<text transform="scale(-1,1)" x="-1175" y="1026" style="font-weight:600;fill:var(--text-primary);font-size:13px">② Condición RS por sección · relé de seguridad R.RS y bucle de 5V al NS1 (la S6 no tiene S/ER: no existe RS S6)</text>
-
-<rect class="zona" x="380" y="1042" width="900" height="150" rx="10"/>
-<text transform="scale(-1,1)" x="-390" y="1062" text-anchor="end" style="font-weight:500;fill:var(--text-primary);font-size:12px">Estación Las Torres · Condición RS S5</text>
-
-<text transform="scale(-1,1)" x="-780" y="1096" text-anchor="start">0V</text>
-<g id="d_gRSS5"><path class="w" d="M 786 1092 H 820"/><path class="w" d="M 862 1092 H 1175"/></g>
-<g id="d_coRSS5" class="coil f-rss"><text transform="scale(-1,1)" x="-842" y="1068" text-anchor="middle">R.RS.S5</text><path class="zz" d="M 822 1092 L 832 1074 L 842 1092 L 852 1074 L 862 1092"/></g>
-<text transform="scale(-1,1)" x="-1179" y="1096">+48V</text>
-<path class="leader" style="stroke:#D264C4" d="M 842 1094 V 1164"/>
-<text transform="scale(-1,1)" x="-910" y="1122" text-anchor="middle" style="font-size:11px">P1 · resistencia ajustable</text>
-<g id="d_gBucle5">
-<path class="w" d="M 870 1140 H 890"/><path class="w" d="M 930 1140 H 950"/>
-<path class="w" d="M 290 1140 H 815"/><path class="w" d="M 240 1168 H 815"/><path class="w" d="M 870 1168 H 890"/>
-</g>
-<rect x="890" y="1134" width="40" height="12" fill="none" stroke="var(--border-strong)" stroke-width="1.3"/>
-<path d="M 900 1128 L 920 1128 L 910 1134" fill="var(--border-strong)"/>
-<g id="d_ctB5a" class="sym f-rss"><circle cx="817.5" cy="1140" r="2.5"/><circle cx="867.5" cy="1140" r="2.5"/><line class="bo" x1="820" y1="1140" x2="859" y2="1128"/><line class="bc" x1="820" y1="1140" x2="865" y2="1140"/></g>
-<g id="d_ctB5b" class="sym f-rss"><circle cx="817.5" cy="1168" r="2.5"/><circle cx="867.5" cy="1168" r="2.5"/><line class="bo" x1="820" y1="1168" x2="859" y2="1156"/><line class="bc" x1="820" y1="1168" x2="865" y2="1168"/></g>
-<text transform="scale(-1,1)" x="-984" y="1144">+48V</text>
-<text transform="scale(-1,1)" x="-894" y="1172">0V</text>
-<text transform="scale(-1,1)" x="-560" y="1130" text-anchor="middle" style="font-size:11px">Bucle Condición RS S5 (5V)</text>
-<text transform="scale(-1,1)" x="-870" y="1184" style="font-size:11px">contactos R.RS.S5</text>
-<circle id="d_tk5" class="tkdot" cx="400" cy="1168" r="6"/>
-<text transform="scale(-1,1)" x="-410" y="1183" text-anchor="end" style="font-size:11px">VMAT: TK RS.S5 al PCC</text>
-
-<rect class="zona" x="380" y="1212" width="900" height="150" rx="10"/>
-<text transform="scale(-1,1)" x="-390" y="1232" text-anchor="end" style="font-weight:500;fill:var(--text-primary);font-size:12px">Estación Vicente Valdés · Condición RS S7</text>
-
-<text transform="scale(-1,1)" x="-780" y="1266" text-anchor="start">0V</text>
-<g id="d_gRSS7"><path class="w" d="M 786 1262 H 820"/><path class="w" d="M 862 1262 H 1175"/></g>
-<g id="d_coRSS7" class="coil f-rss"><text transform="scale(-1,1)" x="-842" y="1238" text-anchor="middle">R.RS.S7</text><path class="zz" d="M 822 1262 L 832 1244 L 842 1262 L 852 1244 L 862 1262"/></g>
-
-<text transform="scale(-1,1)" x="-1179" y="1266">+48V</text>
-<path class="leader" style="stroke:#D264C4" d="M 842 1264 V 1334"/>
-<text transform="scale(-1,1)" x="-910" y="1292" text-anchor="middle" style="font-size:11px">P1 · resistencia ajustable</text>
-<g id="d_gBucle7">
-<path class="w" d="M 870 1310 H 890"/><path class="w" d="M 930 1310 H 950"/>
-<path class="w" d="M 290 1310 H 815"/><path class="w" d="M 240 1338 H 815"/><path class="w" d="M 870 1338 H 890"/>
-</g>
-<rect x="890" y="1304" width="40" height="12" fill="none" stroke="var(--border-strong)" stroke-width="1.3"/>
-<path d="M 900 1298 L 920 1298 L 910 1304" fill="var(--border-strong)"/>
-<g id="d_ctB7a" class="sym f-rss"><circle cx="817.5" cy="1310" r="2.5"/><circle cx="867.5" cy="1310" r="2.5"/><line class="bo" x1="820" y1="1310" x2="859" y2="1298"/><line class="bc" x1="820" y1="1310" x2="865" y2="1310"/></g>
-<g id="d_ctB7b" class="sym f-rss"><circle cx="817.5" cy="1338" r="2.5"/><circle cx="867.5" cy="1338" r="2.5"/><line class="bo" x1="820" y1="1338" x2="859" y2="1326"/><line class="bc" x1="820" y1="1338" x2="865" y2="1338"/></g>
-<text transform="scale(-1,1)" x="-984" y="1314">+48V</text>
-<text transform="scale(-1,1)" x="-894" y="1342">0V</text>
-<text transform="scale(-1,1)" x="-560" y="1300" text-anchor="middle" style="font-size:11px">Bucle Condición RS S7 (5V)</text>
-<text transform="scale(-1,1)" x="-870" y="1354" style="font-size:11px">contactos R.RS.S7</text>
-<circle id="d_tk7" class="tkdot" cx="400" cy="1338" r="6"/>
-<text transform="scale(-1,1)" x="-410" y="1353" text-anchor="end" style="font-size:11px">VMAT: TK RS.S7 al PCC</text>
-
-
-
-
-
-
-</g>
-</g>
 <g id="d_ctRS5b" class="sym f-rrzb"><text x="1120" y="743" text-anchor="middle">Condición RS S5</text><circle cx="1097.5" cy="757" r="2.5"/><circle cx="1142.5" cy="757" r="2.5"/><line class="bo" x1="1100" y1="757" x2="1134" y2="744"/><line class="bc" x1="1100" y1="757" x2="1140" y2="757"/></g>
 <g id="d_ctRS7" class="sym f-rrzb"><text x="1120" y="833" text-anchor="middle">Condición RS S7</text><circle cx="1097.5" cy="847" r="2.5"/><circle cx="1142.5" cy="847" r="2.5"/><line class="bo" x1="1100" y1="847" x2="1134" y2="834"/><line class="bc" x1="1100" y1="847" x2="1140" y2="847"/></g><path id="d_mkRRZD" class="w" style="stroke-dasharray:5 4" d="M1120 624 V812"/>
-<g id="d_wRRZDrs5"><path class="w" style="stroke-dasharray:5 4" d="M1142.5 757 H1380 V112 H1455"/></g>
-<g id="d_wRR1ZDrs7"><path class="w" style="stroke-dasharray:5 4" d="M1025 804 V847 H1097.5"/></g><g id="d_wRR1ZDrs7b"><path class="w" style="stroke-dasharray:5 4" d="M1142.5 847 H1440 V282 H1455"/></g>
-<g id="d_gBucle5b"><path class="w" d="M2340 160 H2290 V870 H430 V950"/><path class="w" d="M2390 188 H2310 V890 H470 V950"/></g>
-<g id="d_gBucle7b"><path class="w" d="M2340 330 H2600 V950"/><path class="w" d="M2390 358 H2560 V950"/></g>
-<rect class="zona" x="380" y="900" width="220" height="140" rx="10"/>
-<text x="490" y="920" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Las Torres</text>
-<g id="d_coNS1lt" class="coil f-ns1"><text x="422" y="944" text-anchor="end">IAS · NS1</text><path class="zz" d="M 430 950 L 440 932 L 450 950 L 460 932 L 470 950"/></g>
-<line x1="450" y1="954" x2="450" y2="990" stroke="var(--t)" stroke-width="0.7" stroke-dasharray="3 3"/>
-<g id="d_iasSym5" class="ct"><rect x="420" y="990" width="60" height="26" rx="4"/><text x="450" y="1003" text-anchor="middle" dominant-baseline="central">IAS</text></g>
-<g id="d_gFeed5"><path class="w" d="M450 1016 V1144"/></g>
-<rect class="zona" x="2400" y="900" width="230" height="140" rx="10"/>
-<text x="2410" y="920" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Vicente Valdés</text>
-<g id="d_coNS1vv" class="coil f-ns1"><text x="2552" y="944" text-anchor="end">IA · NS1</text><path class="zz" d="M 2560 950 L 2570 932 L 2580 950 L 2590 932 L 2600 950"/></g>
-<line x1="2580" y1="954" x2="2580" y2="990" stroke="var(--t)" stroke-width="0.7" stroke-dasharray="3 3"/>
-<g id="d_iaSym7" class="ct"><rect x="2550" y="990" width="60" height="26" rx="4"/><text x="2580" y="1003" text-anchor="middle" dominant-baseline="central">IA</text></g>
-<g id="d_gFeed7"><path class="w" d="M2580 1016 V1144"/></g>
-<g id="d_viasBottom">
-<line x1="40" y1="1104" x2="2600" y2="1104" stroke="var(--border)" stroke-width="1"/>
-<text x="620" y="1122" style="font-weight:600;fill:var(--text-primary);font-size:13px">③ Vías de tracción · 750 Vcc · la S6 se alimenta a través de los SAT</text>
-<rect id="d_via5" class="viabar" x="40" y="1144" width="787" height="30" rx="4"/>
-<text id="d_via5t" class="viabartxt" x="434" y="1159" text-anchor="middle" dominant-baseline="central">Vía S5 · 750 Vcc</text>
-<text x="887" y="1138" text-anchor="middle" style="font-size:10px;fill:#2BA6A6">SAT 5/6</text>
-<circle cx="860" cy="1159" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
-<circle cx="914" cy="1159" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
-<line id="d_blade56" class="satblade" style="transform-origin:864px 1159px;transform-box:view-box" x1="864" y1="1159" x2="910" y2="1159"/>
-<rect id="d_via6" class="viabar" x="947" y="1144" width="704" height="30" rx="4"/>
-<text id="d_via6t" class="viabartxt" x="1299" y="1159" text-anchor="middle" dominant-baseline="central">Vía S6 · 750 Vcc (sin S/ER propia)</text>
-<text x="1711" y="1138" text-anchor="middle" style="font-size:10px;fill:#2BA6A6">SAT 6/7</text>
-<circle cx="1684" cy="1159" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
-<circle cx="1738" cy="1159" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
-<line id="d_blade67" class="satblade" style="transform-origin:1688px 1159px;transform-box:view-box" x1="1688" y1="1159" x2="1734" y2="1159"/>
-<rect id="d_via7" class="viabar" x="1771" y="1144" width="829" height="30" rx="4"/>
-<text id="d_via7t" class="viabartxt" x="2186" y="1159" text-anchor="middle" dominant-baseline="central">Vía S7 · 750 Vcc</text>
+<g id="d_wRRZDrs5"><path class="w" style="stroke-dasharray:5 4" d="M1097.5 757 H620 V968"/></g><text x="1149" y="761">+48V</text>
+<g id="d_wRR1ZDrs7"><path class="w" style="stroke-dasharray:5 4" d="M1025 804 V847 H1097.5"/></g><g id="d_wRR1ZDrs7b"><path class="w" style="stroke-dasharray:5 4" d="M1142.5 847 H1180 V880 H680 V968"/></g>
+<!-- ② Condición RS por sección: una columna por sección, sobre su tramo de vía (la S6 no tiene S/ER) -->
+<text x="20" y="905" style="font-weight:600;fill:var(--text-primary);font-size:13px">② Condición RS S5 y S7 · la S6 no tiene S/ER</text>
+<!-- Condición RS S5 · Las Torres -->
+<rect class="zona" x="20" y="920" width="620" height="135" rx="10"/>
+<text x="30" y="939" style="font-weight:500;fill:var(--text-primary);font-size:12px">Estación Las Torres · Condición RS S5</text>
+<text x="305" y="972" text-anchor="end">0V</text>
+<g id="d_gRSS5"><path class="w" d="M 310 968 H 350"/><path class="w" d="M 390 968 H 620"/></g>
+<g id="d_coRSS5" class="coil f-rss"><text x="370" y="946" text-anchor="middle">R.RS.S5</text><path class="zz" d="M 350 968 L 360 950 L 370 968 L 380 950 L 390 968"/></g>
+<path class="leader" style="stroke:#D264C4" d="M 370 970 V 1035"/>
+<text x="200" y="992" text-anchor="middle" style="font-size:11px">Bucle Condición RS S5 (5V)</text>
+<g id="d_gBucle5">
+<path class="w" d="M 60 1000 H 345"/><path class="w" d="M 100 1028 H 345"/>
+<path class="w" d="M 400 1000 H 420"/><path class="w" d="M 460 1000 H 480"/><path class="w" d="M 400 1028 H 420"/>
+<path class="w" d="M 60 1000 V 1110"/><path class="w" d="M 100 1028 V 1110"/>
 </g>
-<g id="d_legendD" transform="translate(1480,632)" style="fill:var(--text-secondary)"><g class="sym"><circle cx="0" cy="0" r="2.5"/><circle cx="28" cy="0" r="2.5"/><line x1="3" y1="0" x2="23" y2="-11"/></g><text x="38" y="4" style="font-size:11px;fill:var(--text-secondary)">abierto</text><g class="sym" transform="translate(108,0)"><circle cx="0" cy="0" r="2.5"/><circle cx="28" cy="0" r="2.5"/><line x1="3" y1="0" x2="25" y2="0"/></g><text x="154" y="4" style="font-size:11px;fill:var(--text-secondary)">cerrado</text><line x1="218" y1="0" x2="258" y2="0" stroke="#EF9F27" stroke-width="2" stroke-dasharray="6 4"/><text x="266" y="4" style="font-size:11px;fill:var(--text-secondary)">energizado</text><rect x="344" y="-6" width="11" height="11" rx="2" fill="none" stroke="#E24B4A" stroke-width="1.5"/><text x="362" y="4" style="font-size:11px;fill:var(--text-secondary)">RCE</text><rect x="404" y="-6" width="11" height="11" rx="2" fill="none" stroke="#2BA6A6" stroke-width="1.5"/><text x="422" y="4" style="font-size:11px;fill:var(--text-secondary)">SAT / IAS-IA</text><rect x="520" y="-6" width="11" height="11" rx="2" fill="none" stroke="#3E77E0" stroke-width="1.5"/><text x="538" y="4" style="font-size:11px;fill:var(--text-secondary)">RR.ZD / RR1.ZD</text></g></svg>
+<rect x="420" y="994" width="40" height="12" fill="none" stroke="var(--border-strong)" stroke-width="1.3"/>
+<path d="M 430 988 L 450 988 L 440 994" fill="var(--border-strong)"/>
+<g id="d_ctB5a" class="sym f-rss"><circle cx="347.5" cy="1000" r="2.5"/><circle cx="397.5" cy="1000" r="2.5"/><line class="bo" x1="350" y1="1000" x2="389" y2="988"/><line class="bc" x1="350" y1="1000" x2="395" y2="1000"/></g>
+<g id="d_ctB5b" class="sym f-rss"><circle cx="347.5" cy="1028" r="2.5"/><circle cx="397.5" cy="1028" r="2.5"/><line class="bo" x1="350" y1="1028" x2="389" y2="1016"/><line class="bc" x1="350" y1="1028" x2="395" y2="1028"/></g>
+<text x="484" y="1004" text-anchor="start">+48V</text>
+<text x="424" y="1032" text-anchor="start">0V</text>
+<circle id="d_tk5" class="tkdot" cx="200" cy="1028" r="6"/>
+<text x="210" y="1047" text-anchor="start" style="font-size:11px">VMAT: TK RS.S5 al PCC</text>
+<text x="350" y="1047" text-anchor="start" style="font-size:11px">contactos R.RS.S5</text>
+<rect class="zona" x="40" y="1075" width="240" height="105" rx="10"/>
+<g id="d_coNS1lt" class="coil f-ns1"><text x="108" y="1106" text-anchor="start">IAS · NS1</text><path class="zz" d="M 60 1110 L 70 1092 L 80 1110 L 90 1092 L 100 1110"/></g>
+<line x1="80" y1="1114" x2="80" y2="1135" stroke="var(--t)" stroke-width="0.7" stroke-dasharray="3 3"/>
+<g id="d_iasSym5" class="ct"><rect x="50" y="1135" width="60" height="26" rx="4"/><text x="80" y="1148" text-anchor="middle" dominant-baseline="central">IAS</text></g>
+<text x="120" y="1152" text-anchor="start" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Las Torres</text>
+<g id="d_gFeed5"><path class="w" d="M 80 1161 V1215"/></g>
+
+<!-- Condición RS S7 · Vicente Valdés -->
+<rect class="zona" x="660" y="920" width="620" height="135" rx="10"/>
+<text x="670" y="939" style="font-weight:500;fill:var(--text-primary);font-size:12px">Estación Vicente Valdés · Condición RS S7</text>
+<text x="995" y="972" text-anchor="start">0V</text>
+<g id="d_gRSS7"><path class="w" d="M 990 968 H 950"/><path class="w" d="M 910 968 H 680"/></g>
+<g id="d_coRSS7" class="coil f-rss"><text x="930" y="946" text-anchor="middle">R.RS.S7</text><path class="zz" d="M 950 968 L 940 950 L 930 968 L 920 950 L 910 968"/></g>
+<path class="leader" style="stroke:#D264C4" d="M 930 970 V 1035"/>
+<text x="1100" y="992" text-anchor="middle" style="font-size:11px">Bucle Condición RS S7 (5V)</text>
+<g id="d_gBucle7">
+<path class="w" d="M 1240 1000 H 955"/><path class="w" d="M 1200 1028 H 955"/>
+<path class="w" d="M 900 1000 H 880"/><path class="w" d="M 840 1000 H 820"/><path class="w" d="M 900 1028 H 880"/>
+<path class="w" d="M 1240 1000 V 1110"/><path class="w" d="M 1200 1028 V 1110"/>
+</g>
+<rect x="840" y="994" width="40" height="12" fill="none" stroke="var(--border-strong)" stroke-width="1.3"/>
+<path d="M 870 988 L 850 988 L 860 994" fill="var(--border-strong)"/>
+<g id="d_ctB7a" class="sym f-rss"><circle cx="952.5" cy="1000" r="2.5"/><circle cx="902.5" cy="1000" r="2.5"/><line class="bo" x1="950" y1="1000" x2="911" y2="988"/><line class="bc" x1="950" y1="1000" x2="905" y2="1000"/></g>
+<g id="d_ctB7b" class="sym f-rss"><circle cx="952.5" cy="1028" r="2.5"/><circle cx="902.5" cy="1028" r="2.5"/><line class="bo" x1="950" y1="1028" x2="911" y2="1016"/><line class="bc" x1="950" y1="1028" x2="905" y2="1028"/></g>
+<text x="816" y="1004" text-anchor="end">+48V</text>
+<text x="876" y="1032" text-anchor="end">0V</text>
+<circle id="d_tk7" class="tkdot" cx="1100" cy="1028" r="6"/>
+<text x="1090" y="1047" text-anchor="end" style="font-size:11px">VMAT: TK RS.S7 al PCC</text>
+<text x="950" y="1047" text-anchor="end" style="font-size:11px">contactos R.RS.S7</text>
+<rect class="zona" x="1020" y="1075" width="240" height="105" rx="10"/>
+<g id="d_coNS1vv" class="coil f-ns1"><text x="1192" y="1106" text-anchor="end">IA · NS1</text><path class="zz" d="M 1240 1110 L 1230 1092 L 1220 1110 L 1210 1092 L 1200 1110"/></g>
+<line x1="1220" y1="1114" x2="1220" y2="1135" stroke="var(--t)" stroke-width="0.7" stroke-dasharray="3 3"/>
+<g id="d_iaSym7" class="ct"><rect x="1190" y="1135" width="60" height="26" rx="4"/><text x="1220" y="1148" text-anchor="middle" dominant-baseline="central">IA</text></g>
+<text x="1180" y="1152" text-anchor="end" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Vicente Valdés</text>
+<g id="d_gFeed7"><path class="w" d="M 1220 1161 V1215"/></g>
+
+<g id="d_viasBottom">
+<text x="300" y="1203" style="font-weight:600;fill:var(--text-primary);font-size:13px">③ Vías de tracción · 750 Vcc · la S6 se alimenta a través de los SAT</text>
+<rect id="d_via5" class="viabar" x="20" y="1215" width="380" height="30" rx="4"/>
+<text id="d_via5t" class="viabartxt" x="210" y="1230" text-anchor="middle" dominant-baseline="central">Vía S5 · 750 Vcc</text>
+<text x="430" y="1255" text-anchor="middle" style="font-size:10px;fill:#2BA6A6">SAT 5/6</text>
+<circle cx="406" cy="1230" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
+<circle cx="454" cy="1230" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
+<line id="d_blade56" class="satblade" style="transform-origin:410px 1230px;transform-box:view-box" x1="410" y1="1230" x2="450" y2="1230"/>
+<rect id="d_via6" class="viabar" x="460" y="1215" width="380" height="30" rx="4"/>
+<text id="d_via6t" class="viabartxt" x="650" y="1230" text-anchor="middle" dominant-baseline="central">Vía S6 · 750 Vcc (sin S/ER propia)</text>
+<text x="870" y="1255" text-anchor="middle" style="font-size:10px;fill:#2BA6A6">SAT 6/7</text>
+<circle cx="846" cy="1230" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
+<circle cx="894" cy="1230" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
+<line id="d_blade67" class="satblade" style="transform-origin:850px 1230px;transform-box:view-box" x1="850" y1="1230" x2="890" y2="1230"/>
+<rect id="d_via7" class="viabar" x="900" y="1215" width="380" height="30" rx="4"/>
+<text id="d_via7t" class="viabartxt" x="1090" y="1230" text-anchor="middle" dominant-baseline="central">Vía S7 · 750 Vcc</text>
+</g>
+<g id="d_legendD" transform="translate(30,1290)" style="fill:var(--text-secondary)"><g class="sym"><circle cx="0" cy="0" r="2.5"/><circle cx="28" cy="0" r="2.5"/><line x1="3" y1="0" x2="23" y2="-11"/></g><text x="38" y="4" style="font-size:11px;fill:var(--text-secondary)">abierto</text><g class="sym" transform="translate(108,0)"><circle cx="0" cy="0" r="2.5"/><circle cx="28" cy="0" r="2.5"/><line x1="3" y1="0" x2="25" y2="0"/></g><text x="154" y="4" style="font-size:11px;fill:var(--text-secondary)">cerrado</text><line x1="218" y1="0" x2="258" y2="0" stroke="#EF9F27" stroke-width="2" stroke-dasharray="6 4"/><text x="266" y="4" style="font-size:11px;fill:var(--text-secondary)">energizado</text><rect x="344" y="-6" width="11" height="11" rx="2" fill="none" stroke="#E24B4A" stroke-width="1.5"/><text x="362" y="4" style="font-size:11px;fill:var(--text-secondary)">RCE</text><rect x="404" y="-6" width="11" height="11" rx="2" fill="none" stroke="#2BA6A6" stroke-width="1.5"/><text x="422" y="4" style="font-size:11px;fill:var(--text-secondary)">SAT / IAS-IA</text><rect x="520" y="-6" width="11" height="11" rx="2" fill="none" stroke="#3E77E0" stroke-width="1.5"/><text x="538" y="4" style="font-size:11px;fill:var(--text-secondary)">RR.ZD / RR1.ZD</text></g></svg>
 </div>
 
 <section class="v2-pasos" aria-label="Qué está pasando">
@@ -6006,7 +5989,7 @@ render();
 /* ================= MÓDULO D: L4 · ZONA D · SECCIONES 5, 6 y 7 ================= */
 (function(){
 function g(id){return document.getElementById(id);}
-var BW=2640, BH=1220;
+var BW=1300, BH=1310;
 function setZoom(p){var s=g('d_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('d_zoom').value=p;g('d_zoomVal').textContent=Math.round(p)+'%';}
 function fit(){ setZoom(V2.fit('d_wrap', BW, BH)); }
 MODFIT['mod-l4zd'] = fit;
