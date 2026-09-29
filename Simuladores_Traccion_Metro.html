@@ -885,14 +885,23 @@ Para agregar un nuevo módulo:
 </section>
 
 <!-- ================= MÓDULO: L4 · ZONA C · SECCIÓN 4 ================= -->
-<section id="mod-l4zc" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4zc" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Condición de <span>Zona C</span> · Sección 4 · Línea 4</h1>
-<p class="sub">Estación Las Torres · Relé condición de zona RR.ZC · Enclavamiento con ramal Cocheras (R A ZC) · Plano 1202-DSM-04-066-30573 Ind. B</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+<p class="sub">Estación Las Torres · relé RR.ZC · enclavamiento con ramal Cocheras (R A ZC) · plano <span class="v2-mono">1202-DSM-04-066-30573</span> Ind. B</p>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="c_guia">Guía</button>
+<button class="btn" id="c_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="c_zoom" min="30" max="140" value="100"></label>
+<span id="c_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="c_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="c_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> el circuito de mando (48 Vcc) que valida la condición de Zona C y activa el relé <b>RR.ZC</b> en el armario de tracción de la estación Las Torres. Barra inclinada = contacto abierto; horizontal = cerrado. El tramo con corriente se pinta ámbar.</p>
 <p><b>Esta zona tiene una sola sección (S4)</b>, como la Zona A. La cadena exige: <b>RCE.S4</b> cerrado (sin golpe de puño) o inhibido por <b>RCEFS.S4</b>, <b>Y</b> el contacto <b>R A ZC</b> cerrado.</p>
@@ -905,13 +914,9 @@ Para agregar un nuevo módulo:
 <p><b>Ejercicio 4 — Energizar la vía (grupo 4):</b> con la zona armada, R.RS.S4 activa el bucle de 5V y los <b>NS1 quedan listos en las dos S/ER</b> (Rotonda Quilín y Las Torres) — pero la vía sigue muerta. La S4 tiene <b>dos alimentadores</b>: cierra el IAS RQ o el IA LT (basta uno para que la vía tome los 750 Vcc; lo normal es cerrar ambos). Si con la vía energizada cae la condición (golpe de puño o apertura desde Cocheras), los interruptores <b>disparan</b> solos.</p>
 <p><b>Ejercicio 5 — Prueba de lámpara:</b> aprieta "PL · Prueba lámpara": la luz roja enciende mientras dura la prueba, sin tocar la condición de zona. Así el operador confirma que la ampolleta funciona.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="c_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="c_zoom" min="30" max="140" value="100"></label>
-<span id="c_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="c_wrap">
 <svg id="c_plano" width="1300" height="840" viewBox="0 0 1300 840" role="img">
 <title>Condición de Zona C — Sección 4</title>
@@ -1083,35 +1088,46 @@ Para agregar un nuevo módulo:
 </g></svg>
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · Condición de Zona C (mando PCC)</legend>
-<label><input type="checkbox" id="c_cbDG" checked> DG (normal cerrado)</label>
-<label><input type="checkbox" id="c_cbGiro"> TPL ZC girado</label>
-<button class="btn" id="c_btnPuls">Oprimir TPL (pulso)</button>
-<button class="btn" id="c_btnPL">PL · Prueba lámpara</button>
-</fieldset>
-<fieldset class="grp">
-<legend>2 · Corte de emergencia S4 · bucle de ruptores</legend>
-<label><input type="checkbox" id="c_cbRE4a"> Ruptores vía 1 S4</label>
-<label><input type="checkbox" id="c_cbRE4b"> Ruptores vía 2 S4</label>
-<button class="btn" id="c_btnTC4a">TC: Abrir R.PCE.S4</button>
-<button class="btn" id="c_btnTC4c" disabled>TC: Cerrar R.PCE.S4</button>
-<label><input type="checkbox" id="c_cbCEFS4"> Inhib. CEFS S4</label>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Ramal Cocheras</legend>
-<label><input type="checkbox" id="c_cbAi"> Cocheras abre la zona (R A ZC)</label>
-</fieldset>
-<fieldset class="grp">
-<legend>4 · Energizar vía (comando del operador, requiere Condición RS S4)</legend>
-<button class="btn" id="c_btnIAS" disabled>Cerrar IAS RQ</button>
-<button class="btn" id="c_btnIASa" disabled>Abrir IAS RQ</button>
-<button class="btn" id="c_btnIA" disabled>Cerrar IA LT</button>
-<button class="btn" id="c_btnIAa" disabled>Abrir IA LT</button>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="c_pasoN"></em></div>
+<ol id="c_pasos">
+<li data-c="#7A70E0"><b>1</b><span><strong>RZC</strong> — con el R.DG cerrado, se gira y oprime el TPL ZC</span></li>
+<li data-c="#3E77E0"><b>2</b><span><strong>RR.ZC</strong> — R.CE.S4 (o CEFS) y R A ZC cerrados</span></li>
+<li data-c="#1D9E75"><b>3</b><span><strong>KZC sella</strong> — se apaga la luz roja, ya se puede soltar el TPL</span></li>
+<li data-c="#D264C4"><b>4</b><span><strong>R.RS.S4</strong> — cierra el bucle RS, NS1 listos en RQ y LT</span></li>
+<li data-c="#EF9F27"><b>5</b><span><strong>IAS / IA cerrado</strong> — <em id="c_paso5">vía a 750 Vcc</em></span></li>
+</ol>
 <div id="c_status">Marca "TPL ZC girado" y aprieta "Oprimir TPL" para armar la Zona C.</div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="c_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="c_chips"></div>
+<fieldset class="grp" style="--gc:#9b93ee">
+<legend>1 · Mando PCC</legend>
+<label><span>R.DG (normal cerrado)</span><input type="checkbox" id="c_cbDG" checked></label>
+<label><span>TPL ZC girado</span><input type="checkbox" id="c_cbGiro"></label>
+<div class="v2-fila"><span>Pulsador TPL</span><button class="btn v2-acc" id="c_btnPuls" style="--bc:#7A70E0">Oprimir (pulso)</button></div>
+<div class="v2-fila"><span>Luz roja del TPL</span><button class="btn v2-acc" id="c_btnPL" style="--bc:#E24B4A">PL · Prueba lámpara</button></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2 · Corte de emergencia S4</legend>
+<label><span>Ruptores vía 1 S4</span><input type="checkbox" class="peligro" id="c_cbRE4a"></label>
+<label><span>Ruptores vía 2 S4</span><input type="checkbox" class="peligro" id="c_cbRE4b"></label>
+<label><span>Inhibición CEFS S4</span><input type="checkbox" id="c_cbCEFS4"></label>
+<div class="v2-fila"><span>Prueba TC</span><span class="v2-par"><button class="btn" id="c_btnTC4a">Abrir R.PCE</button><button class="btn" id="c_btnTC4c" disabled>Cerrar R.PCE</button></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>3 · Ramal Cocheras</legend>
+<label><span>Cocheras abre la zona (R A ZC)</span><input type="checkbox" class="peligro" id="c_cbAi"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#ec8a45">
+<legend>4 · Energizar vía (requiere Condición RS S4)</legend>
+<div class="v2-fila"><span><i class="v2-dot" id="c_dotIAS"></i>IAS Rotonda Quilín</span><span class="v2-par"><button class="btn" id="c_btnIAS" disabled>Cerrar</button><button class="btn" id="c_btnIASa" disabled>Abrir</button></span></div>
+<div class="v2-fila"><span><i class="v2-dot" id="c_dotIA"></i>IA Las Torres</span><span class="v2-par"><button class="btn" id="c_btnIA" disabled>Cerrar</button><button class="btn" id="c_btnIAa" disabled>Abrir</button></span></div>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
@@ -5174,12 +5190,31 @@ render();
 function g(id){return document.getElementById(id);}
 var BW=1300, BH=840;
 function setZoom(p){var s=g('c_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('c_zoom').value=p;g('c_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('c_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('c_wrap', BW, BH)); }
 MODFIT['mod-l4zc'] = fit;
 g('c_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('c_btnFit').onclick=fit;
 
 var st = {dg:true, giro:false, puls:false, re4a:false, re4b:false, pce4:true, cefs4:false, aiAb:false, kzc:false, pl:false, iasAb:true, iaAb:true};
+var ST0 = JSON.parse(JSON.stringify(st));
+var PASOS = [
+  {ok:function(r){return r.rzc;},  bloq:function(r){return st.puls && !r.rzc;}},
+  {ok:function(r){return r.rrzc;}, bloq:function(r){return r.rzc && !r.rrzc;}},
+  {ok:function(r){return r.kzc;}},
+  {ok:function(r){return r.rss4;}},
+  {ok:function(r){return r.via4;}}
+];
+function pasos(r, hasta){ V2.pasos('c_', PASOS, r, hasta); }
+function chips(r){
+  V2.chips('c_chips', [
+    !st.dg ? ['no','DG abierto'] : null,
+    r.rce4 ? ['si','Bucle CE S4 íntegro'] : (st.cefs4 ? ['','Bucle CE S4 abierto · CEFS'] : ['no','Bucle CE S4 abierto']),
+    st.aiAb ? ['no','Cocheras abre la zona'] : null,
+    r.kzc ? ['si','Zona C armada'] : ['','Zona C sin armar'],
+    r.rss4 ? ['si','RS S4 presente'] : null,
+    r.via4 ? ['si','750 Vcc'] : null
+  ]);
+}
 
 function solve(){
   var kzc = st.kzc, rzc=false, ce4=false, rai=false, rrzc=false;
@@ -5233,12 +5268,12 @@ function render(){
       // bucle de corte de emergencia S4
       setOn('c_ctRE4a',!st.re4a);setOn('c_ctRE4b',!st.re4b);setOn('c_ctPCE4',st.pce4);setOn('c_coPCE4',st.pce4);setLive('c_gPCE4',st.pce4);
       setLive('c_gBucleCE4',r.rce4);setOn('c_coRCE4',r.rce4);setOn('c_ctTKb4',r.rce4);setLive('c_gTKb4',r.rce4);setOn('c_tkb4',r.rce4);
-      g('c_btnTC4a').disabled=!st.pce4;g('c_btnTC4c').disabled=st.pce4;},
+      g('c_btnTC4a').disabled=!st.pce4;g('c_btnTC4c').disabled=st.pce4;pasos(r,0);},
     function(){setOn('c_ctRZC2',r.rzc);setLive('c_gChain',r.rrzc);},
     function(){setOn('c_ctCE4',r.rce4);setOn('c_ctCEFS4',st.cefs4);setLive('c_gCE4',r.rrzc&&r.rce4);setLive('c_gCEFS4',r.rrzc&&st.cefs4);
       setOn('c_ctAi',!st.aiAb);},
-    function(){setOn('c_coRRZC',r.rrzc);},
-    function(){setOn('c_ctRet',r.rrzc);setLive('c_gRet',r.rrzc);setOn('c_coKZC',r.kzc);},
+    function(){setOn('c_coRRZC',r.rrzc);pasos(r,1);},
+    function(){setOn('c_ctRet',r.rrzc);setLive('c_gRet',r.rrzc);setOn('c_coKZC',r.kzc);pasos(r,2);},
     function(){setOn('c_ctRS4',r.rss4);setLive('c_gRSS4',r.rss4);setOn('c_coRSS4',r.rss4);
       setOn('c_ctB4a',r.rss4);setOn('c_ctB4b',r.rss4);setLive('c_gBucle4',r.rss4);
       setOn('c_coNS1lt',r.rss4);setOn('c_coNS1rq',r.rss4);setOn('c_tk4',r.rss4);
@@ -5248,6 +5283,10 @@ function render(){
       g('c_btnIASa').disabled = st.iasAb;
       g('c_btnIA').disabled = !r.rss4 || !st.iaAb;
       g('c_btnIAa').disabled = st.iaAb;
+      setOn('c_dotIAS', r.rss4 && !st.iasAb); setOn('c_dotIA', r.rss4 && !st.iaAb);
+      var cerr=[]; if(!st.iasAb)cerr.push('IAS RQ'); if(!st.iaAb)cerr.push('IA LT');
+      g('c_paso5').textContent = r.via4 ? 'vía a 750 Vcc por ' + cerr.join(' e ') : 'vía a 750 Vcc';
+      pasos(r,4); chips(r);
       g('c_status').textContent=statusMsg(r);}
   ];
   stages.forEach(function(fn,i){timers.push(setTimeout(fn,i*300));});
@@ -5267,6 +5306,7 @@ g('c_btnIAS').onclick=function(){st.iasAb=false;render();};
 g('c_btnIASa').onclick=function(){st.iasAb=true;render();};
 g('c_btnIA').onclick=function(){st.iaAb=false;render();};
 g('c_btnIAa').onclick=function(){st.iaAb=true;render();};
+g('c_btnReset').onclick=function(){ V2.reponer('mod-l4zc', st, ST0, render); };
 render();
 })();
 
