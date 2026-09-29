@@ -1404,27 +1404,32 @@ Para agregar un nuevo módulo:
 
 <!-- ================= MÓDULO: MANDO CE / CEFS · LAS TORRES · ZONA C ================= -->
 
-<section id="mod-l4zcm" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4zcm" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Condición <span>Zona C</span> · L4</h1>
 <p class="sub">Pupitre · PCC armario tracción · Cable túnel · Armario TT · Local Técnico Estación Las Torres, armario MC</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="lt_guia">Guía</button>
+<button class="btn" id="lt_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="lt_zoom" min="30" max="140" value="100"></label>
+<span id="lt_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="lt_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="lt_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> la cadena de mando de la Zona C tal como viene en la hoja. Del pupitre sale el giro del TPL.ZC, en el PCC se sellan el K.ZC y el R.ZC, y por el cable túnel baja todo al armario MC de Las Torres.</p>
 <p><b>El CEFS S4:</b> mismo esquema que en Tobalaba. El PCC manda <b>pulsos</b> por el Módulo Interf. TT — CEFSS1 C-S4 para armar y CEFSS1 A-S3 para desarmar — y en el armario MC el biestable <b>K1A / K1B</b> sostiene al R.CEFS.S4 hasta el pulso contrario.</p>
 <p><b>Los controles:</b> suben por la P43 al MUX1 del armario FF con su común Com P4, y el TK.ZC.E16 informa al PCC el estado de la zona.</p>
 <p><b>Lo que se reparte por el túnel:</b> el RR.A.ZC y el R.ZC salen por la P44 y la 2J1 hacia el armario TT del lado C/N.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="lt_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="lt_zoom" min="30" max="140" value="100"></label>
-<span id="lt_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="lt_wrap">
 <svg id="lt_plano" width="1920" height="1210" viewBox="0 0 1920 1210" role="img">
 <defs><marker id="lt_ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#3E77E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
@@ -1616,43 +1621,64 @@ Para agregar un nuevo módulo:
 </svg>
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · Pupitre</legend>
-<label><input type="checkbox" id="lt_cbDG" checked> R.DG cerrado</label>
-<button class="btn" id="lt_btnGiro">Girar el TPL.ZC</button>
-<span id="lt_estZC" style="font-size:12px"></span>
-</fieldset>
-<fieldset class="grp">
-<legend>2 · Corte de emergencia S4</legend>
-<label><input type="checkbox" id="lt_cbCE"> CE S4 golpeado</label>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Comandos del PCC · CEFS S4</legend>
-<button class="btn" id="lt_btnCierre">CEFSS1 C-S4 · armar</button>
-<button class="btn" id="lt_btnAbierto">CEFSS1 A-S3 · desarmar</button>
-<span id="lt_estFS" style="font-size:12px"></span>
-</fieldset>
-<fieldset class="grp">
-<legend>Ir al módulo enganchado</legend>
-<button class="btn" onclick="irModulo('mod-l4zc')">Condición de Zona C</button>
-<button class="btn" onclick="irModulo('mod-l4cefs')">Mando CE · CEFS · Tobalaba</button>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="lt_pasoN"></em></div>
+<ol id="lt_pasos">
+<li data-c="#7A70E0"><b>1</b><span><strong>Pupitre y PCC</strong> — R.DG cerrado y TPL.ZC girado: K.ZC se sella y arrastra al R.ZC</span></li>
+<li data-c="#E24B4A"><b>2</b><span><strong>Armario MC Las Torres</strong> — CE S4 sano o R.CEFS.S4 armado</span></li>
+<li data-c="#3E77E0"><b>3</b><span><strong>Reparto</strong> — RR.A.ZC y R.ZC por la P44 y la 2J1 al armario TT</span></li>
+</ol>
 <div id="lt_status"></div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="lt_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="lt_chips"></div>
+<fieldset class="grp" style="--gc:#9b93ee">
+<legend>1 · Pupitre</legend>
+<label><span>R.DG cerrado</span><input type="checkbox" id="lt_cbDG" checked></label>
+<div class="v2-fila"><span>TPL.ZC</span><button class="btn v2-acc" id="lt_btnGiro" style="--bc:#7A70E0">Girar el TPL.ZC</button></div>
+<div class="v2-fila"><span id="lt_estZC" style="font-size:12.5px"></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>2 · Corte de emergencia S4</legend>
+<label><span>CE S4 golpeado</span><input type="checkbox" class="peligro" id="lt_cbCE"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#2fbf8f">
+<legend>3 · PCC · CEFS S4 (pulsos)</legend>
+<div class="v2-fila"><span>CEFSS1 C-S4</span><button class="btn v2-acc" id="lt_btnCierre" style="--bc:#1D9E75">Armar</button></div>
+<div class="v2-fila"><span>CEFSS1 A-S3</span><button class="btn v2-acc" id="lt_btnAbierto" style="--bc:#1D9E75">Desarmar</button></div>
+<div class="v2-fila"><span id="lt_estFS" style="font-size:12.5px"></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>4 · Módulos enganchados</legend>
+<div class="v2-fila"><span>Las Torres</span><button class="btn" type="button" onclick="irModulo('mod-l4zc')">Condición de Zona C</button></div>
+<div class="v2-fila"><span>Tobalaba</span><button class="btn" type="button" onclick="irModulo('mod-l4cefs')">Mando CE · CEFS</button></div>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
 <!-- ================= MÓDULO: MANDO CE / CEFS · TOBALABA ================= -->
 
-<section id="mod-l4cefs" class="mod">
-<header>
-<button class="btn volver" onclick="irMenu()">&#8592; Volver al menú</button>
+<section id="mod-l4cefs" class="mod v2">
+<main class="v2-app">
+<div class="v2-top">
+<button class="btn v2-back" onclick="irMenu()">&#8592; Menú</button>
+<div class="v2-tit">
 <h1>Mando <span>CE · CEFS</span> · Bucle de ruptores S1 · Tobalaba</h1>
 <p class="sub">Túnel y Estación · Armario TT · Armario FF (VXMAT) · Local Técnico Estación Tobalaba, armario MC</p>
-</header>
-<details class="guia">
-<summary>📖 Guía rápida para quien recién llega (clic para abrir)</summary>
+</div>
+<div class="ctrl v2-tools">
+<button class="btn" type="button" data-v2-abrir="mc_guia">Guía</button>
+<button class="btn" id="mc_btnFit">Ajustar</button>
+<label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="mc_zoom" min="30" max="140" value="100"></label>
+<span id="mc_zoomVal" class="v2-mono" style="font-size:12px;color:var(--text-secondary)">100%</span>
+</div>
+</div>
+<div class="v2-drawer" id="mc_guia" hidden>
+<div class="v2-drawer-head"><b>Guía rápida</b><button class="btn" type="button" data-v2-cerrar="mc_guia" aria-label="Cerrar guía">✕</button></div>
 <div class="cont">
 <p><b>Qué estás viendo:</b> por dónde suben al PCC los <b>controles</b> de un corte de emergencia y por dónde bajan los <b>comandos</b> con que el PCC arma o desarma el CEFS. Es la cañería entre la vía y el puesto de mando.</p>
 <p><b>Los controles (TK, suben):</b> los contactos auxiliares de los relés del armario MC llegan por la bornera P43 a las entradas del MUX1 en la Tarjeta 1 · Módulo 1 del VXMAT, y de ahí a la red RMS hacia el PCC. Cada relé informa con <b>dos</b> señales, abierto y cerrado, no con una sola.</p>
@@ -1660,13 +1686,9 @@ Para agregar un nuevo módulo:
 <p><b>Lo importante del CEFS:</b> el comando es un <b>pulso</b>, no una orden sostenida. Con <b>TC.CEFS.C.S4</b> el contacto queda <b>enclavado</b> y deja pasar el 0V; con <b>TC.CEFS.A.S3</b> se desenclava el K1A y se corta el paso. El relé se mantiene solo hasta que llega el pulso contrario.</p>
 <p><b>Ojo con el 0V:</b> no nace en la P41. El 0V viene aparte, del borne <b>D16</b> del armario MC. Por la P41 solo pasa el contacto que abre o cierra ese camino.</p>
 </div>
-</details>
-<main>
-<div class="ctrl" style="margin-bottom:6px">
-<button class="btn" id="mc_btnFit">Ajustar a pantalla</button>
-<label>Zoom <input type="range" id="mc_zoom" min="30" max="140" value="100"></label>
-<span id="mc_zoomVal" style="font-size:12px;color:var(--text-secondary)">100%</span>
 </div>
+<div class="v2-body">
+<div class="v2-left">
 <div class="scrollwrap" id="mc_wrap">
 <svg id="mc_plano" width="1720" height="1180" viewBox="0 0 1720 1180" role="img">
 <defs><marker id="mc_ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#3E77E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
@@ -1865,28 +1887,45 @@ Para agregar un nuevo módulo:
 </svg>
 </div>
 
-<div class="panel">
-<fieldset class="grp">
-<legend>1 · Bucle de ruptores S1</legend>
-<label><input type="checkbox" id="mc_cbCE"> Ruptor RE golpeado <span style="color:var(--text-secondary)">(abre el bucle)</span></label></fieldset>
-<fieldset class="grp"><legend>Comandos del PCC · prueba del corte</legend><button class="btn" id="mc_btnPrueba">TC.PCE.A.S1 · prueba</button><button class="btn" id="mc_btnReponer">TC.PCE.C.S2 · reponer</button><span id="mc_estPCE" style="font-size:12px"></span>
-</fieldset>
-<fieldset class="grp">
-<legend>2 · Comandos del PCC · CEFS</legend>
-<button class="btn" id="mc_btnCierre">TC.CEFS.C.S4 · comando CIERRE</button>
-<button class="btn" id="mc_btnAbierto">TC.CEFS.A.S3 · comando ABIERTO</button>
-<span id="mc_estFS" style="font-size:12px"></span>
-</fieldset>
-<fieldset class="grp">
-<legend>3 · Controles que llegan al PCC</legend>
-<span id="mc_tks" style="font-size:12px;line-height:1.7"></span>
-</fieldset>
-<fieldset class="grp">
-<legend>Ir al módulo enganchado</legend>
-<button class="btn" onclick="irModulo('mod-l4za')">Condición de Zona A</button>
-</fieldset>
-</div>
+<section class="v2-pasos" aria-label="Qué está pasando">
+<div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="mc_pasoN"></em></div>
+<ol id="mc_pasos">
+<li data-c="#3E77E0"><b>1</b><span><strong>Bucle alimentado</strong> — R.PCE.S1 en reposo: D2·D3 y C2·C3 del 2J9 cerrados</span></li>
+<li data-c="#E24B4A"><b>2</b><span><strong>R.CE.S1</strong> — bucle íntegro, sin ruptores golpeados: sube TK.CE.C.E8</span></li>
+<li data-c="#1D9E75"><b>3</b><span><strong>R.CEFS1</strong> — enclavado por el pulso de cierre: sube TK.CEFS.C.E10</span></li>
+</ol>
 <div id="mc_status"></div>
+</section>
+</div>
+<aside class="panel v2-panel" aria-label="Controles">
+<div class="v2-panel-head"><h2>Controles</h2><button class="btn" type="button" id="mc_btnReset">Reponer todo</button></div>
+<div class="v2-chips" id="mc_chips"></div>
+<fieldset class="grp" style="--gc:#f06a69">
+<legend>1 · Bucle de ruptores S1</legend>
+<label><span>Ruptor RE golpeado (abre el bucle)</span><input type="checkbox" class="peligro" id="mc_cbCE"></label>
+</fieldset>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>2 · PCC · prueba del corte (pulsos)</legend>
+<div class="v2-fila"><span>TC.PCE.A.S1</span><button class="btn v2-acc" id="mc_btnPrueba" style="--bc:#3E77E0">Prueba</button></div>
+<div class="v2-fila"><span>TC.PCE.C.S2</span><button class="btn v2-acc" id="mc_btnReponer" style="--bc:#3E77E0">Reponer</button></div>
+<div class="v2-fila"><span id="mc_estPCE" style="font-size:12.5px"></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#2fbf8f">
+<legend>3 · PCC · CEFS (pulsos)</legend>
+<div class="v2-fila"><span>TC.CEFS.C.S4</span><button class="btn v2-acc" id="mc_btnCierre" style="--bc:#1D9E75">Comando CIERRE</button></div>
+<div class="v2-fila"><span>TC.CEFS.A.S3</span><button class="btn v2-acc" id="mc_btnAbierto" style="--bc:#1D9E75">Comando ABIERTO</button></div>
+<div class="v2-fila"><span id="mc_estFS" style="font-size:12.5px"></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#e8b45a">
+<legend>4 · Controles que llegan al PCC</legend>
+<div class="v2-fila"><span id="mc_tks" class="v2-mono" style="font-size:12.5px;line-height:1.8"></span></div>
+</fieldset>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>5 · Módulo enganchado</legend>
+<div class="v2-fila"><span>Tobalaba</span><button class="btn" type="button" onclick="irModulo('mod-l4za')">Condición de Zona A</button></div>
+</fieldset>
+</aside>
+</div>
 </main>
 </section>
 
@@ -6920,13 +6959,26 @@ document.addEventListener('keydown', function(e){
 function g(id){return document.getElementById(id);}
 var BW=1720, BH=1180;
 function setZoom(p){var s=g('mc_plano');if(!s)return;s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('mc_zoom').value=p;g('mc_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('mc_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('mc_wrap', BW, BH)); }
 MODFIT['mod-l4cefs'] = fit;
 g('mc_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('mc_btnFit').onclick=fit;
 
 // sello: el comando del PCC es un PULSO, el contacto queda enclavado hasta el pulso contrario
 var st = { ce:false, sello:false, pce:false, pulso:null, pulsoP:null };
+var ST0 = JSON.parse(JSON.stringify(st));
+var PASOS = [
+  {ok:function(r){return r.alim;}, bloq:function(r){return !r.alim;}},
+  {ok:function(r){return r.rce;},  bloq:function(r){return r.alim && !r.rce;}},
+  {ok:function(r){return r.rcefs;}}
+];
+function chips(r){
+  V2.chips('mc_chips', [
+    r.pce ? ['','Prueba PCE en curso'] : null,
+    r.rce ? ['si','TK.CE.C.E8 · bucle sano'] : ['no','TK.CE.A.E7 · bucle abierto'],
+    r.rcefs ? ['si','TK.CEFS.C.E10 · CEFS armado'] : ['','TK.CEFS.A.E9 · CEFS desarmado']
+  ]);
+}
 
 function setW(id,on){var e=g(id);if(!e)return;e.querySelectorAll('.w').forEach(function(w){w.classList.toggle('live',!!on);});}
 function setOn(id,on){var e=g(id);if(e)e.classList.toggle('on',!!on);}
@@ -7056,6 +7108,7 @@ function render(){
      ? ' El CEFS está armado: el pulso de cierre dejó el contacto 43·44 enclavado, así que el 0V del D16 sube al K1 y mantiene el R.CEFS1.'
      : ' El CEFS está desarmado: sin el sello puesto, el 0V del D16 no encuentra camino al K1 aunque el borne siga con tensión.';
   g('mc_status').textContent = m;
+  V2.pasos('mc_', PASOS, r, 2); chips(r);
 }
 
 g('mc_cbCE').onchange = function(){ st.ce = this.checked; render(); };
@@ -7075,6 +7128,7 @@ function pulsoP(tipo){
 g('mc_btnPrueba').onclick = function(){ pulsoP('prueba'); };
 g('mc_btnReponer').onclick = function(){ pulsoP('reponer'); };
 g('mc_btnAbierto').onclick = function(){ pulso('abierto'); };
+g('mc_btnReset').onclick = function(){ V2.reponer('mod-l4cefs', st, ST0, render); };
 render();
 })();
 
@@ -7084,12 +7138,27 @@ render();
 function g(id){return document.getElementById(id);}
 var BW=1920, BH=1210;
 function setZoom(p){var s=g('lt_plano');if(!s)return;s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('lt_zoom').value=p;g('lt_zoomVal').textContent=Math.round(p)+'%';}
-function fit(){var w=g('lt_wrap').clientWidth-12;setZoom(Math.max(30,Math.min(140,(w/BW)*100)));}
+function fit(){ setZoom(V2.fit('lt_wrap', BW, BH)); }
 MODFIT['mod-l4zcm'] = fit;
 g('lt_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('lt_btnFit').onclick=fit;
 
 var st = { dg:true, giro:false, ce:false, sello:false, pulso:null };
+var ST0 = JSON.parse(JSON.stringify(st));
+var PASOS = [
+  {ok:function(r){return r.rzc;}},
+  {ok:function(r){return r.zona;}, bloq:function(r){return r.rzc && !r.zona;}},
+  {ok:function(r){return r.zona;}}
+];
+function chips(r){
+  V2.chips('lt_chips', [
+    !st.dg ? ['no','R.DG abierto'] : null,
+    r.rzc ? ['si','R.ZC energizado'] : ['','TPL.ZC sin girar'],
+    r.ce ? ['si','CE S4 sano'] : ['no','CE S4 golpeado'],
+    r.rcefs ? ['si','R.CEFS.S4 armado'] : null,
+    r.zona ? ['si','Zona C armada'] : null
+  ]);
+}
 
 function setW(id,on){var e=g(id);if(!e)return;e.querySelectorAll('.w').forEach(function(w){w.classList.toggle('live',!!on);});}
 function setOn(id,on){var e=g(id);if(e)e.classList.toggle('on',!!on);}
@@ -7167,6 +7236,7 @@ function render(){
   }
   if(r.rcefs) m += ' El CEFS S4 quedó armado por el pulso CEFSS1 C-S4: el biestable K1A/K1B lo sostiene hasta el pulso contrario.';
   g('lt_status').textContent = m;
+  V2.pasos('lt_', PASOS, r, 2); chips(r);
 }
 
 function pulso(tipo){
@@ -7180,6 +7250,7 @@ g('lt_cbCE').onchange = function(){ st.ce = this.checked; render(); };
 g('lt_btnGiro').onclick = function(){ st.giro = !st.giro; render(); };
 g('lt_btnCierre').onclick = function(){ pulso('cierre'); };
 g('lt_btnAbierto').onclick = function(){ pulso('abierto'); };
+g('lt_btnReset').onclick = function(){ V2.reponer('mod-l4zcm', st, ST0, render); };
 render();
 })();
 
