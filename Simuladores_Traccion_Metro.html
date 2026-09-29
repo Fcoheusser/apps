@@ -3350,7 +3350,7 @@ Para agregar un nuevo módulo:
 <div class="v2-body">
 <div class="v2-left">
 <div class="scrollwrap" id="g_wrap">
-<svg id="g_plano" width="1300" height="1230" viewBox="0 0 1300 1230" role="img">
+<svg id="g_plano" width="1300" height="1380" viewBox="0 0 1300 1380" role="img">
 <title>Condición de Zona G — Secciones 10 y 11</title>
 <defs><marker id="g_arG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 
@@ -3557,8 +3557,6 @@ Para agregar un nuevo módulo:
 <g transform="translate(0,-190)"><line x1="20" y1="890" x2="1280" y2="890" stroke="var(--border)" stroke-width="1"/>
 <text x="20" y="914" style="font-weight:600;fill:var(--text-primary);font-size:13px">② Condición RS por sección · relé de seguridad R.RS y bucle de 5V al NS1</text>
 
-<rect class="zona" x="20" y="930" width="340" height="150" rx="10"/>
-<text x="30" y="950" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Hospital Sotero del Río</text>
 <rect class="zona" x="380" y="930" width="900" height="150" rx="10"/>
 <text x="390" y="950" style="font-weight:500;fill:var(--text-primary);font-size:12px">Estación Hospital Sotero del Río · Condición RS S10</text>
 <text x="780" y="984" text-anchor="end">0V</text>
@@ -3570,7 +3568,7 @@ Para agregar un nuevo módulo:
 <text x="910" y="1010" text-anchor="middle" style="font-size:11px">P1 · resistencia ajustable</text>
 <g id="g_gBucle10">
 <path class="w" d="M 870 1028 H 890"/><path class="w" d="M 930 1028 H 950"/>
-<path class="w" d="M 290 1028 H 815"/><path class="w" d="M 240 1056 H 815"/><path class="w" d="M 870 1056 H 890"/>
+<path class="w" d="M 330 1028 H 815"/><path class="w" d="M 350 1056 H 815"/><path class="w" d="M 870 1056 H 890"/>
 </g>
 <rect x="890" y="1022" width="40" height="12" fill="none" stroke="var(--border-strong)" stroke-width="1.3"/>
 <path d="M 900 1016 L 920 1016 L 910 1022" fill="var(--border-strong)"/>
@@ -3580,15 +3578,9 @@ Para agregar un nuevo módulo:
 <text x="894" y="1060">0V</text>
 <text x="560" y="1018" text-anchor="middle" style="font-size:11px">Bucle Condición RS S10 (5V)</text>
 <text x="410" y="1072" style="font-size:11px">contactos R.RS.S10</text>
-<g id="g_coNS1hs" class="coil f-ns1"><text x="250" y="1020" text-anchor="middle">NS1 · 5V</text><path class="zz" d="M 230 1044 L 240 1026 L 250 1044 L 260 1026 L 270 1044"/></g>
-<path class="w" d="M 290 1028 H 270 V 1044"/><path class="w" d="M 240 1056 H 230 V 1044"/>
-<text x="88" y="1020" text-anchor="middle" style="font-size:11px">IAS S/ER HS</text>
-<g id="g_iasSym10" class="sym f-sat"><circle cx="60.5" cy="1044" r="2.5"/><circle cx="115.5" cy="1044" r="2.5"/><line class="bo" x1="63" y1="1044" x2="107" y2="1031"/><line class="bc" x1="63" y1="1044" x2="113" y2="1044"/></g>
-<text x="88" y="1075" text-anchor="middle" style="font-size:11px">→ 750 Vcc S10</text>
+<g id="g_gBucle10b"><path class="w" d="M 330 1028 V 1330"/><path class="w" d="M 350 1056 V 1352 H 280 V 1330 H 290"/></g>
 <circle id="g_tk10" class="tkdot" cx="400" cy="1056" r="6"/>
 <text x="414" y="1048" style="font-size:11px">VMAT: TK RS.S10 al PCC</text>
-<rect class="zona" x="20" y="1100" width="340" height="150" rx="10"/>
-<text x="30" y="1120" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Las Mercedes</text>
 <rect class="zona" x="380" y="1100" width="900" height="150" rx="10"/>
 <text x="390" y="1120" style="font-weight:500;fill:var(--text-primary);font-size:12px">Estación Las Mercedes · Condición RS S11</text>
 <text x="780" y="1154" text-anchor="end">0V</text>
@@ -3600,7 +3592,7 @@ Para agregar un nuevo módulo:
 <text x="910" y="1180" text-anchor="middle" style="font-size:11px">P1 · resistencia ajustable</text>
 <g id="g_gBucle11">
 <path class="w" d="M 870 1198 H 890"/><path class="w" d="M 930 1198 H 950"/>
-<path class="w" d="M 290 1198 H 815"/><path class="w" d="M 240 1226 H 815"/><path class="w" d="M 870 1226 H 890"/>
+<path class="w" d="M 730 1198 H 815"/><path class="w" d="M 870 1226 H 890"/>
 </g>
 <rect x="890" y="1192" width="40" height="12" fill="none" stroke="var(--border-strong)" stroke-width="1.3"/>
 <path d="M 900 1186 L 920 1186 L 910 1192" fill="var(--border-strong)"/>
@@ -3608,37 +3600,46 @@ Para agregar un nuevo módulo:
 <g id="g_ctB11b" class="sym f-rss"><circle cx="817.5" cy="1226" r="2.5"/><circle cx="867.5" cy="1226" r="2.5"/><line class="bo" x1="820" y1="1226" x2="859" y2="1214"/><line class="bc" x1="820" y1="1226" x2="865" y2="1226"/></g>
 <text x="954" y="1202">+48V</text>
 <text x="894" y="1230">0V</text>
-<text x="560" y="1188" text-anchor="middle" style="font-size:11px">Bucle Condición RS S11 (5V)</text>
-<text x="410" y="1242" style="font-size:11px">contactos R.RS.S11</text>
-<g id="g_coNS1lme" class="coil f-ns1"><text x="250" y="1190" text-anchor="middle">NS1 · 5V</text><path class="zz" d="M 230 1214 L 240 1196 L 250 1214 L 260 1196 L 270 1214"/></g>
-<path class="w" d="M 290 1198 H 270 V 1214"/><path class="w" d="M 240 1226 H 230 V 1214"/>
-<text x="88" y="1190" text-anchor="middle" style="font-size:11px">IA1 S/ER LME</text>
-<g id="g_iaSym11" class="sym f-sat"><circle cx="60.5" cy="1214" r="2.5"/><circle cx="115.5" cy="1214" r="2.5"/><line class="bo" x1="63" y1="1214" x2="107" y2="1201"/><line class="bc" x1="63" y1="1214" x2="113" y2="1214"/></g>
-<text x="88" y="1245" text-anchor="middle" style="font-size:11px">→ 750 Vcc S11</text>
+<text x="720" y="1190" text-anchor="end" style="font-size:11px">Bucle Condición RS S11 (5V)</text>
+<text x="825" y="1246" style="font-size:11px">contactos R.RS.S11</text>
+<g id="g_gBucle11b"><path class="w" d="M 730 1198 V 1330"/><path class="w" d="M 815 1226 H 810 V 1352 H 780 V 1330 H 770"/></g>
 <circle id="g_tk11" class="tkdot" cx="400" cy="1226" r="6"/>
 <text x="414" y="1218" style="font-size:11px">VMAT: TK RS.S11 al PCC</text>
 
-<!-- Vías con cuchilla SAT 10/11 -->
-<line x1="20" y1="1274" x2="1280" y2="1274" stroke="var(--border)" stroke-width="1"/>
-<text x="20" y="1298" style="font-weight:600;fill:var(--text-primary);font-size:13px">③ Vías de tracción · 750 Vcc</text>
-<rect id="g_via10" class="viabar" x="20" y="1314" width="590" height="30" rx="4"/>
-<text id="g_via10t" class="viabartxt" x="315" y="1329" text-anchor="middle" dominant-baseline="central">Vía S10 · 750 Vcc (S/ER HS)</text>
-<text x="650" y="1304" text-anchor="middle" style="font-size:10px;fill:#2BA6A6">SAT 10/11</text>
-<circle cx="618" cy="1329" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
-<circle cx="682" cy="1329" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
-<line id="g_blade1011" class="satblade" style="transform-origin:622px 1329px;transform-box:view-box" x1="622" y1="1329" x2="678" y2="1329"/>
-<rect id="g_via11" class="viabar" x="690" y="1314" width="590" height="30" rx="4"/>
-<text id="g_via11t" class="viabartxt" x="985" y="1329" text-anchor="middle" dominant-baseline="central">Vía S11 · 750 Vcc (S/ER LME)</text>
+<rect class="zona" x="130" y="1270" width="260" height="140" rx="10"/>
+<text x="140" y="1290" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Sotero del Río</text>
+<g id="g_coNS1hs" class="coil f-ns1"><text x="310" y="1306" text-anchor="middle">IAS · NS1</text><path class="zz" d="M 290 1330 L 300 1312 L 310 1330 L 320 1312 L 330 1330"/></g>
+<line x1="310" y1="1334" x2="310" y2="1370" stroke="var(--t)" stroke-width="0.7" stroke-dasharray="3 3"/>
+<g id="g_iasSym10" class="ct"><rect x="280" y="1370" width="60" height="26" rx="4"/><text x="310" y="1383" text-anchor="middle" dominant-baseline="central">IAS</text></g>
+<g id="g_gFeed10"><path class="w" d="M310 1396 V1464"/></g>
+<rect class="zona" x="690" y="1270" width="260" height="140" rx="10"/>
+<text x="825" y="1290" style="font-weight:500;fill:var(--text-primary);font-size:12px">S/ER Las Mercedes</text>
+<g id="g_coNS1lme" class="coil f-ns1"><text x="750" y="1306" text-anchor="middle">IA1 · NS1</text><path class="zz" d="M 730 1330 L 740 1312 L 750 1330 L 760 1312 L 770 1330"/></g>
+<line x1="750" y1="1334" x2="750" y2="1370" stroke="var(--t)" stroke-width="0.7" stroke-dasharray="3 3"/>
+<g id="g_iaSym11" class="ct"><rect x="720" y="1370" width="60" height="26" rx="4"/><text x="750" y="1383" text-anchor="middle" dominant-baseline="central">IA1</text></g>
+<g id="g_gFeed11"><path class="w" d="M750 1396 V1464"/></g>
 
-<g class="sym"><circle cx="30" cy="1380" r="2.5"/><circle cx="58" cy="1380" r="2.5"/><line x1="33" y1="1380" x2="53" y2="1369"/></g>
-<text x="66" y="1384" style="font-size:11px">abierto</text>
-<g class="sym"><circle cx="140" cy="1380" r="2.5"/><circle cx="168" cy="1380" r="2.5"/><line x1="143" y1="1380" x2="165" y2="1380"/></g>
-<text x="176" y="1384" style="font-size:11px">cerrado</text>
-<line x1="240" y1="1380" x2="280" y2="1380" stroke="#EF9F27" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="288" y="1384" style="font-size:11px">energizado</text>
-<rect x="410" y="1373" width="11" height="11" rx="2" fill="none" stroke="#E24B4A" stroke-width="1.5"/><text x="427" y="1383" style="font-size:11px">RCE</text>
-<rect x="480" y="1373" width="11" height="11" rx="2" fill="none" stroke="#2BA6A6" stroke-width="1.5"/><text x="497" y="1383" style="font-size:11px">SAT / IAS / PT-FT</text>
-<rect x="620" y="1373" width="11" height="11" rx="2" fill="none" stroke="#3E77E0" stroke-width="1.5"/><text x="637" y="1383" style="font-size:11px">RR.ZG</text>
+<!-- Vías con cuchilla SAT 10/11 -->
+<line x1="20" y1="1424" x2="1280" y2="1424" stroke="var(--border)" stroke-width="1"/>
+<text x="20" y="1448" style="font-weight:600;fill:var(--text-primary);font-size:13px">③ Vías de tracción · 750 Vcc</text>
+<rect id="g_via10" class="viabar" x="20" y="1464" width="590" height="30" rx="4"/>
+<text id="g_via10t" class="viabartxt" x="315" y="1479" text-anchor="middle" dominant-baseline="central">Vía S10 · 750 Vcc (S/ER HS)</text>
+<text x="650" y="1454" text-anchor="middle" style="font-size:10px;fill:#2BA6A6">SAT 10/11</text>
+<circle cx="618" cy="1479" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
+<circle cx="682" cy="1479" r="3.5" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
+<line id="g_blade1011" class="satblade" style="transform-origin:622px 1479px;transform-box:view-box" x1="622" y1="1479" x2="678" y2="1479"/>
+<rect id="g_via11" class="viabar" x="690" y="1464" width="590" height="30" rx="4"/>
+<text id="g_via11t" class="viabartxt" x="985" y="1479" text-anchor="middle" dominant-baseline="central">Vía S11 · 750 Vcc (S/ER LME)</text>
+
+<g class="sym"><circle cx="30" cy="1530" r="2.5"/><circle cx="58" cy="1530" r="2.5"/><line x1="33" y1="1530" x2="53" y2="1519"/></g>
+<text x="66" y="1534" style="font-size:11px">abierto</text>
+<g class="sym"><circle cx="140" cy="1530" r="2.5"/><circle cx="168" cy="1530" r="2.5"/><line x1="143" y1="1530" x2="165" y2="1530"/></g>
+<text x="176" y="1534" style="font-size:11px">cerrado</text>
+<line x1="240" y1="1530" x2="280" y2="1530" stroke="#EF9F27" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="288" y="1534" style="font-size:11px">energizado</text>
+<rect x="410" y="1523" width="11" height="11" rx="2" fill="none" stroke="#E24B4A" stroke-width="1.5"/><text x="427" y="1533" style="font-size:11px">RCE</text>
+<rect x="480" y="1523" width="11" height="11" rx="2" fill="none" stroke="#2BA6A6" stroke-width="1.5"/><text x="497" y="1533" style="font-size:11px">SAT / IAS / PT-FT</text>
+<rect x="620" y="1523" width="11" height="11" rx="2" fill="none" stroke="#3E77E0" stroke-width="1.5"/><text x="637" y="1533" style="font-size:11px">RR.ZG</text>
 </g></svg>
 </div>
 
@@ -6442,7 +6443,7 @@ render();
 /* ================= MÓDULO G: L4 · ZONA G · SECCIONES 10 y 11 ================= */
 (function(){
 function g(id){return document.getElementById(id);}
-var BW=1300, BH=1230;
+var BW=1300, BH=1380;
 function setZoom(p){var s=g('g_plano');s.setAttribute('width',Math.round(BW*p/100));s.setAttribute('height',Math.round(BH*p/100));g('g_zoom').value=p;g('g_zoomVal').textContent=Math.round(p)+'%';}
 function fit(){ setZoom(V2.fit('g_wrap', BW, BH)); }
 MODFIT['mod-l4zg'] = fit;
@@ -6571,11 +6572,11 @@ function render(){
     function(){setOn('g_ctRet',r.rrzg);setLive('g_gRet',r.rrzg);setOn('g_coKZG',r.kzg);pasos(r,2);},
     function(){
       setOn('g_ctRS10',r.rrzg);setLive('g_gRSS10',r.rss10);setOn('g_coRSS10',r.rss10);
-      setOn('g_ctB10a',r.rss10);setOn('g_ctB10b',r.rss10);setLive('g_gBucle10',r.rss10);
+      setOn('g_ctB10a',r.rss10);setOn('g_ctB10b',r.rss10);setLive('g_gBucle10',r.rss10);setLive('g_gBucle10b',r.rss10);
       setOn('g_coNS1hs',r.rss10);setOn('g_tk10',r.rss10);setOn('g_iasSym10',!st.iashsAb);
       setOn('g_ctRS11',r.rrzg);setLive('g_gRSS11',r.rss11);setOn('g_coRSS11',r.rss11);
-      setOn('g_ctB11a',r.rss11);setOn('g_ctB11b',r.rss11);setLive('g_gBucle11',r.rss11);
-      setOn('g_coNS1lme',r.rss11);setOn('g_tk11',r.rss11);setOn('g_iaSym11',!st.ia1Ab);
+      setOn('g_ctB11a',r.rss11);setOn('g_ctB11b',r.rss11);setLive('g_gBucle11',r.rss11);setLive('g_gBucle11b',r.rss11);
+      setOn('g_coNS1lme',r.rss11);setOn('g_tk11',r.rss11);setOn('g_iaSym11',!st.ia1Ab);setLive('g_gFeed10',r.via10);setLive('g_gFeed11',r.via11);
       setOn('g_via10',r.via10);g('g_via10t').classList.toggle('on',r.via10);
       setOn('g_via11',r.via11);g('g_via11t').classList.toggle('on',r.via11);
       g('g_blade1011').classList.toggle('ab', st.sat1011Ab);
