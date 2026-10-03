@@ -101,6 +101,8 @@ footer{max-width:1180px;margin:26px auto 0;font-size:12px;color:var(--t);border-
 .card p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.45}
 .card .tag{display:inline-block;margin-top:10px;font-size:11px;border:1px solid var(--border-strong);border-radius:20px;padding:2px 10px;color:var(--text-secondary)}
 .card.on .tag{border-color:#1D9E75;color:#4cc79d}
+.card.on .tag.plano{border-color:#3E77E0;color:#7aa3f0}
+.card.on .tag.pano{border-color:#E0A030;color:#e8b860}
 .mod{display:none}
 .mod.activo{display:block}
 #vistaMenu.mod.activo{display:block}
@@ -5237,54 +5239,53 @@ Para agregar un nuevo módulo:
 
 var MODFIT = {};
 var MODULOS = [
-  { id:"mod-ini", grupo:"General", linea:"Línea 4", titulo:"🟢 Condición DG → Condición RM",
-    desc:"Los tres planos unidos: el DG cierra y reparte a las 7 zonas y a las líneas 25/26 y 27/28, que arman las cadenas RM1 y RM2 — los dos ITM redundantes de cada S/ER.",
-    disponible:true },
-  { id:"mod-l4full", grupo:"General", linea:"Línea 4", titulo:"⚡ Línea 4 completa · Vista sinóptica",
+  { id:"mod-l4full", grupo:"Vista", tipo:"pano", linea:"Línea 4", titulo:"⚡ Línea 4 completa · Vista sinóptica",
     desc:"El sinóptico oficial recreado: comando DG, 2 vías, 22 estaciones, las S/ER de frontera, los 4 SAT, la Vía Z y los ramales a Cocheras y Talleres.",
     disponible:true },
-  { id:"mod-l4za", grupo:"Zonas", linea:"Línea 4", titulo:"Condición de Zona A · Sección 1",
+  { id:"mod-ini", grupo:"DG", tipo:"plano", linea:"Línea 4", titulo:"🟢 Condición DG → Condición RM",
+    desc:"Los tres planos unidos: el DG cierra y reparte a las 7 zonas y a las líneas 25/26 y 27/28, que arman las cadenas RM1 y RM2 — los dos ITM redundantes de cada S/ER.",
+    disponible:true },
+  { id:"mod-l4za", grupo:"Zonas", tipo:"didac", linea:"Línea 4", titulo:"Condición de Zona A · Sección 1",
     desc:"Mando TPL desde el PCC, condición de zona (RZA, RR.ZA, KZA), corte de emergencia con bucle de ruptores, prueba TC, condición RS y cierre de IA en las 3 S/ER.",
     disponible:true },
-  { id:"mod-l4zb", grupo:"Zonas", linea:"Línea 4", titulo:"Condición de Zona B · Secciones 2 y 3",
+  { id:"mod-l4zb", grupo:"Zonas", tipo:"didac", linea:"Línea 4", titulo:"Condición de Zona B · Secciones 2 y 3",
     desc:"Dos secciones (Los Orientales y Rotonda Quilín) con SAT 2/3 de seccionamiento telemandado. Esquema de relés + mini-SCADA sincronizados, con estado Fuera de Mando.",
     disponible:true },
-  { id:"mod-l4zc", grupo:"Zonas", linea:"Línea 4", titulo:"Condición de Zona C · Sección 4",
+  { id:"mod-l4zc", grupo:"Zonas", tipo:"didac", linea:"Línea 4", titulo:"Condición de Zona C · Sección 4",
     desc:"Estación Las Torres. Una sección como la Zona A, más el enclavamiento R A ZC: el ramal de Cocheras puede abrir la zona (plano Condición Cocheras).",
     disponible:true },
-  { id:"mod-l4iat", grupo:"TPA", linea:"Línea 4", titulo:"Condición RS IAT · Taller Puente Alto",
-    desc:"La lógica de 48 V que habilita el cierre del IAT. Muestra la secuencia: primero la condición de zona G en Las Mercedes, y con el RR CE S11 energizado, la condición RS del taller.",
-    disponible:true },
-{ id:"mod-l4cefs", grupo:"General", linea:"LÍNEA 4", titulo:"Mando CE · CEFS · Tobalaba",
-  desc:"Cómo suben al PCC los controles del corte de emergencia y cómo bajan los comandos que arman el CEFS. El sello del K1A y el 0V del D16.",
-  disponible:true },
-{ id:"mod-l4zcm", grupo:"General", linea:"LÍNEA 4", titulo:"Condición Zona C · L4",
-  desc:"La hoja completa: del pupitre al PCC, por el cable túnel hasta el armario MC de Las Torres, con el CE S4, el CEFS y el reparto a los armarios TT.",
-  disponible:true },
-
-  { id:"mod-l4tpa", grupo:"TPA", linea:"Línea 4", titulo:"Taller Puente Alto · Alimentación con corriente de tracción",
-    desc:"El árbol completo de 750 Vcc del taller: S/ER, Cabina A y las cabinas C1, C2 y VP. Muestra los socorros de cada nivel y los dos modos del corte de emergencia.",
-    disponible:true },
-  { id:"mod-l4azg", grupo:"TPA", linea:"Línea 4", titulo:"Apertura Zona G · Talleres Puente Alto",
-    desc:"La cadena de las cuatro vías del taller que arma el R A ZG y su repetidor RR A ZG en Las Mercedes: un corte de emergencia del taller puede abrir la Zona G.",
-    disponible:true },
-  { id:"mod-l4cin", grupo:"CIN", linea:"Línea 4", titulo:"Condición Cocheras · Apertura de la Zona C",
-    desc:"Local Técnico Talleres Cocheras Intermedia. La cadena de las tres vías del recinto que arma el R A ZC y su repetidor RR A ZC en Las Torres: el ramal puede abrir la Zona C.",
-    disponible:true },
-  { id:"", grupo:"Otros", linea:"Línea 4", titulo:"Lote de energía S/ER · IA e IAS",
-    desc:"Detalle de los interruptores de alimentación y de socorro dentro de la subestación.", disponible:false },
-  { id:"mod-l4zd", grupo:"Zonas", linea:"Línea 4", titulo:"Condición de Zona D · Secciones 5, 6 y 7",
+  { id:"mod-l4zd", grupo:"Zonas", tipo:"didac", linea:"Línea 4", titulo:"Condición de Zona D · Secciones 5, 6 y 7",
     desc:"Vicuña Mackenna + armario remoto en Vicente Valdés. Tres secciones, dos SAT (5/6 y 6/7), la S6 sin S/ER propia y el repetidor RR1.ZD.",
     disponible:true },
-  { id:"mod-l4ze", grupo:"Zonas", linea:"Línea 4", titulo:"Condición de Zona E · Sección 8",
+  { id:"mod-l4ze", grupo:"Zonas", tipo:"didac", linea:"Línea 4", titulo:"Condición de Zona E · Sección 8",
     desc:"Estación Trinidad. La zona más simple de la línea: una sección y una sola condición (el corte de emergencia S8).",
     disponible:true },
-  { id:"mod-l4zf", grupo:"Zonas", linea:"Línea 4", titulo:"Condición de Zona F · Sección 9",
+  { id:"mod-l4zf", grupo:"Zonas", tipo:"didac", linea:"Línea 4", titulo:"Condición de Zona F · Sección 9",
     desc:"Estación Hospital Sotero del Río. Gemela de la Zona E: una sección y una sola condición (el corte de emergencia S9).",
     disponible:true },
-  { id:"mod-l4zg", grupo:"Zonas", linea:"Línea 4", titulo:"Condición de Zona G · Secciones 10 y 11",
+  { id:"mod-l4zg", grupo:"Zonas", tipo:"didac", linea:"Línea 4", titulo:"Condición de Zona G · Secciones 10 y 11",
     desc:"Hospital Sotero del Río + Las Mercedes. La última zona: SAT 10/11, el aparato PT/FT S11 y el enclavamiento del ramal a Talleres (R Ai ZG).",
-    disponible:true }
+    disponible:true },
+  { id:"mod-l4cefs", grupo:"CE", tipo:"plano", linea:"LÍNEA 4", titulo:"Mando CE · CEFS · Tobalaba",
+  desc:"Cómo suben al PCC los controles del corte de emergencia y cómo bajan los comandos que arman el CEFS. El sello del K1A y el 0V del D16.",
+  disponible:true },
+  { id:"mod-l4zcm", grupo:"ZPlano", tipo:"plano", linea:"LÍNEA 4", titulo:"Condición Zona C · L4",
+  desc:"La hoja completa: del pupitre al PCC, por el cable túnel hasta el armario MC de Las Torres, con el CE S4, el CEFS y el reparto a los armarios TT.",
+  disponible:true },
+  { id:"mod-l4azg", grupo:"TPA", tipo:"plano", linea:"Línea 4", titulo:"Apertura Zona G · Talleres Puente Alto",
+    desc:"La cadena de las cuatro vías del taller que arma el R A ZG y su repetidor RR A ZG en Las Mercedes: un corte de emergencia del taller puede abrir la Zona G.",
+    disponible:true },
+  { id:"mod-l4iat", grupo:"TPA", tipo:"plano", linea:"Línea 4", titulo:"Condición RS IAT · Taller Puente Alto",
+    desc:"La lógica de 48 V que habilita el cierre del IAT. Muestra la secuencia: primero la condición de zona G en Las Mercedes, y con el RR CE S11 energizado, la condición RS del taller.",
+    disponible:true },
+  { id:"mod-l4tpa", grupo:"TPA", tipo:"plano", linea:"Línea 4", titulo:"Taller Puente Alto · Alimentación con corriente de tracción",
+    desc:"El árbol completo de 750 Vcc del taller: S/ER, Cabina A y las cabinas C1, C2 y VP. Muestra los socorros de cada nivel y los dos modos del corte de emergencia.",
+    disponible:true },
+  { id:"mod-l4cin", grupo:"CIN", tipo:"plano", linea:"Línea 4", titulo:"Condición Cocheras · Apertura de la Zona C",
+    desc:"Local Técnico Talleres Cocheras Intermedia. La cadena de las tres vías del recinto que arma el R A ZC y su repetidor RR A ZC en Las Torres: el ramal puede abrir la Zona C.",
+    disponible:true },
+  { id:"", grupo:"Otros", tipo:"plano", linea:"Línea 4", titulo:"Lote de energía S/ER · IA e IAS",
+    desc:"Detalle de los interruptores de alimentación y de socorro dentro de la subestación.", disponible:false }
 ];
 function irMenu(){
   document.querySelectorAll('.mod').forEach(function(s){ s.classList.remove('activo'); });
@@ -5298,17 +5299,24 @@ function irModulo(id){
   if(MODFIT[id]) setTimeout(MODFIT[id], 50);
 }
 var GRUPOS = [
-  { id:'General', titulo:'Vista general de la Línea 4',
-    desc:'El reparto del DG a toda la línea y el sinóptico completo.' },
-  { id:'Zonas', titulo:'Condiciones de zona · Secciones 1 a 11',
-    desc:'Las siete zonas de la línea, de Tobalaba a Las Mercedes.' },
-  { id:'TPA', titulo:'Talleres Puente Alto',
-    desc:'El ramal al taller: la habilitación del IAT en 48 V y el árbol de 750 V del recinto.' },
-  { id:'CIN', titulo:'Cocheras Intermedias',
+  { id:'Vista', titulo:'1 · Vista general de la Línea 4',
+    desc:'Para ubicarse: zonas, secciones, S/ER, SAT, talleres y cocheras en el sinóptico completo.' },
+  { id:'DG', titulo:'2 · Condición DG y Condición RM',
+    desc:'El arranque de todo: sin DG no hay Condición RM, y sin RM el PCD no puede energizar las S/ER.' },
+  { id:'Zonas', titulo:'3 · Condición de zona · Cómo funciona (Secciones 1 a 11)',
+    desc:'El porqué de cada relé y contacto: mando TPL, condición de zona, CE / CEFS y Condición RS, explicado de forma general.' },
+  { id:'CE', titulo:'4 · Corte de emergencia · CE, CEFS y prueba del bucle',
+    desc:'El bucle de ruptores, el CEFS que lo inhibe y la prueba desde el PCC, tal como vienen en el plano.' },
+  { id:'ZPlano', titulo:'5 · Condición de zona · El plano',
+    desc:'Lo mismo del apartado 3, pero tal cual la hoja: bornes, tarjetas y cables reales.' },
+  { id:'TPA', titulo:'6 · Talleres Puente Alto',
+    desc:'Cómo el taller puede abrir la Zona G, el permiso para cerrar el IAT y el árbol de 750 V del recinto.' },
+  { id:'CIN', titulo:'7 · Cocheras Intermedias',
     desc:'El Local Técnico del ramal de cocheras y su enclavamiento sobre la Zona C.' },
   { id:'Otros', titulo:'En preparación',
     desc:'Módulos que todavía no están montados.' }
 ];
+var TIPOS = { didac:'📘 Cómo funciona', plano:'📐 Tal cual el plano', pano:'🗺 Panorama' };
 (function(){
   var cont = document.getElementById('cards');
   GRUPOS.forEach(function(g){
@@ -5324,7 +5332,7 @@ var GRUPOS = [
       var d = document.createElement('div');
       d.className = 'card ' + (m.disponible ? 'on' : 'off');
       d.innerHTML = '<div class="linea">' + m.linea + '</div><h3>' + m.titulo + '</h3><p>' + m.desc + '</p>' +
-        '<span class="tag">' + (m.disponible ? 'Disponible' : 'Próximamente') + '</span>';
+        '<span class="tag ' + (m.disponible ? (m.tipo || '') : '') + '">' + (!m.disponible ? 'Próximamente' : (TIPOS[m.tipo] || 'Disponible')) + '</span>';
       if(m.disponible) d.onclick = function(){ irModulo(m.id); };
       fila.appendChild(d);
     });
