@@ -1888,7 +1888,7 @@ Para agregar un nuevo módulo:
 <section class="v2-pasos" aria-label="Qué está pasando">
 <div class="v2-pasos-head"><span>Qué está pasando</span><i></i><em id="mc_pasoN"></em></div>
 <ol id="mc_pasos">
-<li data-c="#3E77E0"><b>1</b><span><strong>Bucle alimentado</strong> — R.PCE.S1 en reposo: D2·D3 y C2·C3 del 2J9 cerrados</span></li>
+<li data-c="#3E77E0"><b>1</b><span><strong>Bucle alimentado</strong> — R.PCE.S1 energizado y retenido por su sello: D2·D3 y C2·C3 del 2J9 cerrados</span></li>
 <li data-c="#E24B4A"><b>2</b><span><strong>R.CE.S1</strong> — bucle íntegro, sin ruptores golpeados: sube TK.CE.C.E8</span></li>
 <li data-c="#1D9E75"><b>3</b><span><strong>R.CEFS1</strong> — enclavado por el pulso de cierre: sube TK.CEFS.C.E10</span></li>
 </ol>
@@ -1904,8 +1904,8 @@ Para agregar un nuevo módulo:
 </fieldset>
 <fieldset class="grp" style="--gc:#6d9bf0">
 <legend>2 · PCC · prueba del corte (pulsos)</legend>
-<div class="v2-fila"><span>TC.PCE.A.S1</span><button class="btn v2-acc" id="mc_btnPrueba" style="--bc:#3E77E0">Prueba</button></div>
-<div class="v2-fila"><span>TC.PCE.C.S2</span><button class="btn v2-acc" id="mc_btnReponer" style="--bc:#3E77E0">Reponer</button></div>
+<div class="v2-fila"><span>TC.PCE.C.S2</span><button class="btn v2-acc" id="mc_btnPrueba" style="--bc:#3E77E0">Prueba</button></div>
+<div class="v2-fila"><span>TC.PCE.A.S1</span><button class="btn v2-acc" id="mc_btnReponer" style="--bc:#3E77E0">Reponer</button></div>
 <div class="v2-fila"><span id="mc_estPCE" style="font-size:12.5px"></span></div>
 </fieldset>
 <fieldset class="grp" style="--gc:#2fbf8f">
@@ -7031,7 +7031,7 @@ g('mc_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('mc_btnFit').onclick=fit;
 
 // sello: el comando del PCC es un PULSO, el contacto queda enclavado hasta el pulso contrario
-var st = { ce:false, sello:false, pce:false, pulso:null, pulsoP:null };
+var st = { ce:false, sello:false, k2:true, pulso:null, pulsoP:null };
 var ST0 = JSON.parse(JSON.stringify(st));
 var PASOS = [
   {ok:function(r){return r.alim;}, bloq:function(r){return !r.alim;}},
@@ -7040,7 +7040,7 @@ var PASOS = [
 ];
 function chips(r){
   V2.chips('mc_chips', [
-    r.pce ? ['','Prueba PCE en curso'] : null,
+    r.pce ? ['no','Prueba PCE · R.PCE.S1 caído'] : null,
     r.rce ? ['si','TK.CE.C.E8 · bucle sano'] : ['no','TK.CE.A.E7 · bucle abierto'],
     r.rcefs ? ['si','TK.CEFS.C.E10 · CEFS armado'] : ['','TK.CEFS.A.E9 · CEFS desarmado']
   ]);
@@ -7051,9 +7051,13 @@ function setOn(id,on){var e=g(id);if(e)e.classList.toggle('on',!!on);}
 
 function solve(){
   var r={};
-  // el R.PCE.S1 energizado abre los dos contactos que alimentan el bucle
-  r.pce   = st.pce;
-  r.alim  = !r.pce;                 // D2·D3 y C2·C3 cerrados
+  // R.PCE.S1 con autorretención: en reposo está ENERGIZADO (Z02 con tensión por la salida
+  // TC.PCE.C.S2 cerrada) y retenido por su propio contacto. Sus contactos D2·D3 y C2·C3 alimentan el bucle.
+  r.z02   = st.pulsoP !== 'prueba';  // el pulso TC.PCE.C.S2 abre la salida: Z02 sin tensión
+  r.k2b   = st.pulsoP === 'reponer'; // el pulso TC.PCE.A.S1 excita el K2B: su contacto puentea el sello
+  r.k2    = st.k2;
+  r.pce   = !r.k2;                  // prueba: R.PCE.S1 caído
+  r.alim  = r.k2;                   // D2·D3 y C2·C3 cerrados
   r.bucle = r.alim && !st.ce;       // y ningún ruptor golpeado
   r.rce   = r.bucle;                // bobina R.CE.S1 energizada
   r.sello = st.sello;               // contacto 43/44 del Módulo Interf. TT
@@ -7065,23 +7069,23 @@ function render(){
   var r = solve();
 
   // alimentación: 2J9 -> fusible -> contacto del R.PCE.S1
-  setOn('mc_coPCE', r.pce);
-  // el PCE se maneja igual: pulso por el K2B y sello por el propio contacto del R.PCE.S1
-  setOn('mc_ctPSello', r.pce);
-  setOn('mc_ctK2B', st.pulsoP === 'prueba');
-  setOn('mc_coK2B', st.pulsoP === 'prueba');
-  setW('mc_gK2Bin', st.pulsoP === 'prueba'); setW('mc_gK2B0', st.pulsoP === 'prueba');
-  setW('mc_coS1', st.pulsoP === 'prueba'); setW('mc_coS2', st.pulsoP === 'reponer');
-  setW('mc_gPS1', r.pce); setW('mc_gPS2', r.pce);
-  // la rama del K2B solo conduce mientras dura el pulso; si esta abierto,
-  // la corriente se va por fuera, por el puente del propio R.PCE.S1
-  setW('mc_gPP0', r.pce);   // tramo comun: del nodo de entrada al del puente
-  setW('mc_gPP1', st.pulsoP === 'prueba'); setW('mc_gPP2', st.pulsoP === 'prueba');
-  setW('mc_gPCEin', r.pce);
+  setOn('mc_coPCE', r.k2);
+  // Z02 -> [sello del R.PCE.S1 || contacto del K2B] -> bobina R.PCE.S1 -> +48V
+  setOn('mc_ctPSello', r.k2);
+  setOn('mc_ctK2B', r.k2b);
+  setOn('mc_coK2B', r.k2b);
+  setW('mc_gK2Bin', r.k2b); setW('mc_gK2B0', r.k2b);
+  setW('mc_coS1', r.k2b); setW('mc_coS2', st.pulsoP === 'prueba');
+  setW('mc_gPS1', r.k2); setW('mc_gPS2', r.k2);
+  // la rama del K2B solo conduce mientras dura el pulso de reposición;
+  // después la corriente sigue por el sello del propio R.PCE.S1
+  setW('mc_gPP0', r.k2);    // tramo comun: del nodo de entrada al del puente
+  setW('mc_gPP1', r.k2 && r.k2b); setW('mc_gPP2', r.k2 && r.k2b);
+  setW('mc_gPCEin', r.k2);
   setOn('mc_ctPCEa', r.alim); setOn('mc_ctPCEb', r.alim);
   setW('mc_g48a', true); setW('mc_g48b', true);
   setW('mc_g0a', true);  setW('mc_g0b', true);
-  setW('mc_gPCE1', r.pce); setW('mc_gPCE2', r.pce);
+  setW('mc_gPCE1', r.k2); setW('mc_gPCE2', r.k2);
   setW('mc_g48c', r.alim); setW('mc_g0c', r.alim);
   // los ruptores cortan sus dos contactos a la vez
   ['mc_REa1','mc_REa2','mc_REa3','mc_REb1','mc_REb2','mc_REb3'].forEach(function(k,i){
@@ -7117,8 +7121,8 @@ function render(){
   // Módulo Interf. TT: mientras dura el pulso, su relé se energiza, el contacto
   // conmuta y la corriente sale por su borne hacia la P41.
   var act = { r4: st.pulso === 'cierre',  r3: st.pulso === 'abierto',
-              r2: st.pulsoP === 'reponer', r1: st.pulsoP === 'prueba' };
-  [['r4','tc4','oA4'],['r3','tc3','oA3'],['r2','tc2','oA2'],['r1','tc1','oA1']].forEach(function(q){
+              r2: st.pulsoP === 'prueba', r1: r.k2b };
+  [['r4','tc4','oA4'],['r3','tc3','oA3'],['r1','tc1','oA1']].forEach(function(q){
     var on = act[q[0]];
     setOn('mc_'+q[0], on);            // la bobina de +24V
     setOn('mc_'+q[0]+'_ct', on);      // su contacto conmuta
@@ -7126,7 +7130,11 @@ function render(){
     setW('mc_'+q[0]+'_in', on);       // el tramo hasta la bobina
     setW('mc_'+q[2], on);             // la salida hacia la P41
   });
-  setW('mc_gM1', act.r4 || act.r3 || act.r2 || act.r1);   // el común de -48V
+  // TC.PCE.C.S2: en reposo su contacto está CERRADO y da tensión a A2 -> Z02; el pulso lo abre
+  setOn('mc_r2', act.r2); setOn('mc_r2_ct', r.z02);
+  setW('mc_tc2', act.r2); setW('mc_r2_in', act.r2);
+  setW('mc_oA2', r.k2 && r.z02);    // corriente hacia la bobina del R.PCE.S1
+  setW('mc_gM1', act.r4 || act.r3 || act.r1 || (r.k2 && r.z02));   // el común de -48V
   setW('mc_gD16', true); setW('mc_g0Vout', true);
   // el 0V entra por el K1A y avanza; el K1B abierto lo desvia por el D1·D2
   setW('mc_gD16', true); setW('mc_g0Vout', true);
@@ -7145,9 +7153,9 @@ function render(){
   setOn('mc_tkCEa', !r.rce); setOn('mc_tkCEc', r.rce);
   setOn('mc_tkFSa', !r.rcefs); setOn('mc_tkFSc', r.rcefs);
 
-  g('mc_estPCE').textContent = r.pce ? 'R.PCE.S1 energizado · contactos abiertos'
-                                     : 'R.PCE.S1 en reposo · contactos cerrados';
-  g('mc_estPCE').style.color = r.pce ? '#3E77E0' : 'var(--text-secondary)';
+  g('mc_estPCE').textContent = r.k2 ? 'R.PCE.S1 energizado · retenido por su sello · bucle alimentado'
+                                    : 'R.PCE.S1 caído · D2·D3 y C2·C3 abiertos · reponer con TC.PCE.A.S1';
+  g('mc_estPCE').style.color = r.k2 ? '#3E77E0' : '#E24B4A';
   g('mc_estFS').textContent = r.rcefs ? 'R.CEFS1 energizado · contacto enclavado'
                                      : 'R.CEFS1 caído · contacto desenclavado';
   g('mc_estFS').style.color = r.rcefs ? '#EF9F27' : 'var(--text-secondary)';
@@ -7160,9 +7168,11 @@ function render(){
 
   var m;
   if(r.pce){
-    m = 'PRUEBA DEL BUCLE: con el comando TC.PCE.A.S1 se energiza el R.PCE.S1 y se abren los contactos '
-      + 'D2·D3 y C2·C3 del 2J9, así que los dos hilos quedan sin alimentación y el R.CE.S1 cae igual que '
-      + 'con un ruptor golpeado. Es la forma de probar el corte sin ir a la vía.';
+    m = 'PRUEBA DEL BUCLE: el pulso TC.PCE.C.S2 abre su salida y deja Z02 sin tensión. Cae el R.PCE.S1: '
+      + 'se abre su sello y se abren D2·D3 y C2·C3 del 2J9, así que los dos hilos quedan sin alimentación y el '
+      + 'R.CE.S1 cae igual que con un ruptor golpeado. Al terminar el pulso Z02 vuelve, pero con el sello abierto '
+      + 'el R.PCE.S1 no vuelve solo: queda caído hasta el pulso TC.PCE.A.S1, que excita el K2B, puentea el sello '
+      + 'y lo vuelve a energizar.';
   } else if(!r.bucle){
     m = 'RUPTOR GOLPEADO: corta sus dos contactos a la vez, se abre el bucle S1 y la bobina R.CE.S1 se '
       + 'desenergiza. Al PCC sube TK.CE.A.E7 en vez de TK.CE.C.E8.';
@@ -7187,7 +7197,8 @@ function pulso(tipo){
 g('mc_btnCierre').onclick = function(){ pulso('cierre'); };
 function pulsoP(tipo){
   st.pulsoP = tipo;
-  st.pce = (tipo === 'prueba');
+  if(tipo === 'prueba') st.k2 = false;   // Z02 sin tensión: cae y abre su sello
+  else st.k2 = true;                      // el K2B puentea el sello (Z02 con tensión)
   render();
   setTimeout(function(){ st.pulsoP = null; render(); }, 1400);
 }
