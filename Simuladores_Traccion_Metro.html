@@ -168,6 +168,7 @@ body:has(.mod.v2.activo)>footer{display:none}
 .v2 .v2-app{max-width:none;margin:0;height:100vh;display:flex;flex-direction:column;position:relative;background:var(--bg)}
 .v2 .v2-top{flex:0 0 auto;display:flex;align-items:center;gap:16px;padding:10px 20px;border-bottom:1px solid #2a2a31;background:#18181c}
 .v2 .v2-back{height:38px;flex-shrink:0}
+.v2 .v2-tools .v2-ir{border-color:#3E77E0;color:#7aa3f0;white-space:nowrap}
 .v2 .v2-tit{flex:1;min-width:0}
 .v2 .v2-tit h1{margin:0;font-size:18px;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .v2 .v2-tit h1 span{color:#E24B4A}
@@ -275,6 +276,7 @@ Para agregar un nuevo módulo:
 <p class="sub">Tobalaba – Bilbao – Los Orientales · plano Metro S.A. <span class="v2-mono">1202-DSM-04-066-30573</span></p>
 </div>
 <div class="ctrl v2-tools">
+<button class="btn v2-ir" type="button" onclick="irModulo('mod-l4cefs')">📐 Bucle CE S1 en el plano →</button>
 <button class="btn" type="button" data-v2-abrir="a_guia">Guía</button>
 <button class="btn" id="a_btnFit">Ajustar</button>
 <label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="a_zoom" min="30" max="140" value="100"></label>
@@ -897,6 +899,8 @@ Para agregar un nuevo módulo:
 <p class="sub">Estación Las Torres · relé RR.ZC · enclavamiento con ramal Cocheras (R A ZC) · plano <span class="v2-mono">1202-DSM-04-066-30573</span> Ind. B</p>
 </div>
 <div class="ctrl v2-tools">
+<button class="btn v2-ir" type="button" onclick="irModulo('mod-l4zcm')">📐 Zona C en el plano →</button>
+<button class="btn v2-ir" type="button" onclick="irModulo('mod-l4cin')">📐 Cocheras en el plano →</button>
 <button class="btn" type="button" data-v2-abrir="c_guia">Guía</button>
 <button class="btn" id="c_btnFit">Ajustar</button>
 <label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="c_zoom" min="30" max="140" value="100"></label>
@@ -1201,6 +1205,7 @@ Para agregar un nuevo módulo:
 <p class="sub">Local Técnico Talleres Puente Alto · Las Mercedes · S/ER TPA · plano <span class="v2-mono">1202-HDD-04-0474-30573</span> hoja 6/7 Ind. D</p>
 </div>
 <div class="ctrl v2-tools">
+<button class="btn v2-ir" type="button" onclick="irModulo('mod-l4zg')">📘 Cómo funciona · Zona G →</button>
 <button class="btn" type="button" data-v2-abrir="i_guia">Guía</button>
 <button class="btn" id="i_btnFit">Ajustar</button>
 <label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="i_zoom" min="30" max="140" value="100"></label>
@@ -1539,6 +1544,7 @@ Para agregar un nuevo módulo:
 <p class="sub">Local Técnico Talleres Puente Alto · armario MC → cable túnel 4C → Local Técnico Las Mercedes · plano <span class="v2-mono">1202-HDD-04-0474-30573</span> hoja 7/8</p>
 </div>
 <div class="ctrl v2-tools">
+<button class="btn v2-ir" type="button" onclick="irModulo('mod-l4zg')">📘 Cómo funciona · Zona G →</button>
 <button class="btn" type="button" data-v2-abrir="az_guia">Guía</button>
 <button class="btn" id="az_btnFit">Ajustar</button>
 <label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="az_zoom" min="30" max="140" value="100"></label>
@@ -1818,6 +1824,7 @@ Para agregar un nuevo módulo:
 <p class="sub">Pupitre · PCC armario tracción · Cable túnel · Armario TT · Local Técnico Estación Las Torres, armario MC</p>
 </div>
 <div class="ctrl v2-tools">
+<button class="btn v2-ir" type="button" onclick="irModulo('mod-l4zc')">📘 Cómo funciona · Zona C →</button>
 <button class="btn" type="button" data-v2-abrir="lt_guia">Guía</button>
 <button class="btn" id="lt_btnFit">Ajustar</button>
 <label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="lt_zoom" min="30" max="140" value="100"></label>
@@ -2183,6 +2190,7 @@ Para agregar un nuevo módulo:
 <p class="sub">Túnel y Estación · Armario TT · Armario FF (VXMAT) · Local Técnico Estación Tobalaba, armario MC</p>
 </div>
 <div class="ctrl v2-tools">
+<button class="btn v2-ir" type="button" onclick="irModulo('mod-l4za')">📘 Cómo funciona · Zona A →</button>
 <button class="btn" type="button" data-v2-abrir="mc_guia">Guía</button>
 <button class="btn" id="mc_btnFit">Ajustar</button>
 <label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="mc_zoom" min="30" max="140" value="100"></label>
@@ -2631,6 +2639,7 @@ Para agregar un nuevo módulo:
 <p class="sub">Local Técnico Talleres Cocheras Intermedia · R A ZC y su repetidor RR A ZC en Las Torres · plano <span class="v2-mono">1202-HDD-04-0647-30573</span> hoja 6/18 Ind. B1</p>
 </div>
 <div class="ctrl v2-tools">
+<button class="btn v2-ir" type="button" onclick="irModulo('mod-l4zc')">📘 Cómo funciona · Zona C →</button>
 <button class="btn" type="button" data-v2-abrir="cin_guia">Guía</button>
 <button class="btn" id="cin_btnFit">Ajustar</button>
 <label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="cin_zoom" min="30" max="140" value="100"></label>
@@ -3820,6 +3829,8 @@ Para agregar un nuevo módulo:
 <p class="sub">Hospital Sotero del Río (armario remoto en Las Mercedes) · RR.ZG · SAT 10/11 · ramal Talleres (R Ai ZG) · plano <span class="v2-mono">1202-DSM-04-066-30573</span> Ind. B</p>
 </div>
 <div class="ctrl v2-tools">
+<button class="btn v2-ir" type="button" onclick="irModulo('mod-l4azg')">📐 Apertura Zona G en el plano →</button>
+<button class="btn v2-ir" type="button" onclick="irModulo('mod-l4iat')">📐 RS IAT en el plano →</button>
 <button class="btn" type="button" data-v2-abrir="g_guia">Guía</button>
 <button class="btn" id="g_btnFit">Ajustar</button>
 <label title="Zoom"><span class="v2-sr">Zoom</span><input type="range" id="g_zoom" min="30" max="140" value="100"></label>
