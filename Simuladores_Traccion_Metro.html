@@ -1677,7 +1677,7 @@ Para agregar un nuevo módulo:
 <text x="2014" y="674" class="lbor">0V</text>
 <text x="1920" y="752" text-anchor="middle" class="lnota" style="cursor:pointer;text-decoration:underline" onclick="irModulo('mod-l4cin')">ver esquema HDD CIN · 1202-HDD-04-647-30573</text>
 <text x="1920" y="768" text-anchor="middle" class="lnota">página 6/18 · Condición Cocheras</text>
-<text x="1920" y="796" text-anchor="middle" class="lnota">el RR A ZC queda energizado desde Cocheras</text>
+<text x="1920" y="796" text-anchor="middle" class="lnota">el contacto A1·A2 del R A ZC de Cocheras alimenta el RR A ZC</text>
 <text x="1405" y="840" text-anchor="end" class="lvia">P41</text>
 <path d="M 1335 851 L 1345 839" stroke="var(--text-secondary)" stroke-width="1.2"/><text x="1347" y="840" class="lbor">B4</text>
 <path d="M 1400 851 L 1410 839" stroke="var(--text-secondary)" stroke-width="1.2"/><text x="1412" y="840" class="lbor">L1</text>
@@ -1745,14 +1745,18 @@ Para agregar un nuevo módulo:
 <legend>2 · Corte de emergencia S4</legend>
 <label><span>CE S4 golpeado</span><input type="checkbox" class="peligro" id="lt_cbCE"></label>
 </fieldset>
+<fieldset class="grp" style="--gc:#6d9bf0">
+<legend>3 · Cocheras Intermedias</legend>
+<label><span>R A ZC caído en Cocheras (abre la Zona C)</span><input type="checkbox" class="peligro" id="lt_cbRAZC"></label>
+</fieldset>
 <fieldset class="grp" style="--gc:#2fbf8f">
-<legend>3 · PCC · CEFS S4 (pulsos)</legend>
+<legend>4 · PCC · CEFS S4 (pulsos)</legend>
 <div class="v2-fila"><span>CEFSS1 C-S4</span><button class="btn v2-acc" id="lt_btnCierre" style="--bc:#1D9E75">Armar</button></div>
 <div class="v2-fila"><span>CEFSS1 A-S3</span><button class="btn v2-acc" id="lt_btnAbierto" style="--bc:#1D9E75">Desarmar</button></div>
 <div class="v2-fila"><span id="lt_estFS" style="font-size:12.5px"></span></div>
 </fieldset>
 <fieldset class="grp" style="--gc:#6d9bf0">
-<legend>4 · Módulos enganchados</legend>
+<legend>5 · Módulos enganchados</legend>
 <div class="v2-fila"><span>Las Torres</span><button class="btn" type="button" onclick="irModulo('mod-l4zc')">Condición de Zona C</button></div>
 <div class="v2-fila"><span>Tobalaba</span><button class="btn" type="button" onclick="irModulo('mod-l4cefs')">Mando CE · CEFS</button></div>
 </fieldset>
@@ -7323,7 +7327,7 @@ MODFIT['mod-l4zcm'] = fit;
 g('lt_zoom').oninput=function(){setZoom(parseFloat(this.value));};
 g('lt_btnFit').onclick=fit;
 
-var st = { dg:true, giro:false, puls:false, kzc:false, ce:false, sello:false, pulso:null };
+var st = { dg:true, giro:false, puls:false, kzc:false, ce:false, razc:false, sello:false, pulso:null };
 var ST0 = JSON.parse(JSON.stringify(st));
 var PASOS = [
   {ok:function(r){return r.rzc;}, bloq:function(r){return st.puls && !r.rzc;}},
@@ -7335,6 +7339,7 @@ function chips(r){
     !st.dg ? ['no','R.DG abierto'] : null,
     r.lamp ? ['no','Luz TPL-ZC roja'] : null,
     r.ce ? ['si','CE S4 sano'] : ['no','CE S4 golpeado'],
+    r.rraz ? null : ['no','RR A ZC caído · Cocheras'],
     r.rcefs ? ['si','R.CEFS.S4 armado'] : null,
     r.kzc ? ['si','Zona C armada'] : ['','Zona C sin armar']
   ]);
@@ -7348,7 +7353,7 @@ function solve(){
   r.ce    = !st.ce;                // R.CE.S4 (K3) energizado: bucle de ruptores sano
   r.k4    = st.sello;              // RR.CEFS.S4: lo sostiene el biestable K1A / K1B
   r.rcefs = r.k4;                  // R.CEFS.S4 (K1) por el contacto A1·A2 del K4
-  r.rraz  = true;                  // RR A ZC energizado desde Cocheras
+  r.rraz  = !st.razc;              // RR A ZC: lo alimenta el A1·A2 del R A ZC de Cocheras
   var kzc = st.kzc, rzc = false, rzlt = false;
   for(var i=0;i<4;i++){
     rzc  = st.dg && st.giro && (st.puls || kzc);        // R ZC del PCC
@@ -7421,6 +7426,8 @@ function render(){
     m = 'Marca "TPL-ZC girado" y aprieta "Oprimir": el 0V pasa por el R.DG, el giro y el pulsador hasta la bobina R ZC del PCC.';
   } else if(r.kzc){
     m = 'ZONA C ARMADA: el R ZC del PCC manda +48VE por el hilo 12; pasa el CE S4' + (r.ce ? '' : ' (por el R.CEFS.S4)') + ' y el RR A ZC y energiza el R.ZC de Las Torres. Su contacto A1·A2 devuelve +48V por el hilo 10 al K.ZC del PCC, que sella el pulsador y apaga la luz roja.';
+  } else if(!r.rraz){
+    m = 'COCHERAS ABRE LA ZONA C: en Cocheras Intermedias cayó el R A ZC. Su contacto A1·A2 dejó sin alimentación al RR A ZC de Las Torres y el contacto K2 (D1·D2) abrió la cadena. Cae el R.ZC de Las Torres, no hay retorno al K.ZC y la zona se abre aunque el CE S4 esté sano.';
   } else if(r.rzc){
     m = 'El pulsador energiza el R ZC del PCC, pero la cadena se corta en Las Torres: el CE S4 está golpeado y el R.CEFS.S4 no está armado. Sin el R.ZC de Las Torres no hay retorno al K.ZC y la zona no se sella.';
   } else {
@@ -7439,6 +7446,7 @@ function pulso(tipo){
 }
 g('lt_cbDG').onchange = function(){ st.dg = this.checked; render(); };
 g('lt_cbCE').onchange = function(){ st.ce = this.checked; render(); };
+g('lt_cbRAZC').onchange = function(){ st.razc = this.checked; render(); };
 g('lt_cbGiro').onchange = function(){ st.giro = this.checked; render(); };
 g('lt_btnPuls').onclick = function(){var b=this;if(b.disabled)return;b.disabled=true;st.puls=true;render();setTimeout(function(){st.puls=false;render();b.disabled=false;},2600);};
 g('lt_btnCierre').onclick = function(){ pulso('cierre'); };
