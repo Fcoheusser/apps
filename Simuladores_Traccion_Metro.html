@@ -1498,19 +1498,19 @@ Para agregar un nuevo módulo:
 <text x="918" y="556" class="lbor">D06</text>
 <g id="az_ctSGC" class="sym f-sat"><text x="955" y="490" text-anchor="middle" style="font-size:10px">SGTS.C · K1</text><text x="927" y="504" text-anchor="end" style="font-size:9px">B2</text><text x="983" y="504" style="font-size:9px">B3</text><circle cx="927.5" cy="510" r="2.5"/><circle cx="982.5" cy="510" r="2.5"/><line class="bc" x1="930" y1="510" x2="980" y2="510"/><line class="bo" x1="930" y1="510" x2="976" y2="498"/></g>
 <text x="1016" y="506" text-anchor="end" class="lbor">D02</text>
-<g id="az_gSVT0"><path class="w" d="M 700 380 H 797.5"/></g>
+<g id="az_gSVTn"><path class="w" d="M 700 380 H 740"/></g>
+<g id="az_gSVT0"><path class="w" d="M 740 380 H 797.5"/></g>
 <g id="az_gSVT1"><path class="w" d="M 982.5 380 H 1780"/></g>
-<g id="az_gSG0"><path class="w" d="M 700 510 H 797.5"/></g>
+<g id="az_gSG0"><path class="w" d="M 740 380 V 510 H 797.5"/></g>
+<circle cx="740" cy="380" r="3.5" fill="var(--border-strong)"/>
 <g id="az_gSG1"><path class="w" d="M 982.5 510 H 1040 V 380"/></g>
 <circle cx="1040" cy="380" r="3.5" fill="var(--border-strong)"/>
 <circle cx="1780" cy="380" r="3.5" fill="var(--border-strong)"/>
 <text x="690" y="824" text-anchor="end" class="lbor">0V</text>
 <g id="az_gB1"><path class="w" d="M 700 820 V 650"/></g>
-<g id="az_gB2"><path class="w" d="M 700 650 V 510"/></g>
-<g id="az_gB3"><path class="w" d="M 700 510 V 380"/></g>
+<g id="az_gB2"><path class="w" d="M 700 650 V 380"/></g>
 <circle cx="700" cy="820" r="3.5" fill="var(--border-strong)"/>
 <circle cx="700" cy="650" r="3.5" fill="var(--border-strong)"/>
-<circle cx="700" cy="510" r="3.5" fill="var(--border-strong)"/>
 <text x="870" y="574" text-anchor="middle" class="lvia">Vía de maniobras (VM)</text>
 <text x="1225" y="574" text-anchor="middle" class="lvia">Vía cocheras (VC)</text>
 <text x="1505" y="574" text-anchor="middle" class="lvia">Vía talleres (VT)</text>
@@ -7653,7 +7653,7 @@ function render(){
     setW('az_g'+v, r.cadena); setW('az_g'+v+'o', r.cadena);
   });
   setW('az_gB1', (r.cadena && r.apar.VM) || st.svt || st.sgts);
-  setW('az_gB2', st.svt || st.sgts); setW('az_gB3', st.svt);
+  setW('az_gB2', st.svt || st.sgts); setW('az_gSVTn', st.svt || st.sgts);
   setOn('az_ctSVTA', st.svt); setOn('az_ctSVTC', st.svt);
   setOn('az_ctSGA', st.sgts); setOn('az_ctSGC', st.sgts);
   setW('az_gSVT0', st.svt); setW('az_gSVTp', st.svt); setW('az_gSVT1', st.svt || st.sgts);
